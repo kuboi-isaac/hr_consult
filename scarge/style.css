@@ -132,7 +132,7 @@
 /*main */
 .main{
    position: absolute;
-   width: calc(100% - 300px);
+   width: auto;
    left: 300px;
    min-height: 100vh;
    background: var(--grey );
