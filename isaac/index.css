@@ -24,13 +24,16 @@ body {
   position: fixed;
   width: 300px;
   height: 100%;
-  background: var(--blue);
+  background: var(--black1);
   border-left: 10px solid var(--blue);
   transition: 0.5s;
   overflow: hidden;
 }
 .navigation.active {
   width: 80px;
+  /* left: 0; */
+  /* margin-left: -80px; */
+  /* padding-left: 0; */
 }
 
 .navigation ul {
@@ -130,9 +133,11 @@ body {
   min-height: 100vh;
   background: var(--white);
   transition: 0.5s;
+  margin-right: 200px;
+  padding-right: 10px;
 }
 .main.active {
-  width: calc(100px - 80px);
+  width: calc(100px - 100px);
   left: 300px;
 }
 .topbar {
