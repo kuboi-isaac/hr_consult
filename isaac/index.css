@@ -10,11 +10,16 @@
   --white: #ffff;
   --grey: #f5f5f5;
   --black1: #222;
-  --black2: #99 9;
+  --black2: #999;
+  /* transtion */
+  --tran-05: all 0.5s ease;
 }
 body {
   min-height: 100vh;
   overflow-x: hidden;
+}
+.menu{
+  
 }
 .container {
   position: relative;
@@ -22,18 +27,25 @@ body {
 }
 .navigation {
   position: fixed;
-  width: 300px;
+  width: 200px;
   height: 100%;
   background: var(--black1);
   border-left: 10px solid var(--blue);
   transition: 0.5s;
   overflow: hidden;
+  vertical-align: middle;
 }
+
 .navigation.active {
   width: 80px;
-  /* left: 0; */
-  /* margin-left: -80px; */
-  /* padding-left: 0; */
+  padding-left: 5px;
+}
+
+.navigation ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 .navigation ul {
@@ -127,18 +139,19 @@ body {
 }
 /*main */
 .main {
-  position: absolute;
-  width: calc(100% - 300px);
-  left: 300px;
+  position: relative;
+  width: calc(100% - 200px); /* Adjust this value based on your sidebar width */
+  left: 200px; /* This value should match the original width of the sidebar */
   min-height: 100vh;
-  background: var(--white);
+  background: var(--blue);
   transition: 0.5s;
-  margin: auto;
-  padding-right: 10px;
+  margin-right: 100;
+  padding-right: 20px;
 }
+
 .main.active {
-  width: calc(100px - 100px);
-  left: 300px;
+  width: calc(100% - 80px) /* Content will fill the sidebar space */
+  left: 80px;
 }
 .topbar {
   width: 100%;
@@ -429,6 +442,7 @@ body {
   }
   .main.active {
     left: 300px;
+    width: 100%;
   }
   .cardBox {
     grid-template-columns: repeat(2, 1fr);

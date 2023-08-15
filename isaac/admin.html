@@ -3,12 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
     <link
       rel="stylesheet"
       type="text/css"
-      href="index.css
-    "
+      href="index.css"
+    />
+    <title>Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/ionicons.css"
     />
   </head>
   <body>
@@ -60,11 +63,10 @@
         </ul>
         
       </div>
-
-      <!-- main -->
-      <div class="main">
+<section class="menu">     <!-- main -->
+      <div class="main" id="main">
         <div class="topbar">
-          <div class="toggle">
+          <div class="toggle" onclick="w3_open">
             <ion-icon name="menu-outline"></ion-icon>
           </div>
 
@@ -82,16 +84,17 @@
             <ion-icon class="notification" name="notifications-circle-outline"></ion-icon>
         </a>
           </div>
-          <div class="user">
-            <ion-icon class="admin" name="person-circle-outline"></ion-icon> 
-                    <select name="" id="drop">
-                        <a href="#"><option value="">Dashboard</option></a>
-                        <a href="#"></a><option value="11">Profile</option></a>
-                        <a href="#"></a><option value="">Logout</option></a>
-                        <!-- <option value="">Logout</option> -->
-                        
-                    </select>
+            
+        <div class="user">
+          <div class="dropdown">
+            <ion-icon class="admin" name="person-circle-outline"></ion-icon>
+            <div class="dropdown-content">
+              <a href="#">Dashboard</a>
+              <a href="#">Profile</a>
+              <a href="#">Logout</a>
+            </div>
           </div>
+        </div>
         </div>
 
         <!--cards-->
@@ -192,7 +195,7 @@
           </tr>
           <td>Documents Solution</td>
           <td>30</td>
-          <td>Doreen</td>
+          <td>Doreen</td999999999999999999999999>
           <td><span class="status completed">Completed</span></td>
         </tr>
         <td>Documents Solution</td>
@@ -271,6 +274,8 @@
         </div>
       </div>
     </div>
+  </section>
+ 
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
@@ -298,6 +303,12 @@
         this.classList.add("hovered");
       }
       list.forEach((item) => list.addEventListener("mouseover", activelink));
+
+      function toggleNavigation() {
+      const navigation = document.querySelector(".navigation");
+      navigation.classList.toggle("active");
+    }
     </script>
+    
   </body>
 </html>
