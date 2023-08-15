@@ -17,6 +17,7 @@
  body{
     min-height: 100vh;
     overflow-x: hidden;
+    transition: all 0.5s ease;
    
  }
  .container{
@@ -28,13 +29,18 @@
     width: 300px;
     height: 100%;
     background: var(--black1 );
-    border-left: 10px solid var(--blue);
+    border-left: 10px solid var(--black1);
     transition: 0.5s;
     overflow: hidden;
  }
 .navigation.active{
    width: 80px;
 }
+/* .navigation.active,
+.main.active {
+  margin: 0;
+  padding: 0;
+} */
 
  .navigation ul{
     position:absolute;
@@ -132,14 +138,15 @@
 /*main */
 .main{
    position: absolute;
-   width: auto;
+   width: 100%;
    left: 300px;
    min-height: 100vh;
    background: var(--grey );
-   transition: 0.8s ;
+   transition: 0.5s ;
+   padding: 10px;
 }
 .main.active{
-   width: calc(100px - 80px);
+   width: calc(100% - 300px);
    left: 300px;
      
 }
@@ -294,35 +301,35 @@
    width: 90px;
    height: 35px;
 }
-.course_details table{
+.project_details table{
    width: 100%;
    border-collapse: collapse;
    margin-top: 10px;
 }
-.course_details table thead td{
+.project_details table thead td{
    font-weight: 600;
 }
 
-.courses table tr{
+.projects table tr{
    color: var(--black1);
     border-bottom: 1px solid rgba(0, 0, 0, 0.01);
 }
-.courses table tr:last-child{
+.projects table tr:last-child{
    border-bottom: none;
-}.courses table tr:hover{
+}.projects table tr:hover{
    background: var(--black1);
    color: var(--white );
 }
-.courses table tr td{
+.projects table tr td{
    padding: 10px;
 }
 .courses table tr td:last-child{
    text-align: end;
 }
-.courses table trtd:nth-child(2){
+.projects table trtd:nth-child(2){
    text-align: end;
 }
-.courses table trtd:nth-child(3){
+.projects table trtd:nth-child(3){
    text-align: center;
 }
 .status.delivered{
@@ -367,7 +374,7 @@ font-weight: 500;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
 }
-
+/* 
 .employees .imgBx{
    position:relative;
    width: 40px;
@@ -407,7 +414,7 @@ font-weight: 500;
 }
 .employees table tr:hover td h4{
    color: var(--white);
-}
+} */
 /* responsive design */
 @media (max-width:991px){
 
@@ -424,6 +431,7 @@ font-weight: 500;
    }
    .main.active{
       left: 300px ;
+      width: calc(100% - 300px);
    }
    .cardBox{
 

@@ -45,21 +45,21 @@
         </div>
 
         <!-- main -->
-        <div class="main">
+        <div class="main" id="main">
             <div class="topbar">
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
                </div>
 
-                <!-- search -->
+                
                 <div class="search">
                     <label for="Search">
-                        <!-- <icon-icon name="search-outline"></icon-icon> -->
+                     
                         <input type="text" name="" placeholder="Search Here" >
                         <ion-icon class="searchIcon" name="search-outline"></ion-icon>
                     </label>   
                 </div>
-                <!--userimg-->
+          
                 <div class="admin">
                     <div class="user">
                         <img src="C:/Users/D/Desktop/ukasha/images/dark.png">
@@ -68,7 +68,6 @@
                 </div>
             </div>
 
-            <!--cards-->
           
             <div class="cardBox">
                 <div class="card">
@@ -99,12 +98,12 @@
                     </div>
                 </div>
             </div>
-            <!-- couse course_details -->
+          
             <div class="project_details">
                 <div class="projects">
                     <div class="cardHeader"></div>
                     <h2 style="color: var(--blue);">Popular Projects</h2>
-<!--             
+            
                     <table border="0">
                         <tr>
                             <th>Name</th>
@@ -136,11 +135,11 @@
                             <td>7</td>
                             <td><i class="fa-solid fa-bars-progress" style="font-size: 20px; color: crimson;"></i>In progress</td>
                         </tr>
-                    </table> -->
-                    <!-- <a href="#" class="btn"> View all </a>  -->
+                    </table> 
+                   <a href="#" class="btn"> View all </a> 
                 </div>
 
-                <!-- employees -->
+               
                 <div class="employees">
                     <div class="cardHeader">
                         <h2>Employees</h2>
@@ -181,7 +180,13 @@
 
      toggle.onclick=function(){
         navigation.classList.toggle('active');
-        //main.classList.toggle('active');
+        main.classList.toggle('active');
+        
+        if (main.classList.contains('active')) {
+        main.style.width = 'calc(100% - 300px)';
+        } else {
+        main.style.width = '100%';
+       }
      }
 
     //add hovered class in selected list
