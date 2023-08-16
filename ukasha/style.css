@@ -18,7 +18,7 @@
     min-height: 100vh;
     overflow-x: hidden;
     transition: all 0.5s ease;
-   
+    width: auto;
  }
  .container{
     position: relative;
@@ -139,17 +139,19 @@
 .main{
    position: absolute;
    width: 100%;
-   left: 300px;
+   /* left: 300px; */
    min-height: 100vh;
    background: var(--grey );
    transition: 0.5s ;
    padding: 10px;
+   float: right;
+   
 }
-.main.active{
+/* .main.active{
    width: calc(100% - 300px);
    left: 300px;
      
-}
+} */
 .topbar{
    width: 100%;
    height: 60px;
@@ -440,10 +442,10 @@ font-weight: 500;
 }
 
 @media(max-width:768px){
-    .course_details{
+    .project_details{
       grid-template-columns: repeat(1,1fr);
     }
-    .courses{
+    .projects{
       overflow-x: auto;
     }
     .status.pending{
