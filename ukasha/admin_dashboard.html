@@ -1,186 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin dashboard</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css"></link>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="style.css"
+    />
+    <title>Dashboard</title>
+    <link
+      rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="script.js"></script>
+  </head>
+  <body>
     <div class="container">
-        <div class="navigation">
-            <ul>
-                <li>
-                    <a href="#">
-                    <span class="icon"> <ion-icon name="home-outline"></ion-icon></span>
-                    <span class="title"><i><u>Dashboard</u></i></span>
-                    </a>
-                </li>
-                 <li>
-                    <a href="#">
-                    <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
-                     <span class="title"><i>Employees</i></span>
-                    </a>
-                </li>
-                 <li>
-                    <a href="#">
-                    <span class="icon"><ion-icon name="book-outline"></ion-icon></span>
-                    <span class="title"><i>Projects</i></span>
-                    </a>
-                </li>
-                 <li>
-                    <a href="#">
-                    <span class="icon"><ion-icon name="podium-outline"></ion-icon></span>
-                    <span class="title"><i>Reports</i></span>
-                    </a>
-                </li>
-                 <li>
-                    <a href="#">
-                    <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
-                    <span class="title"><i>Settings </i></span>
-                    </a>
-                </li>
-            </ul>
+      <div class="navigation">
+        <ul>
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="speedometer-outline"></ion-icon></span>
+              <span class="title">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="employees.html">
+              <span class="icon"
+                ><ion-icon name="people-outline"></ion-icon
+              ></span>
+              <span class="title">Employees</span>
+            </a>
+          </li>
+          <li>
+            <a href="courses.html">
+              <span class="icon"
+                ><ion-icon name="book-outline"></ion-icon
+              ></span>
+              <span class="title">Courses</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports.html">
+              <span class="icon"
+                ><ion-icon name="podium-outline"></ion-icon
+              ></span>
+              <span class="title">Reports</span>
+            </a>
+          </li>
+          <li>
+            <a href="settings.html">
+              <span class="icon"
+                ><ion-icon name="settings-outline"></ion-icon
+              ></span>
+              <span class="title">Settings </span>
+            </a>
+          </li>
+
+        
+        </li>
+        </ul>
+        
+      </div>
+  <section class="menu">     <!-- main -->
+      <div class="main" id="main">
+        <div class="topbar">
+          <div class="toggle" onclick="w3_open">
+            <ion-icon name="menu-outline"></ion-icon>
+          </div>
+
+          <!-- search -->
+          <div class="search">
+            <label for="Search">
+              <!-- <icon-icon name="search-outline"></icon-icon> -->
+              <input type="text" name="" placeholder="Search Here" />
+              <ion-icon class="searchIcon" name="search-outline"></ion-icon>
+            </label>
+          </div>
+          <!--userimg-->
+          <div class="notification">
+            <a href="#">
+               <ion-icon class="notification" name="notifications-circle-outline"></ion-icon>
+            </a>
+          </div>
+          
+          <div class="user-dropdown">
+            <div class="user">
+
+
+
+              <div class="popup" onclick="myFunction()"><i class="fas fa-user-circle" style="font-size: 25px;"></i>
+                <div class="popuptext" id="myPopup">
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <span class="title1" >profile</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" >
+                        <span class="title2">Logout</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+
+
+
+              
+            </div>
+              <div class="dropdown-content">
+                <a href="#">Dashboard</a>
+                <a href="#">Profile</a>
+                <a href="#">Logout</a>
+            </div>
+          </div>
         </div>
 
-        <!-- main -->
-        <div class="main" id="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <ion-icon name="menu-outline"></ion-icon>
-               </div>
+        <!--cards-->
 
-                
-                <div class="search">
-                    <label for="Search">
-                     
-                        <input type="text" name="" placeholder="Search Here" >
-                        <ion-icon class="searchIcon" name="search-outline"></ion-icon>
-                    </label>   
-                </div>
-          
-                <div class="admin">
-                    <div class="user">
-                        <img src="C:/Users/D/Desktop/ukasha/images/dark.png">
-                    </div>
-                    <b><u><i>admin</i></u></b>
-                </div>
+        <div class="cardBox">
+          <div class="card">
+            <div>
+              <div class="numbers">1000</div>
+              <div class="cardName">Total Employees</div>
             </div>
-
-          
-            <div class="cardBox">
-                <div class="card">
-                    <div>
-                        <div class="numbers">500</div>
-                        <div class="cardName">Total Employees</div>
-                    </div>
-                    <div class="iconBx">
-                        <ion-icon name="people-circle-outline"></ion-icon>
-                    </div>
-                </div>
-                <div class="card">
-                    <div>
-                        <div class="numbers">150</div>
-                        <div class="cardName">Total Projects</div>
-                    </div>
-                    <div class="iconBx">
-                       <ion-icon name="bookmarks-outline"></ion-icon>
-                    </div>
-                </div>
-                <div class="card">
-                    <div>
-                        <div class="numbers">100</div>
-                        <div class="cardName"> pending</div>
-                    </div>
-                    <div class="iconBx">
-                        <ion-icon name="time-outline"></ion-icon>
-                    </div>
-                </div>
+            <div class="iconBx">
+              <ion-icon name="people-circle-outline"></ion-icon>
             </div>
-          
-            <div class="project_details">
-                <div class="projects">
-                    <div class="cardHeader"></div>
-                    <h2 style="color: var(--blue);">Popular Projects</h2>
-            
-                    <table border="0">
-                        <tr>
-                            <th>Name</th>
-                            <th>Admin</th>
-                            <th>Members</th>
-                            <th>Status</th>
-                        </tr>
-                        <tr>
-                            <td>ClientOnboarding-Circle</td>
-                            <td><i class="fa fa-female" aria-hidden="true" style="font-size: 20px; color: tomato"></i>Samantha J.</td>
-                            <td>3</td>
-                            <td><i class="fa-solid fa-bars-progress" style="font-size: 20px; color: crimson;"></i>In progress</td>
-                        </tr>
-                        <tr>
-                            <td>Meeting with Webflow and Notion</td>
-                            <td><i class="fa fa-male" style="font-size: 20px; color: tomato"></i>Bob P.</td>
-                            <td>4</td>
-                            <td><i class="fa fa-check-square" aria-hidden="true" style="font-size: 20px; color: violet;"></i>Done</td>
-                        </tr>
-                        <tr>
-                            <td>First Handoff with Engineers</td>
-                            <td><i class="fa fa-female" aria-hidden="true" style="font-size: 20px; color: tomato"></i>Kate O.</td>
-                            <td>10</td>
-                            <td><i class="fa-solid fa-bars-progress" style="font-size: 20px; color: crimson;"></i>In progress</td>
-                        </tr>
-                        <tr>
-                            <td>Client Drafting [2] with Lawrence</td>
-                            <td><i class="fas fa-male" style="font-size: 20px; color: tomato"></i>Jck F.</td>
-                            <td>7</td>
-                            <td><i class="fa-solid fa-bars-progress" style="font-size: 20px; color: crimson;"></i>In progress</td>
-                        </tr>
-                    </table> 
-                   <a href="#" class="btn"> View all </a> 
-                </div>
-
-               
-                <div class="employees">
-                    <div class="cardHeader">
-                        <h2>Employees</h2>
-                    </div>
-                    <table>
-                       <tr>
-                       </tr> 
-                       <tr>
-                       </tr> 
-                       <tr>
-                       </tr> 
-                       <tr>
-                       </tr> 
-                       <tr>
-                       </tr> 
-                       <tr>
-                       </tr> 
-                       <tr>
-                       </tr> 
-            
-                    </table>
-                </div>
-
-
+          </div>
+          <div class="card">
+            <div>
+              <div class="numbers">2000</div>
+              <div class="cardName">Total Courses</div>
             </div>
-
+            <div class="iconBx">
+              <ion-icon name="bookmarks-outline"></ion-icon>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <div class="numbers">1000</div>
+              <div class="cardName">Active courses</div>
+            </div>
+            <div class="iconBx">
+              <ion-icon name="eye-outline"></ion-icon>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <div class="numbers">200</div>
+              <div class="cardName">pending</div>
+            </div>
+            <div class="iconBx">
+              <ion-icon name="time-outline"></ion-icon>
+            </div>
+          </div>
         </div>
+        <!-- couse course_details -->
+        <div class="course_details">
+          <div class="courses">
+            <div class="cardHeader"></div>
+            <h2 style="color: var(--blue)">Popular Courses</h2>
+            
+            <table>
+              <thead>
+                <tr>
+                  <td>Course</td>
+                  <td>Enrolments</td>
+                  <td>Trainer</td>
+                  <td>Status</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Cyber Security</td>
+                  <td>34</td>
+                  <td>Mary</td>
+                  <td><span class="status delivered">Active</span></td>
+                </tr>
+                <tr>
+                  <td>Technology Solution</td>
+                  <td>34</td>
+                  <td>Mary</td>
+                  <td><span class="status pending">Pending</span></td>
+                </tr>
+                <tr>
+                  <td>Book keeping</td>
+                  <td>25</td>
+                  <td>Roman</td>
+                  <td><span class="status overdue">Overdue</span></td>
+                </tr>
+                <tr>
+                  <td>Documents Solution</td>
+                  <td>30</td>
+                  <td>Doreen</td>
+                  <td><span class="status overdue">Overdue</span></td>
+                </tr>
+                <td>Documents Solution</td>
+                <td>30</td>
+                <td>Doreen</td>
+                <td><span class="status pending">Pending</span></td>
+              </tr>
+              <td>Documents Solution</td>
+              <td>30</td>
+              <td>Doreen</td>
+              <td><span class="status completed">Completed</span></td>
+            </tr>
+            <td>Documents Solution</td>
+            <td>30</td>
+            <td>Doreen</td>
+            <td><span class="status completed">Completed</span></td>
+          </tr>
+          <td>Documents Solution</td>
+          <td>30</td>
+          <td>Doreen</td999999999999999999999999>
+          <td><span class="status completed">Completed</span></td>
+        </tr>
+        <td>Documents Solution</td>
+        <td>30</td>
+        <td>Doreen</td>
+        <td><span class="status completed">Completed</span></td>
+      </tr>
+              </tbody>
+            </table>
+            <a href="#" class="btn"> View All</a> 
+          </div>
+
+          <!-- employees -->
+          <div class="employees">
+            <div class="cardHeader">
+              <h2>Employees</h2>
+            </div>
+            <table>
+              <tr>
+                <td width="60px">
+                  <div class="imgBx"><img src="img1.jpg" alt="emp1" /></div>
+                </td>
+                <td>
+                  <h4>Ukasha <br /><span>IT</span></h4>
+                </td>
+              </tr>
+              <tr>
+                <td width="60px">
+                  <div class="imgBx"><img src="img1.jpg" alt="emp1" /></div>
+                </td>
+                <td>
+                  <h4>Umar <br /><span>IT</span></h4>
+                </td>
+              </tr>
+              <tr>
+                <td width="60px">
+                  <div class="imgBx"><img src="img1.jpg" alt="emp1" /></div>
+                </td>
+                <td>
+                  <h4>Uzwaifah <br /><span>IT</span></h4>
+                </td>
+              </tr>
+              <tr>
+                <td width="60px">
+                  <div class="imgBx"><img src="img1.jpg" alt="emp1" /></div>
+                </td>
+                <td>
+                  <h4>Hindu <br /><span>IT</span></h4>
+                </td>
+              </tr>
+              <tr>
+                <td width="60px">
+                  <div class="imgBx"><img src="img1.jpg" alt="emp1" /></div>
+                </td>
+                <td>
+                  <h4>Joan <br /><span>IT</span></h4>
+                </td>
+              </tr>
+              <tr>
+                <td width="60px">
+                  <div class="imgBx"><img src="img1.jpg" alt="emp1" /></div>
+                </td>
+                <td>
+                  <h4>Isaac <br /><span>IT</span></h4>
+                </td>
+              </tr>
+              <tr>
+                <td width="60px">
+                  <div class="imgBx"><img src="img1.jpg" alt="emp1" /></div>
+                </td>
+                <td>
+                  <h4>Susan <br /><span>IT</span></h4>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  </section>
  
-<script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
 
-//MenuToggle
-    let toggle=document.querySelector('.toggle');
-    let navigation=document.querySelector('.navigation');
-     let main=document.querySelector('.main');
+    <script>
+      //MenuToggle
+      let toggle = document.querySelector(".toggle");
+      let navigation = document.querySelector(".navigation");
+      let main = document.querySelector(".main");
 
-
-     toggle.onclick=function(){
-        navigation.classList.toggle('active');
+      toggle.onclick = function () {
+        navigation.classList.toggle("active");
         main.classList.toggle('active');
         document.getElementById('main');
         
@@ -191,18 +325,21 @@
             main.style.width = 'calc(100%  - 80px)';
             main.style.marginLeft = '80px'; 
         }
-     }
+      };
 
-    //add hovered class in selected list
-    let list=document.querySelector('.navigation li');
-    function activelink(){
-        list.forEach((item)=>
-        item.classList.remove('hovered'));
-        this.classList.add('hovered'); 
+      //add hovered class in selected list
+      let list = document.querySelector(".navigation li");
+      function activelink() {
+        list.forEach((item) => item.classList.remove("hovered"));
+        this.classList.add("hovered");
+      }
+      list.forEach((item) => list.addEventListener("mouseover", activelink));
+
+      function toggleNavigation() {
+      const navigation = document.querySelector(".navigation");
+      navigation.classList.toggle("active");
     }
-    list.forEach((item) =>
-    list.addEventListener('mouseover',activelink));
-
-</script>
-</body>
+    </script>
+    
+  </body>
 </html>
