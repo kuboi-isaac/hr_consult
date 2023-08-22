@@ -264,7 +264,7 @@
    margin: 0 8%;
    height: 60px;
    min-width: 30px;
-   position: fixed;
+   position: absolute;
    display: flex;
    right: 0;
    top: 10;
