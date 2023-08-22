@@ -261,11 +261,26 @@
    z-index: 1;
  }
  .notification {
-   margin: 0 85%;
+   margin: 0 8%;
    height: 60px;
    min-width: 30px;
-   position: absolute;
+   position: fixed;
+   display: flex;
+   right: 0;
+   top: 10;
  }
+
+ .notification-count {
+  position: absolute;
+  top: 9px;
+  right: -8px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 4px 8px;
+  font-size: 11px;
+}
+
  .user:local-link .dropdown-content {
    display: block;
  }
@@ -600,3 +615,47 @@
    margin-bottom: 0px;
  }
  
+
+
+
+ .profile-popup {
+  position: fixed;
+  top: 49px;
+  right: -300px;
+  width: 300px;
+  height: 70vh;
+  background-color: aqua;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  border-radius: 5px;
+}
+
+.profile-content {
+  padding: 20px;
+}
+
+.profile-popup.active {
+  right: 30px;
+}
+
+button{
+  border: none;
+  color: crimson;
+  font-size: 19px;
+  margin: 0 45%;
+  background-color: var(--white);
+  font-style: italic;
+}
+
+
+
+
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
+
+.no-results {
+  color: red;
+  font-weight: bold;
+}

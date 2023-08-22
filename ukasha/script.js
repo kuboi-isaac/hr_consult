@@ -45,3 +45,62 @@ function myFunction() {
 //     // Fetch and populate notifications
 //     fetchNotifications();
 //   });
+
+
+function openProfilePopup() {
+  const profilePopup = document.getElementById("profilePopup");
+  profilePopup.classList.add("active");
+}
+
+function closeProfilePopup() {
+  const profilePopup = document.getElementById("profilePopup");
+  profilePopup.classList.remove("active");
+}
+
+
+
+
+function searchAndHighlight() {
+  const searchInput = document.getElementById("searchInput");
+  const searchText = searchInput.value.trim().toLowerCase();
+  
+  if (searchText === "") {
+    clearHighlighting();
+    return;
+  }
+
+  const allTextElements = document.querySelectorAll("body *");
+  let resultsFound = false;
+
+  allTextElements.forEach((element) => {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+    
+    while (walker.nextNode()) {
+      const textNode = walker.currentNode;
+      const parentNode = textNode.parentNode;
+
+      if (textNode.nodeValue.toLowerCase().includes(searchText)) {
+        const splitText = textNode.nodeValue.split(new RegExp(`(${searchText})`, "gi"));
+        const highlightedHtml = splitText.map((textPart) => {
+          if (textPart.toLowerCase() === searchText) {
+            resultsFound = true;
+            return `<span class="highlight">${textPart}</span>`;
+          } else {
+            return textPart;
+          }
+        }).join("");
+
+        const tempElement = document.createElement("div");
+        tempElement.innerHTML = highlightedHtml;
+        const newNode = tempElement.firstChild;
+        parentNode.replaceChild(newNode, textNode);
+      }
+    }
+  });
+
+  if (!resultsFound) {
+    document.getElementById("noResults").style.display = "block";
+  } else {
+    document.getElementById("noResults").style.display = "none";
+  }
+}
