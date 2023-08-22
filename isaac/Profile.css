@@ -1,0 +1,102 @@
+/* Reset some default styling */
+body,
+h1,
+h2,
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.header {
+  text-align: center;
+  padding: 50px 0;
+  background-color: #287bff;
+  color: #ffffff;
+}
+
+.profile-img img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  margin-bottom: 10px;
+}
+
+.about,
+.skills,
+.contact {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.about h2,
+.skills h2,
+.contact h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333333;
+}
+
+.about p,
+.skills ul,
+.contact p,
+.contact ul {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #666666;
+}
+
+.skills ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.skills ul li {
+  margin-bottom: 10px;
+}
+
+.contact ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.contact ul li {
+  margin-bottom: 8px;
+}
+
+.contact ul li i {
+  margin-right: 5px;
+  color: #287bff;
+}
+
+/* Font Awesome icons */
+.fas,
+.fab {
+  font-size: 20px;
+}
+
+/* Media query for responsive design */
+@media (max-width: 768px) {
+  .about,
+  .skills,
+  .contact {
+    padding: 20px;
+  }
+
+  .profile-img img {
+    width: 120px;
+    height: 120px;
+  }
+}

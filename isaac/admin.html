@@ -3,10 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="logout.css">
+    <link rel="stylesheet" type="text/css" href="Profile.css">
     <link
       rel="stylesheet"
       type="text/css"
-      href="index.css"
+      href="admin.css"
     />
     <title>Dashboard</title>
     <link
@@ -71,12 +73,18 @@
 
           <!-- search -->
           <div class="search">
-            <label for="Search">
-              <!-- <icon-icon name="search-outline"></icon-icon> -->
-              <input type="text" name="" placeholder="Search Here" />
-              <ion-icon class="searchIcon" name="search-outline"></ion-icon>
-            </label>
+            <form action="https://www.google.com/search" method="GET" target="_blank">
+              <input
+                type="text"
+                name="q"
+                placeholder="Search"
+              />
+              <button type="submit" aria-label="Search">
+                <ion-icon class="searchIcon" name="search-outline"></ion-icon>
+              </button>
+            </form>
           </div>
+          
           <!--userimg-->
           <div class="notification">
             <a href="#">
@@ -93,12 +101,12 @@
                 <div class="popuptext" id="myPopup">
                   <ul>
                     <li>
-                      <a href="#">
+                      <a href="Profile.html">
                         <span class="title1" >profile</span>
                       </a>
                     </li>
                     <li>
-                      <a href="#" >
+                      <a href="Logout.html" >
                         <span class="title2">Logout</span>
                       </a>
                     </li>
