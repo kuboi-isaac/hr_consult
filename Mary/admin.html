@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    
 
 </head>
@@ -14,7 +15,7 @@
             <ul>
                 <li>
                     <a href="#">
-                    <span class="icon"> <ion-icon name="home-outline"></ion-icon></span>
+                    <span class="icon"> <i class="fa fa-home"></i></span>
                     <span class="title">Dashboard</span>
                     </a>
                 </li>
@@ -60,10 +61,18 @@
                         <ion-icon class="searchIcon" name="search-outline"></ion-icon>
                     </label>   
                 </div>
-                <!--userimg-->
+                
+                                        <div class="user-dropdown">
                 <div class="user">
-                    <img src="admin.png" alt="admin">
+                    <img src="admin.png" alt="admin" id="userImage">
                 </div>
+                <div class="dropdown-content">
+                    <a href="#">Profile</a>
+                    <a href="#">Dashboard</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+
             </div>
 
             <!--cards-->
@@ -185,7 +194,7 @@
                         <td width="60px"> <div class="imgBx"><img src="img1.jpg" alt="emp1"></div></td>
                         <td><h4>Mary <br><span>IT</span></h4></td> 
                        </tr> 
-            
+           
                     </table>
                 </div>
 
@@ -197,28 +206,6 @@
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
  
-<script>
-
-//MenuToggle
-    let toggle=document.querySelector('.toggle');
-    let navigation=document.querySelector('.navigation');
-     let main=document.querySelector('.main');
-
-     toggle.onclick=function(){
-        navigation.classList.toggle('active');
-        //main.classList.toggle('active');
-     }
-
-    //add hovered class in selected list
-    let list=document.querySelector('.navigation li');
-    function activelink(){
-        list.forEach((item)=>
-        item.classList.remove('hovered'));
-        this.classList.add('hovered'); 
-    }
-    list.forEach((item) =>
-    list.addEventListener('mouseover',activelink));
-
-</script>
+<script src="admin.js"></script>
 </body>
 </html>
