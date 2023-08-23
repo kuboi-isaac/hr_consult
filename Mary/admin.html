@@ -4,6 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+
+</head>
+<body>
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                    <span class="icon"> <i class="fa fa-home"></i></span>
+                    <span class="title">Dashboard</span>
+                    </a>
+                </li>
+                 <li>
+                    <a href="employees.html">
+                    <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
+                     <span class="title">Employees</span>
+                    </a>
+                </li>
+                 <li>
+                    <a href="courses.html">
+                    <span class="icon"><ion-icon name="book-outline"></ion-icon></span>
+                    <span class="title">Courses</span>
+                    </a>
+                </li>
+                 <li>
+                    <a href="reports.html">
+                    <span class="icon"><ion-icon name="podium-outline"></ion-icon></span>
+                    <span class="title">Reports</span>
+                    </a>
+                </li>
+                 <li>
+                    <a href="settings.html">
+                    <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                    <span class="title">Settings </span>
+                    </a>
+                </li>
+            </ul>
+=======
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
@@ -76,6 +117,26 @@
 
         <!--cards-->
 
+                <!-- search -->
+                <div class="search">
+                    <label for="Search">
+                        <!-- <icon-icon name="search-outline"></icon-icon> -->
+                        <input type="text" name="" placeholder="Search Here" >
+                        <ion-icon class="searchIcon" name="search-outline"></ion-icon>
+                    </label>   
+                </div>
+                
+                                        <div class="user-dropdown">
+                <div class="user">
+                    <img src="admin.png" alt="admin" id="userImage">
+                </div>
+                <div class="dropdown-content">
+                    <a href="#">Profile</a>
+                    <a href="#">Dashboard</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+
         <div class="cardBox">
           <div class="card">
             <div>
@@ -85,6 +146,90 @@
             <div class="iconBx">
               <ion-icon name="people-circle-outline"></ion-icon>
             </div>
+            <!-- couse course_details -->
+            <div class="course_details">
+                <div class="courses">
+                    <div class="cardHeader"></div>
+                    <h2 style="color: var(--blue);">Popular Courses</h2>
+                    <!-- <a href="#" class="btn"> View All</a>  -->
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Course</td>
+                            <td>Enrolments</td>
+                            <td>Trainer</td>
+                            <td>Status</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cyber Security</td>
+                            <td>34</td>
+                            <td>Mary</td>
+                            <td> <span class="status delivered">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>Technology Solution</td>
+                            <td>34</td>
+                            <td>Mary</td>
+                            <td> <span class="status pending">Pending</span></td>
+                        </tr>
+                        <tr>
+                            <td>Book keeping </td>
+                            <td>25</td>
+                            <td>Roman</td>
+                            <td> <span class="status overdue">Overdue</span></td>
+                        </tr>
+                        <tr>
+                            <td>Documents Solution</td>
+                            <td>30</td>
+                            <td>Doreen</td>
+                            <td> <span class="status completed ">Completed</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <!-- employees -->
+                <div class="employees">
+                    <div class="cardHeader">
+                        <h2>Employees</h2>
+                    </div>
+                    <table>
+                       <tr>
+                        <td width="60px"> <div class="imgBx"><img src="img1.jpg" alt="emp1"></div></td>
+                        <td><h4>Mary <br><span>IT</span></h4></td> 
+                       </tr> 
+                       <tr>
+                        <td width="60px"> <div class="imgBx"><img src="img1.jpg" alt="emp1"></div></td>
+                        <td><h4>Mary <br><span>IT</span></h4></td> 
+                       </tr> 
+                       <tr>
+                        <td width="60px"> <div class="imgBx"><img src="img1.jpg" alt="emp1"></div></td>
+                        <td><h4>Mary <br><span>IT</span></h4></td> 
+                       </tr> 
+                       <tr>
+                        <td width="60px"> <div class="imgBx"><img src="img1.jpg" alt="emp1"></div></td>
+                        <td><h4>Mary <br><span>IT</span></h4></td> 
+                       </tr> 
+                       <tr>
+                        <td width="60px"> <div class="imgBx"><img src="img1.jpg" alt="emp1"></div></td>
+                        <td><h4>Mary <br><span>IT</span></h4></td> 
+                       </tr> 
+                       <tr>
+                        <td width="60px"> <div class="imgBx"><img src="img1.jpg" alt="emp1"></div></td>
+                        <td><h4>Mary <br><span>IT</span></h4></td> 
+                       </tr> 
+                       <tr>
+                        <td width="60px"> <div class="imgBx"><img src="img1.jpg" alt="emp1"></div></td>
+                        <td><h4>Mary <br><span>IT</span></h4></td> 
+                       </tr> 
+           
+                    </table>
+                </div>
+
+
           </div>
           <div class="card">
             <div>
@@ -226,6 +371,13 @@
         </div>
       </div>
     </div>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+ 
+<script src="admin.js"></script>
+</body>
+</html>
+=======
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
