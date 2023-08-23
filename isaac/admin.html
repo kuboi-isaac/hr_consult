@@ -3,13 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="logout.css">
+    <link rel="stylesheet" type="text/css" href="Profile.css">
     <link
       rel="stylesheet"
       type="text/css"
-      href="index.css
-    "
+      href="admin.css"
     />
+    <title>Dashboard</title>
+    <link
+      rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="admin.js"></script>
   </head>
   <body>
     <div class="container">
@@ -18,8 +22,7 @@
           <li>
             <a href="#">
               <span class="icon">
-                <ion-icon name="home-outline"></ion-icon
-              ></span>
+                <ion-icon name="speedometer-outline"></ion-icon></span>
               <span class="title">Dashboard</span>
             </a>
           </li>
@@ -55,27 +58,72 @@
               <span class="title">Settings </span>
             </a>
           </li>
-        </ul>
-      </div>
 
-      <!-- main -->
-      <div class="main">
+        
+        </li>
+        </ul>
+        
+      </div>
+  <section class="menu">     <!-- main -->
+      <div class="main" id="main">
         <div class="topbar">
-          <div class="toggle">
+          <div class="toggle" onclick="w3_open">
             <ion-icon name="menu-outline"></ion-icon>
           </div>
 
           <!-- search -->
           <div class="search">
-            <label for="Search">
-              <!-- <icon-icon name="search-outline"></icon-icon> -->
-              <input type="text" name="" placeholder="Search Here" />
-              <ion-icon class="searchIcon" name="search-outline"></ion-icon>
-            </label>
+            <form action="https://www.google.com/search" method="GET" target="_blank">
+              <input
+                type="text"
+                name="q"
+                placeholder="Search"
+              />
+              <button type="submit" aria-label="Search">
+                <ion-icon class="searchIcon" name="search-outline"></ion-icon>
+              </button>
+            </form>
           </div>
+          
           <!--userimg-->
-          <div class="user">
-            <img src="admin.png" alt="admin" />
+          <div class="notification">
+            <a href="#">
+               <ion-icon class="notification" name="notifications-circle-outline"></ion-icon>
+            </a>
+          </div>
+          
+          <div class="user-dropdown">
+            <div class="user">
+
+
+
+              <div class="popup" onclick="myFunction()"><i class="fas fa-user-circle" style="font-size: 25px;"></i>
+                <div class="popuptext" id="myPopup">
+                  <ul>
+                    <li>
+                      <a href="Profile.html">
+                        <span class="title1" >profile</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="Logout.html" >
+                        <span class="title2">Logout</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+
+
+
+              
+            </div>
+              <div class="dropdown-content">
+                <a href="#">Dashboard</a>
+                <a href="#">Profile</a>
+                <a href="#">Logout</a>
+            </div>
           </div>
         </div>
 
@@ -158,8 +206,33 @@
                   <td>Documents Solution</td>
                   <td>30</td>
                   <td>Doreen</td>
-                  <td><span class="status completed">Completed</span></td>
+                  <td><span class="status overdue">Overdue</span></td>
                 </tr>
+                <td>Documents Solution</td>
+                <td>30</td>
+                <td>Doreen</td>
+                <td><span class="status pending">Pending</span></td>
+              </tr>
+              <td>Documents Solution</td>
+              <td>30</td>
+              <td>Doreen</td>
+              <td><span class="status completed">Completed</span></td>
+            </tr>
+            <td>Documents Solution</td>
+            <td>30</td>
+            <td>Doreen</td>
+            <td><span class="status completed">Completed</span></td>
+          </tr>
+          <td>Documents Solution</td>
+          <td>30</td>
+          <td>Doreen</td999999999999999999999999>
+          <td><span class="status completed">Completed</span></td>
+        </tr>
+        <td>Documents Solution</td>
+        <td>30</td>
+        <td>Doreen</td>
+        <td><span class="status completed">Completed</span></td>
+      </tr>
               </tbody>
             </table>
           </div>
@@ -231,6 +304,8 @@
         </div>
       </div>
     </div>
+  </section>
+ 
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
@@ -248,7 +323,16 @@
 
       toggle.onclick = function () {
         navigation.classList.toggle("active");
-        //main.classList.toggle('active');
+        main.classList.toggle('active');
+        document.getElementById('main');
+        
+        if (main.classList.contains('active')) {
+            main.style.width = 'calc(100%  - 300px)';
+            main.style.marginLeft = '300px'
+        } else {
+            main.style.width = 'calc(100%  - 80px)';
+            main.style.marginLeft = '80px'; 
+        }
       };
 
       //add hovered class in selected list
@@ -258,6 +342,12 @@
         this.classList.add("hovered");
       }
       list.forEach((item) => list.addEventListener("mouseover", activelink));
+
+      function toggleNavigation() {
+      const navigation = document.querySelector(".navigation");
+      navigation.classList.toggle("active");
+    }
     </script>
+    
   </body>
 </html>
