@@ -2,7 +2,21 @@
 function myFunction() {
     var popup = document.getElementById("myPopup");
     popup.classList.toggle("show");
-  }
+
+    popup.addEventListener('click', function(event) {
+      if (event.target === popup) {
+        popup.style.display = 'none';
+        popup.classList.remove("active");
+      }
+    });
+  document.body.addEventListener('click', function(event) {
+    if (popup.classList.contains("active") && !popup.contains(event.target)) {
+      popup.style.display = 'none';
+      popup.classList.remove("active");
+    }
+  });
+}
+
 
  
 
@@ -104,3 +118,57 @@ function searchAndHighlight() {
     document.getElementById("noResults").style.display = "none";
   }
 }
+
+// function collapse() {
+//   const pop = document.body.querySelector('.popupp');
+
+//   const icon = document.querySelector('.notification');
+//   icon.addEventListener('click', function() {
+//     if (pop.classList.contains("active")) {
+//       pop.style.display = 'none';
+//     } else {
+//       pop.style.display = 'block';
+//     }
+//     pop.classList.toggle("active");
+//   });
+  
+//   pop.addEventListener('click', function(event) {
+//     if (event.target === pop) {
+//       pop.style.display = 'none';
+//       pop.classList.remove("active");
+//     }
+//   });
+// }
+
+function collapse() {
+  const pop = document.body.querySelector('.popupp');
+
+  const icon = document.querySelector('.notification');
+  icon.addEventListener('click', function(event) {
+    if (pop.classList.contains("active")) {
+      pop.style.display = 'none';
+      pop.classList.remove("active");
+    } else {
+      pop.style.display = 'block';
+      pop.classList.add("active");
+    }
+    event.stopPropagation(); // Prevent the click from propagating to the body
+  });
+
+  pop.addEventListener('click', function(event) {
+    if (event.target === pop) {
+      pop.style.display = 'none';
+      pop.classList.remove("active");
+    }
+  });
+
+  // Click event on the body to hide the popup
+  document.body.addEventListener('click', function(event) {
+    if (pop.classList.contains("active") && !pop.contains(event.target)) {
+      pop.style.display = 'none';
+      pop.classList.remove("active");
+    }
+  });
+}
+
+
