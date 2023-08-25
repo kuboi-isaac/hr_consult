@@ -11,6 +11,7 @@
       href="admin.css"
     />
     <title>Dashboard</title>
+    <link rel="stylesheet" href="npm i bootstrap-icons">
     <link
       rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="admin.js"></script>
@@ -83,19 +84,19 @@
             </form>
           </div>
           
-          <!--userimg-->
-          <div class="notification">
-            <a href="#" id="notification-icon">
-                <ion-icon class="notification" name="notifications-circle-outline"></ion-icon>
-            </a>
-        </div>
-        
-        <div class="popup_notification" id="notification-popup">
-            <!-- Content for the pop-up goes here -->
-            <p>notifications</p>
-            <!-- <button id="close-popup">Close</button> -->
-        </div>
-        
+          <!-- notification icon -->
+         <div>
+          <a href="#" class="notification">
+            <span>Inbox</span>
+            <span class="badge">3</span>
+            <div class="popup" id="notificationPopup">
+              <!-- Popup content here -->
+            </div>
+          </a>
+          </div>
+
+        <!-- user icon -->
+
           <div class="user-dropdown">
             <div class="user">
               <div class="popup" onclick="myFunction()">
@@ -117,7 +118,7 @@
                 </div>
               </div>
 
-
+              
 
 
               
@@ -127,6 +128,10 @@
                 <a href="#">Profile</a>
                 <a href="#">Logout</a>
             </div>
+          </div>
+          <div>
+            
+
           </div>
         </div>
 
@@ -174,7 +179,7 @@
         <div class="course_details">
           <div class="courses">
             <div class="cardHeader"></div>
-            <h2 style="color: var(--blue)">Popular Courses</h2>
+            <h2 style="color: var(--black)">Popular Courses</h2>
             <!-- <a href="#" class="btn"> View All</a>  -->
 
             <table>
