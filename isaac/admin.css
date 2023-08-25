@@ -30,7 +30,8 @@ body {
   height: 100%;
   background: var(--black1);
   border-left: 10px solid color(srgb red green rgb(0, 0, 0));
-  transition: 0.1s;
+  transition: 0.10 s;
+  transition-timing-function: ease-out;
   overflow: hidden;
   /* vertical-align: middle; */
 }
@@ -145,7 +146,8 @@ body {
   margin-left: 80px;
   min-height: 100vh;
   background: var(--grey);
-  transition: 1s;
+  transition: 500ms;
+  transition-timing-function: ease-out;
   padding: 5px;
 }
 
