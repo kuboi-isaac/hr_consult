@@ -171,4 +171,73 @@ function collapse() {
   });
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+  // Bar Chart
+  var ctxBar = document.getElementById("courseChart").getContext("2d");
+  var barChart = new Chart(ctxBar, {
+    type: "bar",
+    data: {
+      labels: ["Course 1", "Course 2", "Course 3", "Course 4", "Course 5", "Course 6"],
+      datasets: [
+        {
+          label: "Enrollment",
+          data: [100, 150, 95, 50, 25, 70],
+          backgroundColor: ["rgb(0,128,0)", "rgb(0,255,255)", "rgba(183, 201, 226)", "rgba(90, 90, 90)"],
+          borderColor: ["rgba(75, 192, 192, 1)", "rgba(54, 162, 235, 1)"],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+
+  // Pie Chart
+  var ctxPie = document.getElementById("coursePieChart").getContext("2d");
+  var pieChart = new Chart(ctxPie, {
+    type: "pie",
+    data: {
+      labels: ["Course 1", "Course 2", "Course 3", "Course 4"],
+      datasets: [
+        {
+          data: [100, 110, 40, 40, 25, 35],
+          backgroundColor: ["rgb(128,128,0)", "rgb(0,255,255)", "rgb(0,128,0)", "rgb(255,20,127)"],
+          borderColor: ["rgba(75, 192, 192, 1)", "rgba(54, 162, 235, 1)"],
+          borderWidth: 1,
+        },
+      ],
+    },
+  });
+
+  // Line Chart
+  var ctxLine = document.getElementById("courseLineChart").getContext("2d");
+  var lineChart = new Chart(ctxLine, {
+    type: "line",
+    data: {
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      datasets: [
+        {
+          label: "Enrollment",
+          data: [100, 120, 90, 140, 160, 99, 80, 90, 150, 180, 150, 100],
+          borderColor: "rgba(75, 192, 192, 1)",
+          borderWidth: 1,
+          fill: false,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+});
+
 

@@ -1,4 +1,4 @@
-9<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,11 +8,19 @@
     <link
       rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <div class="container">
       <div class="navigation">
         <ul>
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="cloud-download-outline"></ion-icon></span>
+              <span class="title">HR CONSULT</span>
+            </a>
+          </li>
           <li>
             <a href="#">
               <span class="icon">
@@ -23,7 +31,7 @@
           <li>
             <a href="employees.html">
               <span class="icon"
-                ><ion-icon name="people-outline"></ion-icon
+                ><ion-icon name="people-circle-outline"></ion-icon
               ></span>
               <span class="title">Employees</span>
             </a>
@@ -295,9 +303,22 @@
               </tr>
             </table>
           </div>
+
+          <div class="charts-container">
+            <div class="chart-container">
+              <canvas id="courseChart"></canvas>
+            </div>
+            <div class="chart-container">
+              <canvas id="coursePieChart"></canvas>
+            </div>
+            <div class="chart-container">
+              <canvas id="courseLineChart"></canvas>
+            </div>
+          </div>
+
         </div>
       </div>
-    </div>
+    </div>      
   </section>
 
 

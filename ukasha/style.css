@@ -1,7 +1,7 @@
 :root {
-   --blue: #287bff;
+   --blue: #316abb;
    --white: #ffff;
-   --grey: #87CEEB;
+   /* --grey: #1484cd; */
    --black1: #222;
    --black2: #999;
    /* transtion */
@@ -27,8 +27,7 @@
    position: fixed;
    width: 60px;
    height: 100%;
-   background: var(--black1);
-   /* border-left: 10px solid var(--black1); */
+   background: var(--blue);
    transition: 0.5s;
    overflow: hidden;
    vertical-align: middle;
@@ -141,9 +140,11 @@
    width: calc(100% - 60px);
    margin-left: 60px;
    min-height: 100vh;
-   background: var(--grey);
+   background: var(--white);
    transition: 0.5s;
    padding: 10px;
+   font-style: italic;
+   font-size: smaller;
  }
  
  /* .main.active {
@@ -272,7 +273,7 @@
 
  .notification-count {
   position: absolute;
-  top: 17px;
+  top: 13px;
   right: -7px;
   background-color: red;
   color: white;
@@ -305,7 +306,7 @@
    display: flex;
    justify-content: space-between;
    cursor: pointer;
-   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.555);
  }
  
  .numbers {
@@ -348,7 +349,7 @@
    min-height: 500px;
    background: var(--white);
    padding: 20px;
-   box-shadow: 0 70px 25px rgba(0, 0, 0, 0.08);
+   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.555);
    border-radius: 20px;
  }
  .cardHeader {
@@ -442,7 +443,7 @@
    min-height: 500px;
    padding: 20px;
    background: var(--white);
-   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.555);
    border-radius: 20px;
  }
  
@@ -621,8 +622,8 @@
   right: -300px;
   width: 300px;
   height: 70vh;
-  background-color: tomato;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  background: var(--white);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.479);
   z-index: 1000;
   border-radius: 5px;
 }
@@ -657,20 +658,32 @@ button{
 .popupp {
   display: none;
   position: absolute;
-  top: 29%;
+  top: 20%;
   left: 82%;
   transform: translate(-50%, -50%);
   width: 250px;
   height: 60vh;
-  background-color:  tomato;
+  background: var(--white);
   border: 1px solid #ccc;
   padding: 20px;
   z-index: 999;
   overflow: auto;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.61);
   border-radius: 2%;
 }
 
 .popupp.active {
   display: block;
+}
+
+.charts-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.555);
+}
+
+.chart-container {
+  width: 60%;
+  height: 60vh;
 }
