@@ -1,9 +1,9 @@
 :root {
   --blue: #287bff;
   --white: #ffff;
-  --grey: #f5f5f5;
+  --grey: #f3f3f3;
   --black1: #222;
-  --black2: #999;
+  --black2: #2c2929;
   /* transtion */
   --tran-05: all 0.5s ease;
 }
@@ -22,6 +22,7 @@ body {
 .container {
   position: relative;
   width: 100%;
+  /* background-color: #000000; */
 }
 .navigation {
   position: fixed;
@@ -29,7 +30,8 @@ body {
   height: 100%;
   background: var(--black1);
   border-left: 10px solid color(srgb red green rgb(0, 0, 0));
-  transition: 0.1s;
+  transition: 0.10 s;
+  transition-timing-function: ease-out;
   overflow: hidden;
   /* vertical-align: middle; */
 }
@@ -144,7 +146,8 @@ body {
   margin-left: 80px;
   min-height: 100vh;
   background: var(--grey);
-  transition: 1s;
+  transition: 500ms;
+  transition-timing-function: ease-out;
   padding: 5px;
 }
 
@@ -171,6 +174,7 @@ left: auto;
   text-align: center;
   padding: 1px 16px;
   text-decoration: none;
+  text-align: center;
   font-size: 17px;
 }
 
@@ -180,7 +184,7 @@ left: auto;
 }
 
 .topnav a:hover {
-  /* background-color: #ffffff; */
+  background-color: #555;
   color: rgb(255, 255, 255);
 }
 
@@ -190,8 +194,15 @@ left: auto;
   height: -20px;
   padding: 10px 180px;
   margin: -42px;
-  border-radius: 10px;
+  border-radius: 5px;
+  border-style: inset;
   margin-left: 80px;
+}
+
+.topnav.responsive a {
+  float: none;
+  display: block;
+  text-align: left;
 }
 
 @media screen and (max-width: 600px) {
@@ -252,13 +263,13 @@ left: auto;
 .user {
   position: fixed;
   min-width: 10px;
-  margin: -60px;
+  margin: -44px;
   height: -100px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  left: 100px 80px;
-  right: 100px;
+  left: 100px 50px;
+  right: 150px;
 }
 
 .user img {
@@ -285,18 +296,7 @@ left: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   /* z-index: 1; */
 }
-.notification {
-  position: fixed;
-  min-width: 90px;
-  margin: -20px;
-  height: 32px;
-  color: var(--black1);
-  cursor: pointer;
-  display: flex;
-  /* align-items: center; */
-  left: 100px 100px;
-  right: 130px;
-}
+
 .user:local-link .dropdown-content {
   display:list-item;
 }
@@ -309,7 +309,7 @@ left: auto;
 .cardBox {
   position: relative;
   width: 100%;
-  padding: 20px;
+  padding: 18px;
   margin-top: 40px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -319,7 +319,7 @@ left: auto;
 .card {
   position: relative;
   background: var(--white);
-  padding: 20px;
+  padding: 18px;
   z-index: 1;
   border-radius: 20px;
   display: flex;
@@ -332,7 +332,11 @@ left: auto;
   position: relative;
   font-weight: 500;
   font-size: 2.5em;
-  color: var(--blue);
+  color: var(--black1);
+}
+
+.card:hover .numbers {
+  color: #f5f5f5;
 }
 
 .cardName {
@@ -345,7 +349,7 @@ left: auto;
   color: var(--black1);
 }
 .card:hover {
-  background: var(--blue);
+  background-color: #4a4c50;
 }
 .card:hover .numbers,
 .cardBox.card:hover .cardName,
@@ -378,7 +382,7 @@ left: auto;
 }
 .cardHeader h2 {
   font-weight: 600;
-  color: var(--blue);
+  color: var(--black1);
 }
 
 .btn {
@@ -586,11 +590,41 @@ left: auto;
   z-index: 1000;
 }
 
+.notification {
+  background-color: #000000;
+  color: rgb(0, 0, 0);
+  text-decoration: var(--white);
+  /* padding: 15px 26px; */
+  position: fixed;
+  display: block;
+  right: 1px;
+  margin-right: 180px;
+  margin-bottom: 50px;
+  margin-top: -26px;
+  /* left: 1px; */
+  border-radius: 3px;
+}
+
+.notification:hover {
+  /* background: red; */
+}
+
+.notification .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 1px 6px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}
+
 
 /* The actual popup */
 .popup .popuptext {
   visibility: hidden;
-  width: 100px;
+  width: 80px;
+  height: 80px;
   background-color: #ffff;
   color: #a71b1b00;
   white-space: nowrap;
@@ -599,23 +633,20 @@ left: auto;
   padding: 10px 0px;
   position: absolute;
   top: 100%;
-  left: -8px;
+  left: -10px;
   /* text-decoration-color: #f5f5f5; */
   transform: translate(-50%, 0);
 }
 
-.popup_notification p {
-  color: #f5f5f5;
-}
 
 /* Popup arrow */
 .popup .popuptext::after {
   content: "";
   position: absolute;
-  top: -10px;
+  top: -20px;
   left: 50%;
   margin-left: -5px;
-  border-width: 5px;
+  border-width: 1px;
   border-style: solid;
   border-color: transparent transparent #c4161600 transparent;
 }
@@ -649,4 +680,8 @@ left: auto;
 
 .popup .popuptext ul li:first-child {
   margin-bottom: 0px;
+}
+
+.notification-popup {
+
 }
