@@ -86,13 +86,14 @@
    position: relative;
    display: block;
    min-width: 60px;
+   color: var(--black1);
    height: 60px;
    line-height: 70px;
    text-align: center;
  }
  
  .icon {
-   font-size: 1.75em;
+   font-size: 2.00em;
  }
  
  .title {
@@ -102,6 +103,7 @@
    height: 60px;
    line-height: 60px;
    text-align: start;
+   color: var(--black1);
    white-space: nowrap;
  }
  
