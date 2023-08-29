@@ -177,12 +177,19 @@ document.addEventListener("DOMContentLoaded", function () {
   var barChart = new Chart(ctxBar, {
     type: "bar",
     data: {
-      labels: ["Course 1", "Course 2", "Course 3", "Course 4", "Course 5", "Course 6"],
+      labels: ["IT", "Sales", "Accounts", "Marketing", "Production", "Finance"],
       datasets: [
         {
           label: "Enrollment",
           data: [100, 150, 95, 50, 25, 70],
-          backgroundColor: ["rgb(0,128,0)", "rgb(0,255,255)", "rgba(183, 201, 226)", "rgba(90, 90, 90)"],
+          backgroundColor: ["rgba(183, 201, 226)", "rgba(183, 201, 226)", "rgba(183, 201, 226)", "rgba(183, 201, 226)"],
+          borderColor: ["rgba(75, 192, 192, 1)", "rgba(54, 162, 235, 1)"],
+          borderWidth: 1,
+        },
+        {
+          label: "Engagement",
+          data: [90, 100, 80, 65, 40, 60],
+          backgroundColor: ["rgb(0,255,255)", "rgb(0,255,255)", "rgb(0,255,255)", "rgb(0,255,255)"],
           borderColor: ["rgba(75, 192, 192, 1)", "rgba(54, 162, 235, 1)"],
           borderWidth: 1,
         },
@@ -202,10 +209,10 @@ document.addEventListener("DOMContentLoaded", function () {
   var pieChart = new Chart(ctxPie, {
     type: "pie",
     data: {
-      labels: ["Course 1", "Course 2", "Course 3", "Course 4"],
+      labels: ["IT", "Sales", "Accounts", "Finance"],
       datasets: [
         {
-          data: [100, 110, 40, 40, 25, 35],
+          data: [150, 100, 70, 40],
           backgroundColor: ["rgb(128,128,0)", "rgb(0,255,255)", "rgb(0,128,0)", "rgb(255,20,127)"],
           borderColor: ["rgba(75, 192, 192, 1)", "rgba(54, 162, 235, 1)"],
           borderWidth: 1,
@@ -222,9 +229,16 @@ document.addEventListener("DOMContentLoaded", function () {
       labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
       datasets: [
         {
-          label: "Enrollment",
+          label: "Attendence",
           data: [100, 120, 90, 140, 160, 99, 80, 90, 150, 180, 150, 100],
           borderColor: "rgba(75, 192, 192, 1)",
+          borderWidth: 1,
+          fill: false,
+        },
+        {
+          label: "Leave",
+          data: [25, 60, 50, 15, 80, 50, 70, 65, 130, 165, 100, 87],
+          borderColor: "rgba(0,128,0)",
           borderWidth: 1,
           fill: false,
         },

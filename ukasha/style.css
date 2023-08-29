@@ -34,7 +34,7 @@
  }
  
  .navigation.active {
-   width: 180px;
+   width: 240px;
    /* padding-left: 5px; */
  }
  
@@ -336,12 +336,11 @@
  
  .course_details {
    position: relative;
-   width: 100%;
+   width: auto;
    padding: 20px;
    display: grid;
    grid-template-columns: 2fr 1fr;
    grid-gap: 30px;
-   /* margin-top: 10px; */
  }
  .courses {
    position: relative;
@@ -437,7 +436,7 @@
    font-weight: 500;
  }
  
- .employees {
+  .employees {
    position: relative;
    display: grid;
    min-height: 500px;
@@ -446,7 +445,7 @@
    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.555);
    border-radius: 20px;
  }
- 
+ /*
  .employees .imgBx {
    position: relative;
    width: 40px;
@@ -485,22 +484,22 @@
  }
  .employees table tr:hover td h4 {
    color: var(--white);
- }
+ } */
  /* responsive design */
  @media (max-width: 991px) {
    .navigation {
-     left: -180px;
+     left: -240px;
    }
    .navigation.active {
      left: 0;
-     width: 180px;
+     width: 240px;
    }
    .main {
      width: 100%;
      left: 0;
    }
    .main.active {
-     left: 180px;
+     left: 240px;
      width: 100%;
    }
    .cardBox {
@@ -677,13 +676,51 @@ button{
 }
 
 .charts-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.555);
+  /* display: flex; */
+  /* justify-content: center;
+  align-items: center; */
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.116);
 }
 
 .chart-container {
   width: 60%;
   height: 60vh;
+}
+
+.logo-wrap {
+
+  width: 260px;
+  height: 75px;
+  grid-template-columns: 0.6fr 1.4fr;
+
+}
+
+.logo-icon {
+  font-size: 3.0em;
+  text-align: left;
+
+}
+
+.logo-content {
+
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 65px; 
+  margin-top: -55px;
+}
+
+.logo-name {
+
+  font-size: 1.7em;
+  text-align: left;
+  
+}
+
+.logo-slogan {
+  font-size: 8px;
+  padding-left: px;
+  letter-spacing: 0.3ch;
+
 }
