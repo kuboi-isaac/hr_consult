@@ -726,3 +726,31 @@ button{
   letter-spacing: 0.3ch;
 
 }
+
+.menuu {
+  list-style: none;
+  padding: 0;
+}
+
+.menuu li {
+  display: inline-block;
+  margin-right: 100px;
+}
+
+.dropdown-contents {
+  display: none;
+  position: relative;
+  background-color: rgb(14, 13, 13);
+  color: var(--blue);
+  /* border: 1px solid #ccc; */
+  padding: 10px;
+  font-size: large;
+  font-style: italic;
+}
+
+.menuu .dropdown-contents :hover {
+background-color: var(--black2);
+padding: 10px 18px;
+border-top-left-radius: 20px;
+border-bottom-left-radius: 20px;
+}
