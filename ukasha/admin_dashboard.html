@@ -114,13 +114,15 @@
 
           <!-- search -->
           <div class="search">
+            <form action="https://www.google.com/search" method="GET" target="_blank">
             <label for="Search">
               <!-- <icon-icon name="search-outline"></icon-icon> -->
               <input type="text" id="searchInput" name="" placeholder="Search Here" />
               <ion-icon class="searchIcon" name="search-outline" onclick="searchAndHighlight()" ></ion-icon>
-              
+             
               <div id="noResults" class="no-results" style="display: none;">No results found.</div>
             </label>
+            </form>
           </div>
           <!--userimg-->
           <div class="notification">
