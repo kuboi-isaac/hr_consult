@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <html>
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" type="text/css" href="employee_details.css" />
+
+      <title>Employee Personal Details</title>
+    </head>
+    <body>
+      <h1>PERSONAL INFORMATION FORM</h1>
+      <h4>
+        Please complete all items by entering the correct information. Please
+        complete this form in upper-case letters.
+      </h4>
+      <br />
+      <h3>Personal Details</h3>
+      <form>
+        <label for="name">Name:</label><br />
+        <input type="text" id="name" name="name" /><br />
+        <label for="email">Email:</label><br />
+        <input type="email" id="email" name="email" /><br />
+        <label for="phone">Phone:</label><br />
+        <input type="tel" id="phone" name="phone" /><br />
+        <label for="address">Address:</label><br />
+        <input type="text" id="address" name="address" /><br />
+        <label for="city">City:</label><br />
+        <input type="text" id="city" name="city" /><br />
+        <label for="state">State:</label><br />
+        <input type="text" id="state" name="state" /><br />
+        <label for="zip">Zip:</label><br />
+        <input type="text" id="zip" name="zip" /><br />
+        <label for="country">Country:</label><br />
+        <input type="text" id="country" name="country" /><br />
+        <input type="submit" value="Submit" /><br />
+      </form>
+      <h3>Citizenship</h3>
+      <form>
+        <label for="citizenship-status">Citizenship Status:</label><br />
+        <select id="citizenship-status" name="citizenship-status">
+          <option value="citizen">Citizen</option>
+          <option value="permanent-resident">Permanent Resident</option>
+          <option value="work-visa-holder">Work Visa Holder</option>
+          <option value="other">Other</option></select
+        ><br />
+
+        <div id="visa-details" style="display: none">
+          <label for="visa-type">Visa Type:</label><br />
+          <input type="text" id="visa-type" name="visa-type" /><br />
+
+          <label for="visa-number">Visa Number:</label><br />
+          <input type="text" id="visa-number" name="visa-number" /><br />
+
+          <label for="visa-expiration">Visa Expiration Date:</label><br />
+          <input
+            type="date"
+            id="visa-expiration"
+            name="visa-expiration"
+          /><br />
+        </div>
+
+        <label for="passport-number">Passport Number:</label><br />
+        <input type="text" id="passport-number" name="passport-number" /><br />
+
+        <label for="issuing-country">Issuing Country:</label><br />
+        <input type="text" id="issuing-country" name="issuing-country" /><br />
+
+        <label for="passport-expiration">Passport Expiration Date:</label><br />
+        <input
+          type="date"
+          id="passport-expiration"
+          name="passport-expiration"
+        /><br />
+
+        <label for="work-authorization-doc">Work Authorization Document:</label
+        ><br />
+        <input
+          type="file"
+          id="work-authorization-doc"
+          name="work-authorization-doc"
+        /><br />
+
+        <label for="dual-citizenship">Dual Citizenship:</label><br />
+        <input
+          type="checkbox"
+          id="dual-citizenship"
+          name="dual-citizenship"
+        /><br />
+
+        <label for="language-proficiency">Language Proficiency:</label><br />
+        <input
+          type="text"
+          id="language-proficiency"
+          name="language-proficiency"
+        /><br />
+
+        <label for="permanent-residence-doc"
+          >Permanent Residence Document:</label
+        ><br />
+        <input
+          type="file"
+          id="permanent-residence-doc"
+          name="permanent-residence-doc"
+        /><br />
+        <input type="submit" value="Submit" /><br />
+      </form>
+
+      <h3>Address Details</h3>
+      <form>
+        <label for="address">Address:</label><br />
+        <input type="text" id="address" name="address" /><br />
+
+        <label for="city">City:</label><br />
+        <input type="text" id="city" name="city" /><br />
+
+        <label for="state">State:</label><br />
+        <input type="text" id="state" name="state" /><br />
+
+        <label for="zip">Zip Code:</label><br />
+        <input type="text" id="zip" name="zip" /><br />
+
+        <label for="country">Country:</label><br />
+        <input type="text" id="country" name="country" /><br />
+        <input type="submit" value="Submit" /><br />
+      </form>
+      <br />
+      <h3>Next of Kin Details</h3>
+      <form>
+        <label for="kin-name">Name of Next of Kin:</label><br />
+        <input type="text" id="kin-name" name="kin-name" /><br />
+
+        <label for="kin-relationship">Relationship:</label><br />
+        <input
+          type="text"
+          id="kin-relationship"
+          name="kin-relationship"
+        /><br />
+
+        <label for="kin-phone">Phone Number:</label><br />
+        <input type="tel" id="kin-phone" name="kin-phone" /><br />
+
+        <label for="kin-email">Email Address:</label><br />
+        <input type="email" id="kin-email" name="kin-email" /><br />
+
+        <label for="kin-address">Address:</label><br />
+        <input type="text" id="kin-address" name="kin-address" /><br />
+
+        <label for="kin-city">City:</label><br />
+        <input type="text" id="kin-city" name="kin-city" /><br />
+
+        <label for="kin-state">State:</label><br />
+        <input type="text" id="kin-state" name="kin-state" /><br />
+
+        <label for="kin-zip">Zip Code:</label><br />
+        <input type="text" id="kin-zip" name="kin-zip" /><br />
+
+        <label for="kin-country">Country:</label><br />
+        <input type="text" id="kin-country" name="kin-country" /><br />
+        <input type="submit" value="Submit" /><br />
+      </form>
+
+      <script>
+        const citizenshipStatus = document.getElementById("citizenship-status");
+        const visaDetails = document.getElementById("visa-details");
+
+        citizenshipStatus.addEventListener("change", function () {
+          if (this.value === "work-visa-holder") {
+            visaDetails.style.display = "block";
+          } else {
+            visaDetails.style.display = "none";
+          }
+        });
+      </script>
+    </body>
+  </html>
+</html>
