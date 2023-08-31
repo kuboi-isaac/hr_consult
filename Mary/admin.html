@@ -1,412 +1,387 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-	<meta charset="utf-8">
-	<title>Hr_consult</title>
-
-	<link href="admin.css" rel="stylesheet">
-</head>
-
-<body>
-	<div class="wrapper">
-	<nav id="sidebar" class="sidebar js-sidebar">
-			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand" href="index.html">
-				<span class="align-middle">Hr_consult</span>
-				</a>
-
-				<ul class="sidebar-nav">
-					
-
-					<li class="sidebar-item active">
-						<a class="sidebar-link" href="index.html">
-             		 	<i class="align-middle" data-feather="grid"></i> <span class="grid">Dashboard</span>
-            			</a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="#">
-						<i class="align-middle" data-feather="users"></i> <span class="align-middle">Employees</span>
-						</a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="#">
-					<i class="align-middle" data-feather="book"></i> <span class="align-middle">Courses</span>
-					</a>
-					</li>
-
-					
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="#">
-						<i class="align-middle" data-feather="bar-chart"></i> <span class="align-middle">Reports</span>
-						</a>
-					</li>
-					<li class="sidebar-header">
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="#">
-						<i class="align-middle" data-feather="settings"></i> <span class="align-middle">Settings</span>
-						</a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="">
-              <i class="align-middle" data-feather="map"></i> <span class="align-middle">Integration</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="logout.css">
+    <link rel="stylesheet" type="text/css" href="Profile.css">
+    <link rel="stylesheet" type="text/css" href="admin.css"/>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="npm i bootstrap-icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="admin.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="navigation">
+        <ul>
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="speedometer-outline"></ion-icon></span>
+              <span class="title">Dashboard</span>
             </a>
-					</li>
-				</ul>
+          </li>
+          <li>
+            <a href="employees.html">
+              <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
+              <span class="title">Employees</span>
+            </a>
+          </li>
+          <li>
+            <a href="courses.html">
+              <span class="icon"><ion-icon name="book-outline"></ion-icon
+              ></span>
+              <span class="title">Courses</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports.html">
+              <span class="icon"
+                ><ion-icon name="podium-outline"></ion-icon
+              ></span>
+              <span class="title">Reports</span>
+            </a>
+          </li>
+          <li>
+            <a href="settings.html">
+              <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+              <span class="title">Settings </span>
+            </a>
+          </li>
+        
+        </li>
+        </ul>
+        
+      </div>
+  <section class="menu">     <!-- main -->
+      <div class="main" id="main">
+        <div class="topnav">
+          <div class="toggle" onclick="w3_open">
+            <ion-icon class="hover" name="menu-outline"></ion-icon>
+          </div>
 
-				
-			
-		</nav>
+          <!-- search -->
+          <div class="topnav">
+            <form action="https://www.google.com/search" method="GET" target="_blank">
+              <div class="search">
+              <input type="text" name="q" placeholder="Search"/>
+              <i class="fas fa-search"> </i>
+              </div>
+            </form>
+          </div>[]
+      
+          <!-- notification icon -->
+         <div>
+          <a href="#" class="notification">
+            <span><icon-icon ></icon-icon></span>
+            <span class="badge">3</span>
+            <div class="popup" id="notificationPopup">
+              <!-- Popup content here -->
+            </div>
+          </a>
+          </div>
 
-		<div class="main">
-			<nav class="navbar navbar-expand navbar-light navbar-bg">
-				<a class="sidebar-toggle js-sidebar-toggle">
-          			<i class="hamburger align-self-center"></i>
-        		</a>
+        <!-- user icon -->
 
-				<div class="navbar-collapse collapse">
-					<ul class="navbar-nav navbar-align">
-						<li class="nav-item dropdown">
-							<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
-								<div class="position-relative">
-									<i class="align-middle" data-feather="bell"></i>
-									<span class="indicator">10</span>
-								</div>
-							</a>
-					
-							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
-							
-						       <li class="nav-item dropdown">
-									<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
-								      <div class="dropdown-menu-header">
-								
-						            <li class="nav-item dropdown">
-											<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
-												<i class="align-middle" data-feather="settings"></i>
-											</a>
+          <div class="user-dropdown">
+            <div class="user">
+              <div class="popup" onclick="myFunction()">
+                <i class="fas fa-user-circle" style="font-size: 25px;">
+                </i>
+                <div class="popuptext" id="myPopup">
+                  <ul>
+                    <li>
+                      <a href="Profile.html">
+                        <span class="title1" >profile</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="Logout.html" >
+                        <span class="title2">Logout</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+              <div class="dropdown-content">
+                <a href="#">Dashboard</a>
+                <a href="#">Profile</a>
+                <a href="#">Logout</a>
+            </div>
+          </div>
+          <div>
+         </div>
+        </div>
+        <!--cards-->
+        <div class="cardBox">
+          <div class="card">
+            <div>
+              <div class="numbers">1000</div>
+              <div class="cardName">Total Employees</div>
+            </div>
+            <div class="iconBx">
+              <ion-icon name="people-circle-outline"></ion-icon>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <div class="numbers">2000</div>
+              <div class="cardName">Total Courses</div>
+            </div>
+            <div class="iconBx">
+              <ion-icon name="bookmarks-outline"></ion-icon>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <div class="numbers">1000</div>
+              <div class="cardName">Active courses</div>
+            </div>
+            <div class="iconBx">
+              <ion-icon name="eye-outline"></ion-icon>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <div class="numbers">200</div>
+              <div class="cardName">pending</div>
+            </div>
+            <div class="iconBx">
+              <ion-icon name="time-outline"></ion-icon>
+            </div>
+          </div>
+        </div>
+        <!-- couse course_details -->
+        <div class="course_details">
+          <div class="courses">
+            <div class="cardHeader"></div>
+            <h2 style="color: var(--black)">Popular Courses</h2>
+            <!-- <a href="#" class="btn"> View All</a>  -->
+            <table>
+              <thead>
+                <tr>
+                  <td>Course</td>
+                  <td>Enrolments</td>
+                  <td>Trainer</td>
+                  <td>Status</td>
+                </tr>
+             </thead>
+              <tbody>
+                <tr>
+                  <td>Cyber Security</td>
+                  <td>34</td>
+                  <td>Mary</td>
+                  <td><span class="status delivered">Active</span></td>
+                </tr>
+                <tr>
+                  <td>Technology Solution</td>
+                  <td>34</td>
+                  <td>Mary</td>
+                  <td><span class="status pending">Pending</span></td>
+                </tr>
+                <tr>
+                  <td>Book keeping</td>
+                  <td>25</td>
+                  <td>Roman</td>
+                  <td><span class="status overdue">Overdue</span></td>
+                </tr>
+                <tr>
+                  <td>Documents Solution</td>
+                  <td>30</td>
+                  <td>Doreen</td>
+                  <td><span class="status overdue">Overdue</span></td>
+                </tr>
+                <td>Documents Solution</td>
+                <td>30</td>
+                <td>Doreen</td>
+                <td><span class="status pending">Pending</span></td>
+              </tr>
+              <td>Documents Solution</td>
+              <td>30</td>
+              <td>Doreen</td>
+              <td><span class="status completed">Completed</span></td>
+            </tr>
+            <td>Documents Solution</td>
+            <td>30</td>
+            <td>Doreen</td>
+            <td><span class="status completed">Completed</span></td>
+          </tr>
+          <td>Documents Solution</td>
+          <td>30</td>
+          <td>Doreen</td>
+          <td><span class="status completed">Completed</span></td>
+        </tr>
+        <td>Documents Solution</td>
+        <td>30</td>
+        <td>Doreen</td>
+        <td><span class="status completed">Completed</span></td>
+      </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- employees -->
+          <div class="employees">
+            <div class="cardHeader">
+              <h2>Employees</h2>
+            </div>
+            <table>
+              <tr>
+                <td width="60px">
+                  <div class="imgBx"><img src="img1.jpg" alt="emp1" /></div>
+                </td>
+                <td>
+                  <h4>Mary <br /><span>IT</span></h4>
+                </td>
+              </tr>
+              <tr>
+                <td width="60px">
+                  <div class="imgBx"><img src="img1.jpg" alt="emp1" /></div>
+                </td>
+                <td>
+                  <h4>Mary <br /><span>IT</span></h4>
+                </td>
+              </tr>
+              <tr>
+                <td width="60px">
+                  <div class="imgBx"><img src="img1.jpg" alt="emp1" /></div>
+                </td>
+                <td>
+                  <h4>Mary <br /><span>IT</span></h4>
+                </td>
+              </tr>
+              <tr>
+                <td width="60px">
+                  <div class="imgBx"><img src="img1.jpg" alt="emp1" /></div>
+                </td>
+                <td>
+                  <h4>Mary <br /><span>IT</span></h4>
+                </td>
+              </tr>
+              <tr>
+                <td width="60px">
+                  <div class="imgBx"><img src="img1.jpg" alt="emp1" /></div>
+                </td>
+                <td>
+                  <h4>Mary <br /><span>IT</span></h4>
+                </td>
+              </tr>
+              <tr>
+                <td width="60px">
+                  <div class="imgBx"><img src="img1.jpg" alt="emp1" /></div>
+                </td>
+                <td>
+               <h4>Mary <br /><span>IT</span></h4>
+                </td>
+              </tr>
+              <tr>
+                <td width="60px">
+                  <div class="imgBx"><img src="img1.jpg" alt="emp1" /></div>
+                </td>
+                <td>
+                  <h4>Mary <br /><span>IT</span></h4>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="chart">
+              <div>
+          <canvas id="myChart"></canvas>
+        </div>
 
-												<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-													<img src="logo.jpeg" class="avatar img-fluid rounded me-1" alt="logo" /> <span class="text-dark">Admin</span>
-												</a>
-											
-												<div class="dropdown-menu dropdown-menu-end">
-													<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="grid"></i> Dashboard</a>
-													<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
-													<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="settings"></i> Settings</a>
-													<hr>
-													<a class="dropdown-item" href="#"> <i class="align-middle me-1" data-feather="log-out"></i> Log out</a>
-												</div>
-									</li>
-									  
-							  	</li>
-								
-					</ul>
-				</div>
-			</nav>
+      </div>
+        </div>
+ 
+      </div>
+     
+    </div>
+  </section>
 
-			<main class="content">
-				<div class="container-fluid p-0">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-					<h1 class="h3 mb-3"><strong>Dashboard</strong> </h1>
+<script>
+  const ctx1 = document.getElementById('myChart');
 
-					<div class="row">
-						<div class="col-xl-6 col-xxl-5 d-flex">
-							<div class="w-100">
-								<div class="row">
-									<div class="col-sm-6">
-										<div class="card">
-											<div class="card-body">
-												<div class="row">
-													<div class="col mt-0">
-														<h5 class="card-title">Total Employees</h5>
-													</div>
+  new Chart(ctx1, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+ 
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodulesrc="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+   
+    <script>
+      //MenuToggle
+      let toggle = document.querySelector(".toggle");
+      let navigation = document.querySelector(".navigation");
+      let main = document.querySelector(".main");
 
-													<div class="col-auto">
-														<div class="stat text-primary">
-															<i class="align-middle" data-feather="users"></i>
-														</div>
-													</div>
-												</div>
-												<h1 class="mt-1 mb-3">2000</h1>
-												<div class="mb-0">
-													<span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> 75% </span>
-												</div>
-											</div>
-										</div>
-										
-											<div class="card">
-											<div class="card-body">
-												<div class="row">
-													<div class="col mt-0">
-														<h5 class="card-title">Active Courses</h5>
-													</div>
+      toggle.onclick = function () {
+        navigation.classList.toggle("active");
+        main.classList.toggle('active');
+        document.getElementById('main');
+        
+        if (main.classList.contains('active')) {
+            main.style.width = 'calc(100%  - 300px)';
+            main.style.marginLeft = '300px'
+        } else {
+            main.style.width = 'calc(100%  - 80px)';
+            main.style.marginLeft = '80px'; 
+        }
+      };
 
-													<div class="col-auto">
-														<div class="stat text-primary">
-															<i class="align-middle" data-feather="eye"></i>
-														</div>
-													</div>
-												</div>
-												<h1 class="mt-1 mb-3">500</h1>
-												<div class="mb-0">
-													<span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> 58% </span>
-												</div>
-											</div>
-										</div>
-										
-										<div class="card">
-											<div class="card-body">
-												<div class="row">
-													<div class="col mt-0">
-														<h5 class="card-title">Pending Courses</h5>
-													</div>
+      //add hovered class in selected list
+      let list = document.querySelector(".navigation li");
+      function activelink() {
+        list.forEach((item) => item.classList.remove("hovered"));
+        this.classList.add("hovered");
+      }
+      list.forEach((item) => list.addEventListener("mouseover", activelink));
 
-													<div class="col-auto">
-														<div class="stat text-primary">
-															<i class="align-middle" data-feather="book"></i>
-														</div>
-													</div>
-												</div>
-												<h1 class="mt-1 mb-3">200</h1>
-												<div class="mb-0">
-													<span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 80% </span>
-												</div>
-											</div>
-										</div>
-									</div>
-									
-									
-									<div class="col-sm-6">
-										<div class="card">
-											<div class="card-body">
-												<div class="row">
-													<div class="col mt-0">
-														<h5 class="card-title">Total Courses</h5>
-													</div>
+      function toggleNavigation() {
+      const navigation = document.querySelector(".navigation");
+      navigation.classList.toggle("active");
+    }
+    </script>
+    
+    <!-- chart  -->
+    <script class="attributecolor" style="color:red" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+     <script src="chart.min.js"></script>
+     <script src="htpps://chart.jsdelivr.net/npm/chart.js@e4.4.0"></script>
+    <script>
+      var ctx=document.getElementById("mychart").getContext('2d');
+      var chart=new Chart(ctx,{
+        type:'line',
+        data:{
+          lables:[A,B,C,D,E],
+          datasets:[{
+            label:'Chart',
+            backgroundColor:'rgb(255,77,89)',
+            borderColor:'rgb(255,88,90)',
+            data:[30,56,5,2,1]
+          }]
+        },
+      //  configurations
+        options:{}
 
-													<div class="col-auto">
-														<div class="stat text-primary">
-															<i class="align-middle" data-feather="book"></i>
-														</div>
-													</div>
-												</div>
-												<h1 class="mt-1 mb-3">1000</h1>
-												<div class="mb-0">
-													<span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 45% </span>
-												</div>
-											</div>
-										</div>
-										
-										<div class="card">
-											<div class="card-body">
-												<div class="row">
-													<div class="col mt-0">
-														<h5 class="card-title">Completed Courses</h5>
-													</div>
-
-													<div class="col-auto">
-														<div class="stat text-primary">
-															<i class="align-middle" data-feather="check-circle
-"></i>
-														</div>
-													</div>
-												</div>
-												<h1 class="mt-1 mb-3">200</h1>
-												<div class="mb-0">
-													<span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 45% </span>
-												</div>
-											</div>
-										</div>
-										
-										<div class="card">
-											<div class="card-body">
-												<div class="row">
-													<div class="col mt-0">
-														<h5 class="card-title">Due Courses</h5>
-													</div>
-
-													<div class="col-auto">
-														<div class="stat text-primary">
-														<i class="align-middle" data-feather=" x-circle"></i>
-														</div>
-													</div>
-												</div>
-												<h1 class="mt-1 mb-3">50</h1>
-												<div class="mb-0">
-													<span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> 15% </span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xl-6 col-xxl-7">
-							<div class="card flex-fill w-100">
-								<div class="card-header">
-
-								<h5 class="card-title mb-0"> Employees</h5>
-								</div>
-								<div class="card-body py-3">
-									<table class="table table-hover my-0">
-									<thead>
-										<tr>
-											<th><input type="checkbox" name="" id=""> ID</th>
-											<th class="d-none d-xl-table-cell"><input type="checkbox" >Name</th>
-											<th class="d-none d-xl-table-cell"><input type="checkbox" >Department</th>
-											<th class="d-none d-md-table-cell"><input type="checkbox" >Title</th>
-											<th class="d-none d-md-table-cell">Enrollments</th>
-											<th class="d-none d-md-table-cell">Completed </th>
-											<th>Status </th>
-											
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>E001</td>
-											<td class="d-none d-xl-table-cell">Mary</td>
-											<td class="d-none d-xl-table-cell">IT</td>
-											<td class="d-none d-md-table-cell">Manager</td>
-											<td class="d-none d-md-table-cell">25</td>
-											<td class="d-none d-md-table-cell">10</td>
-											<td><span class="badge bg-success">Active</span></td>
-										</tr>
-										<tr>
-											<td>E001</td>
-											<td class="d-none d-xl-table-cell">Mary</td>
-											<td class="d-none d-xl-table-cell">IT</td>
-											<td class="d-none d-md-table-cell">Manager</td>
-											<td class="d-none d-md-table-cell">25</td>
-											<td class="d-none d-md-table-cell">10</td>
-											<td><span class="badge bg-success">Active</span></td>
-										</tr>
-										<tr>
-											<td>E001</td>
-											<td class="d-none d-xl-table-cell">Mary</td>
-											<td class="d-none d-xl-table-cell">IT</td>
-											<td class="d-none d-md-table-cell">Manager</td>
-											<td class="d-none d-md-table-cell">25</td>
-											<td class="d-none d-md-table-cell">10</td>
-											<td><span class="badge bg-success">Active</span></td>
-										</tr>
-										<tr>
-											<td>E001</td>
-											<td class="d-none d-xl-table-cell">Mary</td>
-											<td class="d-none d-xl-table-cell">IT</td>
-											<td class="d-none d-md-table-cell">Manager</td>
-											<td class="d-none d-md-table-cell">25</td>
-											<td class="d-none d-md-table-cell">10</td>
-											<td><span class="badge bg-success">Active</span></td>
-										</tr>
-										<tr>
-											<td>E001</td>
-											<td class="d-none d-xl-table-cell">Mary</td>
-											<td class="d-none d-xl-table-cell">IT</td>
-											<td class="d-none d-md-table-cell">Manager</td>
-											<td class="d-none d-md-table-cell">25</td>
-											<td class="d-none d-md-table-cell">10</td>
-											<td><span class="badge bg-success">Active</span></td>
-										</tr>
-										<tr>
-											<td>E001</td>
-											<td class="d-none d-xl-table-cell">Mary</td>
-											<td class="d-none d-xl-table-cell">IT</td>
-											<td class="d-none d-md-table-cell">Manager</td>
-											<td class="d-none d-md-table-cell">25</td>
-											<td class="d-none d-md-table-cell">10</td>
-											<td><span class="badge bg-success">Active</span></td>
-										</tr>
-										<tr>
-											<td>E001</td>
-											<td class="d-none d-xl-table-cell">Mary</td>
-											<td class="d-none d-xl-table-cell">IT</td>
-											<td class="d-none d-md-table-cell">Manager</td>
-											<td class="d-none d-md-table-cell">25</td>
-											<td class="d-none d-md-table-cell">10</td>
-											<td><span class="badge bg-success">Active</span></td>
-										</tr>
-										<tr>
-											<td>E001</td>
-											<td class="d-none d-xl-table-cell">Mary</td>
-											<td class="d-none d-xl-table-cell">IT</td>
-											<td class="d-none d-md-table-cell">Manager</td>
-											<td class="d-none d-md-table-cell">25</td>
-											<td class="d-none d-md-table-cell">10</td>
-											<td><span class="badge bg-success">Active</span></td>
-										</tr>
-									</tbody>
-								</table>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					
-
-					<div class="row">
-						<div class="col-12 col-lg-8 col-xxl-9 d-flex">
-							<div class="card flex-fill">
-								<div class="card-header">
-
-									<h5 class="card-title mb-0"> Courses</h5>
-								</div>
-								<table class="table table-hover my-0">
-									<thead>
-										<tr>
-										<th>Name</th>
-											<th class="d-none d-xl-table-cell">Start Date</th>
-											<th class="d-none d-xl-table-cell">End Date</th>
-											<th>Status</th>
-											<th class="d-none d-md-table-cell">Trainer</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Cyber Security</td>
-											<td class="d-none d-xl-table-cell">30/07/2023</td>
-											<td class="d-none d-xl-table-cell">30/09/2023</td>
-											<td><span class="badge bg-success">Active</span></td>
-											<td class="d-none d-md-table-cell">Mary</td>
-										</tr>
-										<tr>
-											<td>Documents Solution</td>
-											<td class="d-none d-xl-table-cell">01/05/2023</td>
-											<td class="d-none d-xl-table-cell">31/06/2023</td>
-											<td><span class="badge bg-danger">Completed</span></td>
-											<td class="d-none d-md-table-cell">William Ken</td>
-										</tr>
-										
-										<tr>
-											<td> CCNA</td>
-											<td class="d-none d-xl-table-cell">07/10/2023</td>
-											<td class="d-none d-xl-table-cell">31/01/2024</td>
-											<td><span class="badge bg-warning">Pending</span></td>
-											<td class="d-none d-md-table-cell">Isaac</td>
-										</tr>
-										
-										
-										
-									</tbody>
-								</table>
-							</div>
-						</div>
-						
-					</div>
-
-				</div>
-			</main>
-
-		</div>
-	</div>
-	<script src="admin.js"></script>
-	
-</body>
-
+      });
+    </script>
+  </body>
 </html>
