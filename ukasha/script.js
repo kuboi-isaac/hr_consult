@@ -255,3 +255,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+document.addEventListener("DOMContentLoaded", function () {
+  const dropdowns = document.querySelectorAll(".dropdownn");
+
+  dropdowns.forEach(function (dropdown) {
+    dropdown.addEventListener("click", function () {
+      this.querySelector(".dropdown-contents").style.display = "block";
+    });
+
+    dropdown.addEventListener("mouseleave", function () {
+      this.querySelector(".dropdown-contents").style.display = "none";
+    });
+  });
+});
+
