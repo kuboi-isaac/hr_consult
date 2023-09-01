@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard-HR</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>
+    <!-- =============== Left Navigation Menu ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon src="/assets/imgs/Logo.svg"></ion-icon>
+                        </span>
+                        <span class="title">HR Consult</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">Employees</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="calendar-clear-outline"></ion-icon>
+                        </span>
+                        <span class="title">Leave</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="checkmark-circle-outline"></ion-icon>
+                        </span>
+                        <span class="title">Attendance</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="wallet-outline"></ion-icon>
+                        </span>
+                        <span class="title">Payroll</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="folder-outline"></ion-icon>
+                        </span>
+                        <span class="title">Documents</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="bar-chart-outline"></ion-icon>
+                        </span>
+                        <span class="title">Reports</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Search here">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>   
+                <div class="thumbnail-container">
+                    <img src="assets/imgs/Samuel.jpeg" alt="Thumbnail">
+                    <div class="dropdown">
+                      <button class="dropbtn">
+                        HR User<ion-icon name="chevron-down-outline"></ion-icon>
+                      </button>
+                      <div class="dropdown-content">
+                        <a href="#">Profile</a>
+                        <a href="#">Settings</a>
+                        <a href="#">Logout</a>
+                      </div>
+                    </div>
+                  </div>          
+            </div>
+           
+            <!-- ======================= Cards ================== -->
+            <!-- ======================= Cards 
+            <div class="cardBox">
+                <div class="card">
+                    <div>
+                        <div class="numbers">504</div>
+                        <div class="cardName">Total Employees</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="people-outline"></ion-icon>
+                        
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">80</div>
+                        <div class="cardName">Employees on Leave</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="airplane-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">06</div>
+                        <div class="cardName">New Employees</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="person-add-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">04</div>
+                        <div class="cardName">Onboarding Today</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="compass-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+            ================== -->
+            <!-- ================ Dashboard cards ================= -->
+            <div class="details1">
+                <div class="Dashleave1">
+                    <div class="cardHeader">
+                        <h2>Employees List</h2>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Image</th>
+                                <th>First Name <i class="fas fa-sort"></i></th>
+                                <th>Last Name <i class="fas fa-sort"></i></th>
+                                <th>Email</th>
+                                <th>Sex <i class="fas fa-sort"></i></th>
+                                <th>Location <i class="fas fa-sort"></i></th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h4>01</h4>
+                                </td>
+                                <td width="60px">
+                                    <div class="imgBx"><img src="assets/imgs/nyakato.jpeg" alt=""></div>
+                                </td>
+                                <td>
+                                    <h4>Jackline </h4>
+                                </td>
+                                <td>
+                                    <h4>Ayesiza</h4>
+                                </td>
+                                <td>
+                                    <h4>a.ayesiza@groupmfi.com</h4>
+                                </td>
+                                <td>
+                                    <h4>F</h4>
+                                </td>
+                                <td>
+                                    <h4>Nakasero</h4>
+                                </td>
+                                <td>
+                                    <a href="emp_edit.html"><i class="fas fa-eye"></i> View</a>
+                                    <a href="emp_edit.html"><i class="fas fa-edit"></i> Edit</a>
+                                    <input type="radio" name="disable" value="01"> Disable
+                                </td>
+                            </tr>
+                    
+                            <tr>
+                                <td>
+                                    <h4>02</h4>
+                                </td>
+                                <td width="60px">
+                                    <div class="imgBx"><img src="assets/imgs/Samuel.jpeg" alt=""></div>
+                                </td>
+                                <td>
+                                    <h4>Derrick</h4>
+                                </td>
+                                <td>
+                                    <h4>Wamani</h4>
+                                </td>
+                                <td>
+                                    <h4>w.derrick@groupmfi.com</h4>
+                                </td>
+                                <td>
+                                    <h4>M</h4>
+                                </td>
+                                <td>
+                                    <h4>Nakasero</h4>
+                                </td>
+                                <td>
+                                    <a href="#"><i class="fas fa-eye"></i> View</a>
+                                    <a href="#"><i class="fas fa-edit"></i> Edit</a>
+                                    <input type="radio" name="disable" value="01"> Disable
+                                </td>
+                            </tr>
+                    
+                            <tr>
+                                <td>
+                                    <h4>03</h4>
+                                </td>
+                                <td width="60px">
+                                    <div class="imgBx"><img src="assets/imgs/Roger.jpeg" alt=""></div>
+                                </td>
+                                <td>
+                                    <h4>Elizabeth</h4>
+                                </td>
+                                <td>
+                                    <h4>Achalia</h4>
+                                </td>
+                                <td>
+                                    <h4>e.achalia@groupmfi.com</h4>
+                                </td>
+                                <td>
+                                    <h4>F</h4>
+                                </td>
+                                <td>
+                                    <h4>Nakasero</h4>
+                                </td>
+                                <td>
+                                    <a href="#"><i class="fas fa-eye"></i> View</a>
+                                    <a href="#"><i class="fas fa-edit"></i> Edit</a>
+                                    <input type="radio" name="disable" value="01"> Disable
+                                </td>
+                            </tr>
+                    
+                            <tr>
+                                <td>
+                                    <h4>04</h4>
+                                </td>
+                                <td width="60px">
+                                    <div class="imgBx"><img src="assets/imgs/Samoch.jpg" alt=""></div>
+                                </td>
+                                <td>
+                                    <h4>Ronald</h4>
+                                </td>
+                                <td>
+                                    <h4>Mugisha</h4>
+                                </td>
+                                <td>
+                                    <h4>m.ronald@groupmfi.com</h4>
+                                </td>
+                                <td>
+                                    <h4>M</h4>
+                                </td>
+                                <td>
+                                    <h4>Nakasero</h4>
+                                </td>
+                                <td>
+                                    <a href="emp_edit.html"><i class="fas fa-eye"></i> View</a>
+                                    <a href="emp_edit.html"><i class="fas fa-edit"></i> Edit</a>
+                                    <input type="radio" name="disable" value="01"> Disable
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4>01</h4>
+                                </td>
+                                <td width="60px">
+                                    <div class="imgBx"><img src="assets/imgs/nyakato.jpeg" alt=""></div>
+                                </td>
+                                <td>
+                                    <h4>Jackline </h4>
+                                </td>
+                                <td>
+                                    <h4>Ayesiza</h4>
+                                </td>
+                                <td>
+                                    <h4>a.ayesiza@groupmfi.com</h4>
+                                </td>
+                                <td>
+                                    <h4>F</h4>
+                                </td>
+                                <td>
+                                    <h4>Nakasero</h4>
+                                </td>
+                                <td>
+                                    <a href="#"><i class="fas fa-eye"></i> View</a>
+                                    <a href="#"><i class="fas fa-edit"></i> Edit</a>
+                                    <input type="radio" name="disable" value="01"> Disable
+                                </td>
+                            </tr>
+                    
+                            <tr>
+                                <td>
+                                    <h4>02</h4>
+                                </td>
+                                <td width="60px">
+                                    <div class="imgBx"><img src="assets/imgs/Samuel.jpeg" alt=""></div>
+                                </td>
+                                <td>
+                                    <h4>Derrick</h4>
+                                </td>
+                                <td>
+                                    <h4>Wamani</h4>
+                                </td>
+                                <td>
+                                    <h4>w.derrick@groupmfi.com</h4>
+                                </td>
+                                <td>
+                                    <h4>M</h4>
+                                </td>
+                                <td>
+                                    <h4>Nakasero</h4>
+                                </td>
+                                <td>
+                                    <a href="#"><i class="fas fa-eye"></i> View</a>
+                                    <a href="#"><i class="fas fa-edit"></i> Edit</a>
+                                    <input type="radio" name="disable" value="01"> Disable
+                                </td>
+                            </tr>
+                    
+                            <tr>
+                                <td>
+                                    <h4>03</h4>
+                                </td>
+                                <td width="60px">
+                                    <div class="imgBx"><img src="assets/imgs/Roger.jpeg" alt=""></div>
+                                </td>
+                                <td>
+                                    <h4>Elizabeth</h4>
+                                </td>
+                                <td>
+                                    <h4>Achalia</h4>
+                                </td>
+                                <td>
+                                    <h4>e.achalia@groupmfi.com</h4>
+                                </td>
+                                <td>
+                                    <h4>F</h4>
+                                </td>
+                                <td>
+                                    <h4>Nakasero</h4>
+                                </td>
+                                <td>
+                                    <a href="#"><i class="fas fa-eye"></i> View</a>
+                                    <a href="#"><i class="fas fa-edit"></i> Edit</a>
+                                    <input type="radio" name="disable" value="01"> Disable
+                                </td>
+                            </tr>
+                    
+                            <tr>
+                                <td>
+                                    <h4>05</h4>
+                                </td>
+                                <td width="60px">
+                                    <div class="imgBx"><img src="assets/imgs/Samuel.jpeg" alt=""></div>
+                                </td>
+                                <td>
+                                    <h4>Brendah</h4>
+                                </td>
+                                <td>
+                                    <h4>Zawedde</h4>
+                                </td>
+                                <td>
+                                    <h4>z.brendah@groupmfi.com</h4>
+                                </td>
+                                <td>
+                                    <h4>F</h4>
+                                </td>
+                                <td>
+                                    <h4>Kansanga</h4>
+                                </td>
+                                <td>
+                                    <a href="#"><i class="fas fa-eye"></i> View</a>
+                                    <a href="#"><i class="fas fa-edit"></i> Edit</a>
+                                    <input type="radio" name="disable" value="01"> Disable
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+
+                <!-- ================= New Employees List ================ -->
+                <!-- ================= New Employees List 
+                <div class="Emplist">
+                    <div class="cardHeader">
+                        <h2>New Employees List</h2>
+                    </div>
+
+                    <table>
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx"><img src="assets/imgs/nyakato.jpeg" alt=""></div>
+                            </td>
+                            <td>
+                                <h4>Nyakato <br> <span>Kurusumu</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx"><img src="assets/imgs/Samoch.jpg" alt=""></div>
+                            </td>
+                            <td>
+                                <h4>Nabakooza<br> <span>Shebrah</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx"><img src="assets/imgs/Roger.jpeg" alt=""></div>
+                            </td>
+                            <td>
+                                <h4>Elizabeth<br> <span>Achalia</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx"><img src="assets/imgs/Samuel.jpeg" alt=""></div>
+                            </td>
+                            <td>
+                                <h4>Mugisha<br> <span>Ronald</span></h4>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx"><img src="assets/imgs/Samoch.jpg" alt=""></div>
+                            </td>
+                            <td>
+                                <h4>Brian<br> <span>Musinguzi</span></h4>
+                            </td>
+                        </tr>
+
+                    </table>   
+                </div>
+                 ================ -->
+           
+            
+                <!-- ================= Employees by Department 
+                <div class="EmpDept">
+                    <div class="cardHeader">
+                        <h2>Employees by Department</h2>
+                    </div>
+                        <h3>Employees by Department Chart</h3>
+                        <div class="piechart"></div>
+                          <div class="legend-item">
+                            <div class="color-box" style="background-color: pink "></div>
+                            <span>IT Solutions</span>
+                          </div>
+                          <div class="legend-item">
+                            <div class="color-box" style="background-color: lightblue"></div>
+                            <span>Sales & Marketing</span>
+                          </div>
+                          <div class="legend-item">
+                            <div class="color-box" style="background-color: orange"></div>
+                            <span>Finance & Administration</span>
+                          </div>
+                </div>
+            </div>  
+                  
+            </div>
+        </div>
+    </div>
+    ================   -->
+   
+
+    <!-- =========== Scripts =========  -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
