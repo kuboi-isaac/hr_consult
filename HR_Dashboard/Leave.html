@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard-HR</title>
+    <link rel="stylesheet" href="assets/css/style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .container {
+            
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 50px;
+           
+
+        }
+        .container1 {
+            background: #316abb;
+            color: #fff;
+            text-align: center;
+            margin-right: 100px;
+            margin-bottom: 20px;
+            padding: 5px;
+            border-radius: 10px;
+        }
+        .box1, .box2, .box3, .box4 {
+
+            background: #fff
+            
+        
+
+           
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+
+    </style>
+
+</head> 
+
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon src="/assets/imgs/Logo.svg"></ion-icon>
+                        </span>
+                        <span class="title">HR Consult</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.html">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="employee.html">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">Employees</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="calendar-clear-outline"></ion-icon>
+                        </span>
+                        <span class="title">Leave</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="checkmark-circle-outline"></ion-icon>
+                        </span>
+                        <span class="title">Attendance</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="wallet-outline"></ion-icon>
+                        </span>
+                        <span class="title">Payroll</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="folder-outline"></ion-icon>
+                        </span>
+                        <span class="title">Documents</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="bar-chart-outline"></ion-icon>
+                        </span>
+                        <span class="title">Reports</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+              
+                <div class="thumbnail-container">
+                    <img src="assets/imgs/Samuel.jpeg" alt="Thumbnail">
+                    <div class="dropdown">
+                      <button class="dropbtn">
+                        HR User<ion-icon name="chevron-down-outline"></ion-icon>
+                      </button>
+                      <div class="dropdown-content">
+                        <a href="#">Profile</a>
+                        <a href="#">Settings</a>
+                        <a href="#">Logout</a>
+                      </div>
+                    </div>
+                  </div>          
+            </div> 
+            <div class="container1"><h1>Leave insight</h1></div>
+    <div class="container">
+
+        <div class="box1">
+
+            <div style="width: 80%; margin: 0 auto;">
+                <h1>Leave Statistics</h1>
+                <canvas id="leaveSummaryChart"></canvas>
+            </div>
+        
+           
+            
+        </div>
+        <div class="box2">
+            <div>
+                <h1>Month</h1>
+                
+                <div class="calendar-card">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th colspan="7" class="current-month">August 2023</th>
+                        </tr>
+                        <tr>
+                          <th>Sun</th>
+                          <th>Mon</th>
+                          <th>Tue</th>
+                          <th>Wed</th>
+                          <th>Thu</th>
+                          <th>Fri</th>
+                          <th>Sat</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>1</td>
+                          <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                          </tr>
+                          <tr>
+                            <td>10</td>
+                            <td>11</td>
+                            <td>12</td>
+                            <td>13</td>
+                            <td>14</td>
+                            <td>15</td>
+                            <td>16</td>
+                          </tr>
+                          <tr>
+                            <td>17</td>
+                            <td>18</td>
+                            <td>19</td>
+                            <td>20</td>
+                            <td>21</td>
+                            <td>22</td>
+                            <td>23</td>
+                          </tr>
+                          <tr>
+                            <td>24</td>
+                            <td>25</td>
+                            <td>26</td>
+                            <td>27</td>
+                            <td>28</td>
+                            <td>29</td>
+                            <td>30</td>
+                          </tr>
+                         <tr>
+                          <td>31</td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+            </div>
+        </div>
+        <div class="box3">
+            <div>
+                <h1>Pending Leave Request</h1>
+                
+                <div class="calendar-card">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th colspan="7" ></th>
+                        </tr>
+                        <tr>
+                          <th>No.</th>
+                          <th>Name</th>
+                          <th>Dept</th>
+                          <th>Days</th>
+                          <th>Requested on</th>
+                          <th>Action</th>
+                          <th>Reject</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>Mugisha Ronald</td>
+                          <td>IT Solutions</td>
+                          <td>14</td>
+                          <td>16 Sept 2023</td>
+                          <td><button>Aprove</button></td>
+                          <td><Button>Reject</Button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Kuboi Isaac</td>
+                            <td>Information Technology</td>
+                            <td>6</td>
+                            <td>17 Sept 2023</td>
+                            <td><button>Aprove</button></td>
+                            <td><Button>Reject</Button></td>
+                          </tr>
+                          <tr>
+                            <td>3</td>
+                            <td>John Bob</td>
+                            <td>IT Solutions</td>
+                            <td>12</td>
+                            <td>20 Sept 2023</td>                            
+                            <td><button>Aprove</button></td>
+                          <td><Button>Reject</Button></td>
+                          </tr>
+                          <tr>
+                            <td>4</td>
+                            <td>Jenifer Nabirye</td>
+                            <td>Sales</td>
+                            <td>02</td>
+                            <td>20 Sept 2023</td>                            
+                            <td><button>Aprove</button></td>
+                          <td><Button>Reject</Button></td>
+                          </tr>
+                          <tr>
+                            <td>5</td>
+                            <td>Agatha Wise</td>
+                            <td>Accounts</td>
+                            <td>07</td>
+                            <td>21</td>                            
+                            <td><button>Aprove</button></td>
+                          <td><Button>Reject</Button></td>
+                          </tr>
+                      </tbody>
+                    </table>
+                  </div>
+            </div>
+        </div>
+        <div class="box4"> 
+            <div class="leave">
+                <h1>Leave Summary</h1>
+                <div class="EmpDept">
+                        <div class="piechart"></div>
+                          <div class="legend-item">
+                            <div class="color-box" style="background-color: pink "></div>
+                            <span>Casual Leave</span>
+                          </div>
+                          <div class="legend-item">
+                            <div class="color-box" style="background-color: lightblue"></div>
+                            <span>Annual Leave</span>
+                          </div>
+                          <div class="legend-item">
+                            <div class="color-box" style="background-color: orange"></div>
+                            <span>Sick Leave</span>
+                          </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- =========== Scripts =========  -->
+    <script src="assets/js/leave.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
