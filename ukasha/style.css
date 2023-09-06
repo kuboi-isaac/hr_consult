@@ -1,10 +1,8 @@
 :root {
    --blue: #316abb;
    --white: #ffff;
-   /* --grey: #1484cd; */
    --black1: #222;
    --black2: #999;
-   /* transtion */
    --tran-05: all 0.5s ease;
  }
  
@@ -344,7 +342,7 @@
    grid-template-columns: 2fr 1fr;
    grid-gap: 30px;
  }
- .courses {
+ .projects {
    position: relative;
    display: grid;
    min-height: 500px;
@@ -382,27 +380,27 @@
    font-weight: 600;
  }
  
- .courses table tr {
+ .projects table tr {
    color: var(--black1);
    border-bottom: 1px solid rgba(0, 0, 0, 0.01);
  }
- .courses table tr:last-child {
+ .projects table tr:last-child {
    border-bottom: none;
  }
- .courses table tr:hover {
+ .projects table tr:hover {
    background: var(--black1);
    color: var(--white);
  }
- .courses table tr td {
+ .projects table tr td {
    padding: 10px;
  }
- .courses table tr td:last-child {
+ .projects table tr td:last-child {
    text-align: end;
  }
- .courses table trtd:nth-child(2) {
+ .projects table trtd:nth-child(2) {
    text-align: end;
  }
- .courses table trtd:nth-child(3) {
+ .projects table trtd:nth-child(3) {
    text-align: center;
  }
  .status.delivered {
@@ -513,7 +511,7 @@
    .course_details {
      grid-template-columns: repeat(1, 1fr);
    }
-   .courses {
+   .projects {
      overflow-x: auto;
    }
    .status.pending {
@@ -639,10 +637,8 @@
 
 button{
   border: none;
-  color: crimson;
-  font-size: 19px;
-  margin: 0 45%;
-  background-color: var(--white);
+  color: var(--blue);
+  font-size: 15px;
   font-style: italic;
 }
 
@@ -678,9 +674,6 @@ button{
 }
 
 .charts-container {
-  /* display: flex; */
-  /* justify-content: center;
-  align-items: center; */
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.116);
 }
 
@@ -724,6 +717,7 @@ button{
   font-size: 8px;
   padding-left: px;
   letter-spacing: 0.3ch;
+  font-style: italic;
 
 }
 
@@ -742,15 +736,54 @@ button{
   position: relative;
   background-color: rgb(14, 13, 13);
   color: var(--blue);
-  /* border: 1px solid #ccc; */
   padding: 10px;
   font-size: large;
   font-style: italic;
 }
 
-.menuu .dropdown-contents :hover {
-background-color: var(--black2);
-padding: 10px 18px;
-border-top-left-radius: 20px;
-border-bottom-left-radius: 20px;
+.repo h1{
+text-align: center;
+}
+.repo{
+  margin: 0 30px;
+  background-color: var(--white);
+}
+.repo table{
+  width: 100%;
+  height: 75vh;
+}
+.btns{
+  font-size: large;
+  font-style: italic;
+  font-weight: 200;
+}
+#searchInputt{
+ height: 30px;
+ width: 300px;
+ margin: 0 50px;
+}
+#printButton{
+  margin: 0 40px;
+}
+#exportPDFButton{
+  margin: 0 20px;
+}
+#addColumnPopup{
+ margin-top: -530px;
+ margin-left: 850px;
+}
+.delete-button{
+margin: 10px;
+}
+#employeeModal{
+  width: 60%;
+  height: 80vh;
+  margin: -51% 8%;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.658);
+  background-color: var(--white);
+  
+}
+.emp{
+  font-size: larger;
+  padding: 20px;
 }

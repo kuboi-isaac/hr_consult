@@ -17,50 +17,6 @@ function myFunction() {
   });
 }
 
-
- 
-
-
-//   function toggleNotificationPopup() {
-//     var popup = document.getElementById("notificationPopup");
-//     popup.classList.toggle("show");
-//     // You can also fetch and populate notification data here
-//   }
-  
-//   // Call this function to set/update the notification count
-//   function setNotificationCount(count) {
-//     var notificationCount = document.querySelector(".notification-count");
-//     notificationCount.textContent = count;
-//   }
-
-//   // Example function to fetch notifications and populate the popup
-// function fetchNotifications() {
-//     // Simulated example data, replace with your actual data fetching logic
-//     var notifications = [
-//       "New message from John",
-//       "You have a meeting at 2 PM",
-//       "Course enrollment updates",
-//     ];
-//     var notificationPopup = document.getElementById("notificationPopup");
-//   notificationPopup.innerHTML = ""; // Clear previous notifications
-
-//   notifications.forEach(function (notification) {
-//     var notificationItem = document.createElement("div");
-//     notificationItem.textContent = notification;
-//     notificationPopup.appendChild(notificationItem);
-//   });
-// }
-
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     // Initialize notification count
-//     setNotificationCount(3); // Set the initial notification count
-  
-//     // Fetch and populate notifications
-//     fetchNotifications();
-//   });
-
-
 function openProfilePopup() {
   const profilePopup = document.getElementById("profilePopup");
   profilePopup.classList.add("active");
@@ -70,9 +26,6 @@ function closeProfilePopup() {
   const profilePopup = document.getElementById("profilePopup");
   profilePopup.classList.remove("active");
 }
-
-
-
 
 function searchAndHighlight() {
   const searchInput = document.getElementById("searchInput");
@@ -118,27 +71,6 @@ function searchAndHighlight() {
     document.getElementById("noResults").style.display = "none";
   }
 }
-
-// function collapse() {
-//   const pop = document.body.querySelector('.popupp');
-
-//   const icon = document.querySelector('.notification');
-//   icon.addEventListener('click', function() {
-//     if (pop.classList.contains("active")) {
-//       pop.style.display = 'none';
-//     } else {
-//       pop.style.display = 'block';
-//     }
-//     pop.classList.toggle("active");
-//   });
-  
-//   pop.addEventListener('click', function(event) {
-//     if (event.target === pop) {
-//       pop.style.display = 'none';
-//       pop.classList.remove("active");
-//     }
-//   });
-// }
 
 function collapse() {
   const pop = document.body.querySelector('.popupp');
@@ -212,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
       labels: ["IT", "Sales", "Accounts", "Finance"],
       datasets: [
         {
-          data: [150, 100, 70, 0],
+          data: [150, 100, 70, 40],
           backgroundColor: ["rgb(128,128,0)", "rgb(0,255,255)", "rgb(0,128,0)", "rgb(255,20,127)"],
           borderColor: ["rgba(75, 192, 192, 1)", "rgba(54, 162, 235, 1)"],
           borderWidth: 1,
@@ -268,4 +200,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
 
