@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Leave Management</title>
+  </head>
+  <body>
+    <h1>Employee Leave Request Form</h1>
+    <form action="process_leave.php" method="post">
+      <label for="employee_name">Employee Name:</label>
+      <input
+        type="text"
+        id="employee_name"
+        name="employee_name"
+        required
+      /><br /><br />
+
+      <label for="leave_type">Leave Type:</label>
+      <select id="leave_type" name="leave_type" required>
+        <option value="vacation">Vacation</option>
+        <option value="sick">Sick Leave</option>
+        <option value="personal">Personal Leave</option></select
+      ><br /><br />
+
+      <label for="start_date">Start Date:</label>
+      <input
+        type="date"
+        id="start_date"
+        name="start_date"
+        required
+      /><br /><br />
+
+      <label for="end_date">End Date:</label>
+      <input type="date" id="end_date" name="end_date" required /><br /><br />
+
+      <label for="reason">Reason for Leave:</label>
+      <textarea id="reason" name="reason" rows="4" cols="50" required></textarea
+      ><br /><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+    <style>
+      /* Reset some default styles */
+      * {
+        margin: 0;
+        padding: 1;
+        box-sizing: border-box;
+      }
+
+      /* Apply basic styling to the body */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+        padding: 20px;
+        text-align: center;
+      }
+
+      /* Style the form container */
+      form {
+        background-color: #316abb;
+        border-radius: 5px;
+        padding: 25px 20px;
+        width: 200%;
+        max-width: 600px;
+        max-height: 700px;
+        margin: 0 auto;
+        box-shadow: 10 10 10px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Style the form header */
+      h1 {
+        color: #1d1d1d;
+        margin-bottom: 20px;
+        font-size: 24px;
+      }
+
+      h1 {
+        font-family: Arial, sans-serif;
+      }
+
+      /* Style form labels and input fields */
+      label {
+        display: inline-block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      input[type="text"],
+      input[type="date"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      /* Style the submit button */
+      input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        padding: 5px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #000000;
+      }
+
+      /* Add some spacing to the form */
+      br {
+        clear: none;
+      }
+
+      /* Style error messages (customize as needed) */
+      .error {
+        color: #ff0000;
+        font-size: 14px;
+        margin-top: 5px;
+      }
+
+      @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
+      .font-style-10 {
+        font-family: "Montserrat", sans-serif;
+      }
+    </style>
+  </body>
+</html>
