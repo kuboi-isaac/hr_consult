@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leave Management Report</title>
+    <style>
+      /* Add your CSS styles for the report here */
+      body {
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      }
+      h1 {
+        text-align: center;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%; /* Make the table width 100% of its container */
+        margin-left: auto;
+        margin-right: auto; /* Center the table horizontally on the page */
+        padding-left: 10px; /* Add space to the left of the table content */
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid #ddd;
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+      }
+      th {
+        background-color: #316abb;
+        color: #fff;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      .actions {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .edit-button,
+      .view-button,
+      .export-button {
+        padding: 5px 10px;
+        background-color: #316abb;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        margin-right: 10px;
+        text-decoration: none;
+      }
+      .edit-button:hover,
+      .view-button:hover,
+      .export-button:hover {
+        background-color: #316abb;
+      }
+
+      /* Media query for responsive design */
+      @media (max-width: 768px) {
+        table {
+          font-size: 14px;
+        }
+        th,
+        td {
+          padding: 8px;
+        }
+        .actions {
+          text-align: left;
+          margin-top: 10px;
+        }
+        .edit-button,
+        .view-button,
+        .export-button {
+          margin-right: 5px;
+        }
+      }
+
+      .filter-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 15px; /* Add some spacing between the filter and the table */
+      }
+
+      /* Adjust label's style if needed */
+      label {
+        margin-right: 10px; /* Add some spacing between the label and the select */
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      }
+
+      #leave-filter {
+        padding: 5px 5px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #fff;
+        color: #333;
+        cursor: pointer;
+      }
+
+      /* Style for the select options */
+      #leave-filter option {
+        background-color: #fff;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Leave Management Report</h1>
+
+    <div class="filter-container">
+      <label for="leave-filter">Leave Type:</label>
+      <select id="leave-filter">
+        <option value="all">All</option>
+        <option value="Vacation">Vacation</option>
+        <option value="Sick Leave">Sick Leave</option>
+        <option value="Maternity Leave">Maternity Leave</option>
+      </select>
+    </div>
+    <table>
+      <!-- Your table content here -->
+    </table>
+    <table>
+      <thead>
+        <tr>
+          <th>Employee Name</th>
+          <th>Employee ID</th>
+          <th>Leave Type</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John Doe</td>
+          <td>EMP001</td>
+          <td>Vacation</td>
+          <td>2023-09-10</td>
+          <td>2023-09-15</td>
+          <td>Approved</td>
+          <td>
+            <a href="#" class="edit-button">Edit</a>
+            <a href="#" class="view-button">View</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Jane Smith</td>
+          <td>EMP002</td>
+          <td>Sick Leave</td>
+          <td>2023-09-05</td>
+          <td>2023-09-08</td>
+          <td>Pending</td>
+          <td>
+            <a href="#" class="edit-button">Edit</a>
+            <a href="#" class="view-button">View</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Michael Johnson</td>
+          <td>EMP003</td>
+          <td>Maternity Leave</td>
+          <td>2023-09-20</td>
+          <td>2023-09-25</td>
+          <td>Approved</td>
+          <td>
+            <a href="#" class="edit-button">Edit</a>
+            <a href="#" class="view-button">View</a>
+          </td>
+        </tr>
+        <!-- Add more rows for additional leave records -->
+      </tbody>
+    </table>
+
+    <!-- <td>
+      <a href="#" class="edit-button">Edit</a>
+      <a href="#" class="view-button">View</a>
+    </td> -->
+
+    <script>
+      // Function to handle the "Edit" button click
+      document.querySelectorAll(".edit-button").forEach(function (button) {
+        button.addEventListener("click", function (event) {
+          event.preventDefault();
+
+          // Replace 'edit_employee.html' with the actual URL of your edit page
+          const editPopup = window.open(
+            "edit_employee.html",
+            "Edit Employee",
+            "width=600,height=600"
+          );
+
+          // Optionally, you can focus the pop-up window
+          editPopup.focus();
+        });
+      });
+
+      // Function to handle the "View" button click
+      document.querySelectorAll(".view-button").forEach(function (button) {
+        button.addEventListener("click", function (event) {
+          event.preventDefault();
+
+          // Replace 'view_employee.html' with the actual URL of your view page
+          const viewPopup = window.open(
+            "view_employee.html",
+            "View Employee",
+            "width=600,height=600"
+          );
+
+          // Optionally, you can focus the pop-up window
+          viewPopup.focus();
+        });
+      });
+    </script>
+
+    <script>
+      // Get the select element and table body
+      const leaveFilter = document.getElementById("leave-filter");
+      const tableBody = document.querySelector("tbody");
+
+      // Add an event listener to the select element
+      leaveFilter.addEventListener("change", function () {
+        const selectedLeaveType = leaveFilter.value;
+
+        // Loop through each table row and hide/show based on the selected option
+        const rows = tableBody.querySelectorAll("tr");
+        rows.forEach((row) => {
+          const leaveType = row.getAttribute("data-leave-type");
+
+          if (selectedLeaveType === "all" || selectedLeaveType === leaveType) {
+            row.style.display = "table-row";
+          } else {
+            row.style.display = "none";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
