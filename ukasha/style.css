@@ -757,9 +757,7 @@ text-align: center;
   border: 1px solid #ddd;
   font-style: italic;
 }
-/* .repo table tr :nth-child(even){
-  background-color: #e2e2e2;
-} */
+
 .repo table th{
   background-color: var(--blue);
   width: 10%;
@@ -782,8 +780,8 @@ text-align: center;
   margin: 0 20px;
 }
 #addColumnPopup{
- margin-top: -530px;
- margin-left: 850px;
+ margin-top: -730px;
+ margin-left: 1080px;
 }
 .delete-button{
 margin: 10px;
@@ -802,4 +800,8 @@ margin: 10px;
 .emp{
   font-size: larger;
   padding: 20px;
+}
+option{
+  font-style: italic;
+  font-size: small;
 }

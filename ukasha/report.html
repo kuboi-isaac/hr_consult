@@ -22,10 +22,10 @@
     <button id="exportPDFButton">Export to PDF</button>
     <button onclick="openAddColumnPopup()">Add Column</button>
     <button id="filter"> filter by
-        <select>
-            <option value=""></option>
-            <option value="empId">employeeId</option>
-            <option value="dept">department</option>
+        <select id="filterBy">
+            <option value="">All</option>
+            <option value="employeeId">employeeId</option>
+            <option value="department">department</option>
             <option value="position">position</option>
             <option value="name">name</option>
             
@@ -53,7 +53,7 @@
     <!-- Modal for individual employee details -->
     <div id="employeeModal" style="display: none;">
         <div class="emp">
-       <button onclick="deleteEmployeeDetails()">close</button>
+       <!-- <button onclick="deleteEmployeeDetails()">close</button> -->
         </div>
     </div>
       
@@ -64,6 +64,65 @@
     </div>
 </div>
     <script>
+        
+        // Function to generate the employee table with optional filtering
+        function generateEmployeeTable(filterBy = '') {
+            const tableBody = document.getElementById("employeeTableBody");
+            tableBody.innerHTML = '';
+
+            const filteredEmployees = employees.filter(employee => {
+                if (filterBy === '') {
+                    return true; // Show all employees when no filter is applied
+                } else {
+                    return employee[filterBy].toLowerCase() === filterBy.toLowerCase();
+                }
+            });
+
+            filteredEmployees.forEach(employee => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${employee.name}</td>
+                    <td>${employee.employeeId}</td>
+                    <td>${employee.department}</td>
+                    <td>${employee.position}</td>
+                    <td>${employee.salary}</td>
+                    <td>
+                        <button class="view-button" onclick="viewEmployeeDetails(${employee.id})">View</button>
+                        <button class="delete-button" onclick="deleteEmployee(${employee.id})">Delete</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+         // Function to handle filter selection
+         document.getElementById("filterBy").addEventListener("click", () => {
+            const selectedFilter = document.getElementById("filterBy").value;
+            generateEmployeeTable(selectedFilter); // Pass the selected filter value
+        });
+
+        // Function to view individual employee details
+        function viewEmployeeDetails(employeeId) {
+            const employee = employees.find(e => e.id === employeeId);
+            if (employee) {
+                document.getElementById("employeeModal").style.display = "block";
+                // Display employee details in the modal
+                document.querySelector(".emp").innerHTML = `
+                    <h2>Employee Details</h2>
+                    <p>Name: ${employee.name}</p>
+                    <p>Employee ID: ${employee.employeeId}</p>
+                    <p>Department: ${employee.department}</p>
+                    <p>Position: ${employee.position}</p>
+                    <p>Salary: ${employee.salary}</p>
+                    <button onclick="closeEmployeeDetails()">Close</button>
+                `;
+            }
+        }
+
+        function closeEmployeeDetails() {
+            document.getElementById("employeeModal").style.display = "none";
+        }
+
         //employee data
         const employees = [
             { id: 1, name: "John Doe", employeeId: "12345", department: "Engineering", position: "Software Developer", salary: "$70,000" }, 
@@ -107,17 +166,7 @@
                 tableBody.appendChild(row);
             });
         }
-
-        // Function to view individual employee details
-        function viewEmployeeDetails(employeeId) {
-            document.getElementById("employeeModal").style.display = "block";
-        }
-
-        function deleteEmployeeDetails() {
-            document.getElementById("employeeModal").style.display = "none";
-        }
-
-        // Function to delete an employee
+        
         function deleteEmployee(employeeId) {
             // Delete the employee from the data
             // ...
@@ -152,7 +201,6 @@
         // Function to handle exporting to PDF
         document.getElementById("exportPDFButton").addEventListener("click", () => {
             // Implement PDF export logic using a library like jsPDF or html2pdf.js
-            window.export();
         });
 
          // Function to open the "Add Column" popup
