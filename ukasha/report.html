@@ -21,6 +21,16 @@
     <button id="printButton">Print Report</button>
     <button id="exportPDFButton">Export to PDF</button>
     <button onclick="openAddColumnPopup()">Add Column</button>
+    <button id="filter"> filter by
+        <select>
+            <option value=""></option>
+            <option value="empId">employeeId</option>
+            <option value="dept">department</option>
+            <option value="position">position</option>
+            <option value="name">name</option>
+            
+        </select>
+     </button>
      </div>
     <br>
     <!-- Employee table -->
@@ -32,7 +42,7 @@
                 <th>Department</th>
                 <th>Position</th>
                 <th>Salary</th>
-                <th>Actions</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody id="employeeTableBody">

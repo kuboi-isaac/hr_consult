@@ -751,6 +751,19 @@ text-align: center;
 .repo table{
   width: 100%;
   height: 75vh;
+  border-collapse: collapse;
+}
+.repo table,td{
+  border: 1px solid #ddd;
+  font-style: italic;
+}
+/* .repo table tr :nth-child(even){
+  background-color: #e2e2e2;
+} */
+.repo table th{
+  background-color: var(--blue);
+  width: 10%;
+  height: 10vh;
 }
 .btns{
   font-size: large;
@@ -782,6 +795,9 @@ margin: 10px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.658);
   background-color: var(--white);
   
+}
+#filter{
+  margin: 10px 100px;
 }
 .emp{
   font-size: larger;
