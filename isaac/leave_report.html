@@ -35,7 +35,7 @@
         color: #fff;
       }
       tr:nth-child(even) {
-        background-color: #f2f2f2;
+        background-color: #e2e2e2;
       }
       .actions {
         text-align: center;
@@ -81,13 +81,27 @@
       .filter-container {
         display: flex;
         justify-content: flex-end;
-        margin-bottom: 15px; /* Add some spacing between the filter and the table */
+        margin-bottom: 10px; /* Add some spacing between the filter and the table */
       }
 
       /* Adjust label's style if needed */
       label {
         margin-right: 10px; /* Add some spacing between the label and the select */
         font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      }
+
+      form {
+        margin-top: 20px;
+        position: fixed;
+        justify-content: flex-end;
+        margin: 0 10px;
+        margin-bottom: 10px;
+      }
+
+      label,
+      select,
+      button {
+        margin: 0px 1px;
       }
 
       #leave-filter {
@@ -105,11 +119,60 @@
         background-color: #fff;
         color: #333;
       }
+
+      /* Optional CSS for button styling */
+      button {
+        padding: 5px 10px;
+        background-color: #316abb;
+        border-radius: 5px;
+        color: #fff;
+        font-weight: bold;
+        margin-bottom: 20px;
+        margin-left: 1px;
+        border: none;
+        cursor: pointer;
+      }
+
+      /* Style for the dropdown menu */
+      .dropdown-content {
+        display: none;
+        color: #fff;
+        position: absolute;
+        background-color: #e9e9e9;
+        min-width: 100px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Style for dropdown options */
+      .dropdown-content a {
+        padding: 12px 16px;
+        text-decoration: none;
+        font-weight: bold;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+        display: block;
+        cursor: pointer;
+      }
+
+      /* Hover effect for dropdown options */
+      .dropdown-content a:hover {
+        background-color: #cfcfcf;
+      }
     </style>
   </head>
   <body>
     <h1>Leave Management Report</h1>
+    <!-- export format option label -->
+    <form id="exportForm">
+      <label for="formatSelect">Export format:</label>
+      <select id="formatSelect">
+        <option value="pdf">PDF</option>
+        <option value="csv">CSV</option>
+        <option value="xlsx">XLSX</option>
+      </select>
+      <button type="submit" id="exportButton">Export</button>
+    </form>
 
+    <!-- filter employee leave by leave options -->
     <div class="filter-container">
       <label for="leave-filter">Leave Type:</label>
       <select id="leave-filter">
@@ -119,6 +182,16 @@
         <option value="Maternity Leave">Maternity Leave</option>
       </select>
     </div>
+
+    <button id="printButton">Print Options</button>
+    <div id="printOptions" class="dropdown-content">
+      <a href="#" id="printPDF">Print as PDF</a>
+      <a href="#" id="printDoc">Print as Doc</a>
+      <a href="#" id="printCSV">Print as CSV</a>
+
+      <!-- Add more format options as needed -->
+    </div>
+
     <table>
       <!-- Your table content here -->
     </table>
@@ -214,6 +287,28 @@
           viewPopup.focus();
         });
       });
+
+      document
+        .getElementById("exportForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          var formatSelect = document.getElementById("formatSelect");
+          var selectedFormat =
+            formatSelect.options[formatSelect.selectedIndex].value;
+
+          var label = document.createElement("h2");
+          label.textContent =
+            "Exporting report in " +
+            selectedFormat.toUpperCase() +
+            " format...";
+          document.body.appendChild(label);
+
+          // Simulating export process (replace with actual export code)
+          setTimeout(function () {
+            label.textContent = "Report exported successfully!";
+          }, 2000); // 2 seconds delay for simulation purposes
+        });
     </script>
 
     <script>
@@ -237,6 +332,52 @@
           }
         });
       });
+    </script>
+
+    <script>
+      // JavaScript to handle button click and format selection
+      document
+        .getElementById("printButton")
+        .addEventListener("click", function (event) {
+          document.getElementById("printOptions").style.display = "block";
+          event.stopPropagation(); // Prevent the click event from propagating to the document body
+        });
+
+      document
+        .getElementById("printPDF")
+        .addEventListener("click", function () {
+          // Replace this with your logic to print as PDF
+          alert("Printing as PDF");
+          // You can use libraries like jsPDF for PDF generation
+        });
+
+      document
+        .getElementById("printDoc")
+        .addEventListener("click", function () {
+          // Replace this with your logic to print as Doc
+          alert("Printing as Doc");
+          // You can use window.print() to print the Doc content
+        });
+
+      document
+        .getElementById("printCSV")
+        .addEventListener("click", function () {
+          // Replace this with your logic to print as CSV
+          alert("Printing as CSV");
+          // You can use window.print() to print the CSV content
+        });
+
+      // Add a click event listener to the document body to hide the dropdown when clicking outside
+      document.body.addEventListener("click", function () {
+        document.getElementById("printOptions").style.display = "none";
+      });
+
+      // Prevent the click event on the dropdown from propagating to the document body
+      document
+        .getElementById("printOptions")
+        .addEventListener("click", function (event) {
+          event.stopPropagation();
+        });
     </script>
   </body>
 </html>
