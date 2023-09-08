@@ -329,6 +329,17 @@ img {
   grid-gap: 30px;
   /* margin-top: 10px; */
 }
+.row3 {
+  position: absolute;
+  width: 95%;
+  padding: 10px;
+  display: grid;
+  grid-template-rows: auto auto; /* Two rows with automatic sizing */
+  grid-template-columns: 1fr;
+  grid-gap: 30px;
+  margin-top: 60px; 
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
 
 .row1 .Dashleave {
   position: relative;
@@ -588,6 +599,12 @@ td {
 
 .today {
   background-color: #ffc107;
+}
+/* ==================================================EDIT EMPLOYEE PAGE ===================================================== */
+.thumbnail-edit-Emp {
+  position: relative;
+  width: 55px;
+  margin-top: 20px;
 }
 
 /* ====================== Responsive Design ========================== */
