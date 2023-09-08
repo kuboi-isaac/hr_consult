@@ -77,6 +77,7 @@
                     return employee[filterBy].toLowerCase() === filterBy.toLowerCase();
                 }
             });
+      
 
             filteredEmployees.forEach(employee => {
                 const row = document.createElement("tr");
@@ -88,7 +89,7 @@
                     <td>${employee.salary}</td>
                     <td>
                         <button class="view-button" onclick="viewEmployeeDetails(${employee.id})">View</button>
-                        <button class="delete-button" onclick="deleteEmployee(${employee.id})">Delete</button>
+                        <button class="delete-button" data-employee-id="${employee.id}" onclick="deleteEmployee(this)">Delete</button>
                     </td>
                 `;
                 tableBody.appendChild(row);
@@ -167,13 +168,33 @@
             });
         }
         
-        function deleteEmployee(employeeId) {
-            // Delete the employee from the data
-            // ...
+        function deleteEmployee(buttonElement) {
+    const employeeId = buttonElement.getAttribute("data-employee-id");
 
-            // Regenerate the table
+    // Find the index of the employee in the array by employeeId
+    const index = employees.findIndex(employee => employee.id === parseInt(employeeId));
+
+    if (index !== -1) {
+        // Remove the employee from the array
+        employees.splice(index, 1);
+
+        // Remove the corresponding row from the table
+        const tableRow = buttonElement.closest("tr");
+        if (tableRow) {
+            tableRow.remove();
             generateEmployeeTable();
         }
+    }
+} 
+
+
+        // function deleteEmployee(employeeId) {
+        //     // Delete the employee from the data
+        //     // ...
+
+        //     // Regenerate the table
+        //     generateEmployeeTable();
+        // }
 
         // Function to handle search/filtering
         document.getElementById("searchInputt").addEventListener("input", () => {

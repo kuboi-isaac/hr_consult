@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Report</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: var(--blue);
+        }
+        
+        .btn {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        
+        .viewBtn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+        
+        .deleteBtn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+        }
+        
+        .search-box {
+            margin-top: 10px;
+            text-align: right;
+            margin-right: 60px;
+        }
+
+        .search-box #print, #exportPdf, #addColumn, #search {
+            padding: 5px;
+        }
+
+        .search-box #search {
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <h1>Attendance Report</h1>
+    <div class="search-box">
+        <!-- Filter and export options -->
+        <input type="text" id="search" placeholder="Search...">
+        <button id="exportPdf">Export</button>
+        <button id="print">Print</button>
+        <button id="addColumn">Add Column</button>
+    </div>
+
+    <div class="popup" id="addColumnPopup">
+        <h2>Add New Column</h2>
+        <input type="text" id="newColumnName" placeholder="Enter column name">
+        <button id="confirmAddColumn">Add</button>
+        <button id="cancelAddColumn">Cancel</button>
+    </div>
+
+    <table id="attendanceTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>empName</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>John Doe</td>
+                <td>2023-09-01</td>
+                <td>Present</td>
+                <td>
+                    <button class="btn viewBtn">View</button>
+                    <button class="btn deleteBtn">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jane Smith</td>
+                <td>2023-09-01</td>
+                <td>Absent</td>
+                <td>
+                    <button class="btn viewBtn">View</button>
+                    <button class="btn deleteBtn">Delete</button>
+                </td>
+            </tr>
+            <!-- More rows... -->
+        </tbody>
+
+        <div class="popup-overlay" id="popupOverlay"></div>
+    <div class="popup" id="employeePopup">
+        <h2>Employee Details</h2>
+        <div id="employeeDetails">
+            <!-- Employee details will be displayed here -->
+        </div>
+        <button id="closePopup">Close</button>
+    </div>
+    </table>
+    
+    <!-- Chart to display statistics -->
+    <div>
+        <canvas id="attendanceChart" width="400" height="200"></canvas>
+    </div>
+    
+    <script>
+         // Event listener for the "Add Column" button
+      document.getElementById('addColumn').addEventListener('click', () => {
+      document.getElementById('addColumnPopup').style.display = 'block';
+         });
+
+         // Event listener for the "Add" button in the popup
+      document.getElementById('confirmAddColumn').addEventListener('click', () => {
+         const newColumnName = document.getElementById('newColumnName').value;
+
+    if (newColumnName.trim() === '') {
+        alert('Please enter a column name.');
+        return;
+    }
+
+    // Add the new column header
+    const tableHeader = document.querySelector('#attendanceTable thead tr');
+    const newTh = document.createElement('th');
+    newTh.textContent = newColumnName;
+    tableHeader.appendChild(newTh);
+
+    // Add the new column data to each row (you can initialize with default data)
+    const tableBody = document.querySelector('#attendanceTable tbody');
+    const rows = tableBody.querySelectorAll('tr');
+    rows.forEach(row => {
+        const newTd = document.createElement('td');
+        // You can add default data for the new column here
+        newTd.textContent = ''; // Default value
+        row.appendChild(newTd);
+    });
+
+    // Clear the input and close the popup
+    document.getElementById('newColumnName').value = '';
+    document.getElementById('addColumnPopup').style.display = 'none';
+});
+
+// Event listener for the "Cancel" button in the popup
+document.getElementById('cancelAddColumn').addEventListener('click', () => {
+    document.getElementById('newColumnName').value = '';
+    document.getElementById('addColumnPopup').style.display = 'none';
+});
+
+        // Example: Add event listeners for interactive buttons
+        const viewButtons = document.querySelectorAll('.viewBtn');
+        viewButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const row = button.closest('tr');
+                const employeeId = row.querySelector('td:nth-child(1)').textContent;
+                const employeeName = row.querySelector('td:nth-child(2)').textContent;
+                
+                // Simulated data for the example
+                const attendanceData = {
+                    id: employeeId,
+                    name: employeeName,
+                    present: 10, // Replace with actual attendance data
+                    absent: 2,  // Replace with actual attendance data
+                };
+                
+                // Populate the popup with employee details
+                const popupContent = `
+                    <p><strong>ID:</strong> ${attendanceData.id}</p>
+                    <p><strong>Name:</strong> ${attendanceData.name}</p>
+                    <p><strong>Present:</strong> ${attendanceData.present} days</p>
+                    <p><strong>Absent:</strong> ${attendanceData.absent} days</p>
+                `;
+                
+                document.getElementById('employeeDetails').innerHTML = popupContent;
+                
+                // Show the popup
+                document.getElementById('popupOverlay').style.display = 'block';
+                document.getElementById('employeePopup').style.display = 'block';
+            });
+        });
+        
+        // Close the popup when the close button is clicked
+        document.getElementById('closePopup').addEventListener('click', () => {
+            document.getElementById('popupOverlay').style.display = 'none';
+            document.getElementById('employeePopup').style.display = 'none';
+        });
+        
+        const deleteButtons = document.querySelectorAll('.deleteBtn');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const row = button.closest('tr');
+                const employeeName = row.querySelector('td:nth-child(2)').textContent;
+                if (confirm(`Are you sure you want to delete ${employeeName}'s details?`)) {
+                    row.remove(); // Remove the row from the table
+                    // Implement logic to delete the employee's details from your data source (e.g., database).
+                }
+            });
+        });
+        
+        // Example: Add search functionality
+        const searchInput = document.getElementById('search');
+        searchInput.addEventListener('input', () => {
+            const searchText = searchInput.value.toLowerCase();
+            const rows = document.querySelectorAll('#attendanceTable tbody tr');
+            
+            rows.forEach(row => {
+                const name = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                row.style.display = name.includes(searchText) ? '' : 'none';
+            });
+        });
+
+        document.getElementById('print').addEventListener('click', () => {
+            window.print(); // Open the print dialog
+        });
+
+            // Event listener for the Export button
+     document.getElementById('exportPdf').addEventListener('click', () => {
+           // Create a definition for the PDF content (modify as per your report structure)
+        const pdfDefinition = {
+        content: [
+            { text: 'Attendance Report', style: 'header' },
+            ' ', // Add space
+            // Add your report data here
+            // Example: { text: 'Employee: John Doe', style: 'subheader' },
+            // ...
+        ],
+        styles: {
+            header: { fontSize: 18, bold: true, alignment: 'center' },
+            subheader: { fontSize: 14, bold: true, margin: [0, 10, 0, 5] },
+        },
+    };
+
+    // Generate the PDF
+    const pdfDoc = pdfMake.createPdf(pdfDefinition);
+
+    // Open the PDF in a new tab (you can also download it)
+    pdfDoc.open();
+
+    // For sending via email or messaging, you would typically use server-side code
+    // to handle the sending process securely.
+});
+    </script>
+</body>
+</html>

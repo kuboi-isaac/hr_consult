@@ -785,6 +785,9 @@ text-align: center;
 }
 .delete-button{
 margin: 10px;
+background-color: #f44336;
+color: white;
+border: none; font-size: smaller;
 }
 #employeeModal{
   width: 60%;
