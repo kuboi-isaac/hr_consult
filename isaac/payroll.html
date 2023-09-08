@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Payroll Report</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Payroll Report</h1>
+      <button class="button" id="export-button">Export</button>
+      <div id="search-container">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search by Name or Position"
+        />
+        <button class="button" id="search-button">Search</button>
+      </div>
+    </header>
+    <section id="report">
+      <h3>Payroll Summary</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Hours Worked</th>
+            <th>Gross Salary</th>
+            <th>Taxes</th>
+            <th>Net Salary</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Payroll data goes here -->
+          <tr>
+            <td>001</td>
+            <td>John Doe</td>
+            <td>Manager</td>
+            <td>160</td>
+            <td>$4,000</td>
+            <td>$1,000</td>
+            <td>$3,000</td>
+          </tr>
+          <!-- Payroll data goes here -->
+          <tr>
+            <td>002</td>
+            <td>Jane Smith</td>
+            <td>Developer</td>
+            <td>176</td>
+            <td>$4,500</td>
+            <td>$1,200</td>
+            <td>$3,300</td>
+          </tr>
+          <tr>
+            <td>003</td>
+            <td>Bob Johnson</td>
+            <td>Designer</td>
+            <td>150</td>
+            <td>$3,800</td>
+            <td>$900</td>
+            <td>$2,900</td>
+          </tr>
+          <tr>
+            <td>004</td>
+            <td>Alice Brown</td>
+            <td>Marketing</td>
+            <td>140</td>
+            <td>$3,200</td>
+            <td>$800</td>
+            <td>$2,400</td>
+          </tr>
+          <!-- Add more rows as needed -->
+
+          <!-- Add more rows as needed -->
+        </tbody>
+      </table>
+    </section>
+    <footer>
+      <p>Generated on: September 8, 2023</p>
+    </footer>
+    <style>
+      /* Reset some default styles */
+      body,
+      h1,
+      h2,
+      table {
+        margin: 0;
+        padding: 5px;
+        border-radius: 5px;
+      }
+
+      body {
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+        background-color: #f5f5f5;
+      }
+
+      header {
+        background-color: #136abb;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+      }
+
+      h1 {
+        margin: 0;
+      }
+
+      #report {
+        margin: 20px;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+      }
+
+      thead {
+        background-color: #136abb;
+        color: #fff;
+      }
+
+      tfoot {
+        font-weight: bold;
+      }
+
+      footer {
+        text-align: center;
+        padding: 10px;
+        background-color: #136abb;
+        color: #fff;
+      }
+
+      /* Styling for even rows */
+      tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      /* Styling for buttons (if any) */
+      .button {
+        padding: 5px 10px;
+        background-color: #136abb;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      .button:hover {
+        background-color: #000000;
+      }
+
+      #export-button {
+        float: right;
+        margin-right: 30px;
+        margin-top: 50px;
+        font-size: 15px;
+      }
+
+      /* Style for the search container */
+      #search-container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: 113px;
+        margin-right: 150px;
+      }
+
+      /* Style for the search input */
+      #search-input {
+        padding: 5px 10px;
+        width: 240px;
+        border-radius: 100px;
+        /* Adjust the width as needed */
+      }
+
+      /* Style for the search button */
+      #search-button {
+        padding: 5px 10px;
+        background-color: #136abb;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 15px;
+      }
+
+      /* Hover effect for the search button */
+      #search-button:hover {
+        background-color: #000000;
+      }
+    </style>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const searchInput = document.getElementById("search-input");
+        const searchButton = document.getElementById("search-button");
+        const rows = document.querySelectorAll("tbody tr");
+
+        searchButton.addEventListener("click", function () {
+          const searchText = searchInput.value.toLowerCase().trim();
+
+          rows.forEach((row) => {
+            const name = row
+              .querySelector("td:nth-child(2)")
+              .textContent.toLowerCase();
+            const position = row
+              .querySelector("td:nth-child(3)")
+              .textContent.toLowerCase();
+
+            if (name.includes(searchText) || position.includes(searchText)) {
+              row.style.display = "";
+            } else {
+              row.style.display = "none";
+            }
+          });
+        });
+      });
+    </script>
+    <script>
+      // JavaScript code for handling the export button click
+      document
+        .getElementById("export-button")
+        .addEventListener("click", function () {
+          // Replace this with your export logic
+          alert(
+            "HAHAHAAA!!! who said it will work, press ok and find something to do."
+          );
+        });
+    </script>
+  </body>
+</html>
