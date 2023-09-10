@@ -150,6 +150,30 @@ button:hover {
   .Payroll2 table tr td {
     padding: 12px 10px;
   }
+ .navbuttons{
+    text-align: right;
+  }
+  .main .payroll3 {
+    position: relative;
+    display: grid;
+    min-height: 500px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    margin-top: 250px;
+    grid-template-columns: 2fr;
+    width: 80%;
+    margin-left: 50px;
+  }
+  .payroll3 .payrollbtn{
+    
+    border-radius: 5px;
+  }
+ .payroll3 .cardheader-share{
+    text-align: center;
+ }
+ 
 /* Media query for responsiveness */
 @media (max-width: 768px) {
     .filter-container {
