@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard-HR</title>
+    <link rel="stylesheet" href="assets/css/style3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .container {
+            
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 50px;
+            margin: 5px;
+            border-radius: 10px;
+            border: #316abb;
+            border-width: 2px;
+            border-style: inset;
+            
+           
+
+        }
+
+        a {
+            text-decoration: none;
+        }
+        .container1 {
+            background: #316abb;
+            color: #fff;
+            text-align: center;
+            margin-right: 100px;
+            margin-bottom: 20px;
+            padding: 5px;
+            border-radius: 10px;
+        }
+        .box1, .box2, .box3, .box4, .box5, .box6 {
+
+            background: #fff
+            
+           
+        }
+                
+        
+        h1 {
+            text-align: center;
+        }
+
+
+    </style>
+
+</head> 
+
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container2">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon src="/assets/imgs/Logo.svg"></ion-icon>
+                        </span>
+                        <span class="title">HR Consult</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.html">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="employee.html">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">Employees</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="Leave.html">
+                        <span class="icon">
+                            <ion-icon name="calendar-clear-outline"></ion-icon>
+                        </span>
+                        <span class="title">Leave</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="Attendence.html">
+                        <span class="icon">
+                            <ion-icon name="checkmark-circle-outline"></ion-icon>
+                        </span>
+                        <span class="title">Attendance</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="Payroll_select.html">
+                        <span class="icon">
+                            <ion-icon name="wallet-outline"></ion-icon>
+                        </span>
+                        <span class="title">Payroll</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="folder-outline"></ion-icon>
+                        </span>
+                        <span class="title">Documents</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="Report.html">
+                        <span class="icon">
+                            <ion-icon name="bar-chart-outline"></ion-icon>
+                        </span>
+                        <span class="title">Reports</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+              
+                <div class="thumbnail-container">
+                    <img src="assets/imgs/Samuel.jpeg" alt="Thumbnail">
+                    <div class="dropdown">
+                      <button class="dropbtn">
+                        HR User<ion-icon name="chevron-down-outline"></ion-icon>
+                      </button>
+                      <div class="dropdown-content">
+                        <a href="#">Profile</a>
+                        <a href="#">Settings</a>
+                        <a href="#">Logout</a>
+                      </div>
+                    </div>
+                  </div>          
+            </div> 
+            <div class="container1"><h1>HR Documents</h1></div>
+    <div class="container">
+
+        <div class="box1" style="width: 250px;">
+            <a href="#">
+            <img src="assets/imgs/Folder Image.png" alt="">
+
+            <h2>Employee Well being</h2>
+            </a>
+        
+                       
+        </div>
+        <div class="box2" style="width: 250px;">
+           <a href="#">
+            <img src="assets/imgs/Folder Image.png" alt="">
+
+            <h2>Employee Contracts</h2>
+           </a>
+
+        </div>
+        <div class="box3" style="width: 250px;"> 
+            <a href="#">
+                <img src="assets/imgs/Folder Image.png" alt="">
+
+            <h2>Health and safety</h2>
+            </a>
+                       
+        </div>
+        <div class="box4" style="width: 250px;"> 
+            <a href="#">
+                <img src="assets/imgs/Folder Image.png" alt="">
+
+            <h2>Financial Documents</h2>
+            </a>
+            
+        </div>
+        <div class="box5" style="width: 250px;">
+            <a href="#">
+                <img src="assets/imgs/Folder Image.png" alt="">
+
+            <h2>Policies and Procedures</h2>
+            </a>
+           
+        </div>
+        <div class="box6" style="width: 250px;"> 
+            <a href="#">
+            <img src="assets/imgs/Folder Image.png" alt="">
+
+            <h2>Transactional Documents</h2>
+            </a>
+            
+        </div>
+
+    </div>
+
+    <!-- =========== Scripts =========  -->
+    
+    <script src="assets/js/main.js"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
