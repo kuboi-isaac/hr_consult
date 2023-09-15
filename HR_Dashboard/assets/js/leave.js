@@ -49,3 +49,38 @@ const leaveSummaryChart = new Chart(ctx, {
         }
     }
 });
+
+
+
+// line graph
+document.addEventListener("DOMContentLoaded", function () {
+    // Sample data (working hours by month)
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const hoursWorked = [160, 150, 168, 155, 170, 175, 160, 165, 170, 168, 160, 155];
+
+    // Create a line chart
+    const ctx = document.getElementById("lineChart").getContext("2d");
+    const lineChart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: months,
+            datasets: [{
+                label: "Working Hours",
+                data: hoursWorked,
+                borderColor: "blue",
+                borderWidth: 2,
+                fill: false,
+            }],
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 180, // Adjust the maximum value as needed
+                },
+            },
+        },
+    });
+});
+
