@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attendance Report</title>
+    <title>Employee Report</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
@@ -100,7 +100,7 @@
     </style>
 </head>
 <body>
-    <h1>Attendance Report</h1>
+    <h1>Employee Report</h1>
     <hr>
     <br>
     <br>
@@ -119,32 +119,35 @@
         <button id="cancelAddColumn">Cancel</button>
     </div>
 
-    <table id="attendanceTable">
+    <table id="employeetable">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>empName</th>
-                <th>Date</th>
-                <th>Status</th>
+                <th>Employee</th>
+                <th>Employee ID</th>
+                <th>Department</th>
+                <th>Position</th>
+                <th>Salary</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>1</td>
                 <td>John Doe</td>
-                <td>2023-09-01</td>
-                <td>Present</td>
+                <td>12345</td>
+                <td>Finance</td>
+                <td>Software Developer</td>
+                <td>$70,000</td>
                 <td>
                     <button class="btn viewBtn">View</button>
                     <button class="btn deleteBtn">Delete</button>
                 </td>
             </tr>
             <tr>
-                <td>2</td>
-                <td>Jane Smith</td>
-                <td>2023-09-01</td>
-                <td>Absent</td>
+                <td>Amanya U</td>
+                <td>12765</td>
+                <td>Engineering</td>
+                <td>System analyst</td>
+                <td>$90,000</td>
                 <td>
                     <button class="btn viewBtn">View</button>
                     <button class="btn deleteBtn">Delete</button>
@@ -179,13 +182,13 @@
     }
 
     // Add the new column header
-    const tableHeader = document.querySelector('#attendanceTable thead tr');
+    const tableHeader = document.querySelector('#employeetable thead tr');
     const newTh = document.createElement('th');
     newTh.textContent = newColumnName;
     tableHeader.appendChild(newTh);
 
     // Add the new column data to each row (you can initialize with default data)
-    const tableBody = document.querySelector('#attendanceTable tbody');
+    const tableBody = document.querySelector('#employeetable tbody');
     const rows = tableBody.querySelectorAll('tr');
     rows.forEach(row => {
         const newTd = document.createElement('td');
@@ -210,23 +213,28 @@ document.getElementById('cancelAddColumn').addEventListener('click', () => {
         viewButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const row = button.closest('tr');
-                const employeeId = row.querySelector('td:nth-child(1)').textContent;
-                const employeeName = row.querySelector('td:nth-child(2)').textContent;
+                const employeeName = row.querySelector('td:nth-child(1)').textContent;
+                const employeeId = row.querySelector('td:nth-child(2)').textContent;
+                const employeeDepartment = row.querySelector('td:nth-child(3)').textContent;
+                const Position = row.querySelector('td:nth-child(4)').textContent;
+                const Salary = row.querySelector('td:nth-child(5)').textContent;
                 
                 // Simulated data for the example
-                const attendanceData = {
-                    id: employeeId,
+                const employeeData = {
                     name: employeeName,
-                    present: 10, // Replace with actual attendance data
-                    absent: 2,  // Replace with actual attendance data
+                    id: employeeId,
+                    dept: employeeDepartment,
+                    position: Position,
+                    salary: Salary,
                 };
                 
                 // Populate the popup with employee details
                 const popupContent = `
-                    <p><strong>ID:</strong> ${attendanceData.id}</p>
-                    <p><strong>Name:</strong> ${attendanceData.name}</p>
-                    <p><strong>Present:</strong> ${attendanceData.present} days</p>
-                    <p><strong>Absent:</strong> ${attendanceData.absent} days</p>
+                    <p><strong>Employee:</strong> ${employeeData.name}</p>
+                    <p><strong>Employee ID:</strong> ${employeeData.id}</p>
+                    <p><strong>Department:</strong> ${employeeData.dept}</p>
+                    <p><strong>Position:</strong> ${employeeData.position}</p>
+                    <p><strong>Salary:</strong> ${employeeData.salary}</p>
                 `;
                 
                 document.getElementById('employeeDetails').innerHTML = popupContent;
@@ -247,7 +255,7 @@ document.getElementById('cancelAddColumn').addEventListener('click', () => {
         deleteButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const row = button.closest('tr');
-                const employeeName = row.querySelector('td:nth-child(2)').textContent;
+                const employeeName = row.querySelector('td:nth-child(1)').textContent;
                 if (confirm(`Are you sure you want to delete ${employeeName}'s details?`)) {
                     row.remove(); // Remove the row from the table
                     // Implement logic to delete the employee's details from your data source (e.g., database).
@@ -259,7 +267,7 @@ document.getElementById('cancelAddColumn').addEventListener('click', () => {
         const searchInput = document.getElementById('search');
         searchInput.addEventListener('input', () => {
             const searchText = searchInput.value.toLowerCase();
-            const rows = document.querySelectorAll('#attendanceTable tbody tr');
+            const rows = document.querySelectorAll('#employeetable tbody tr');
             
             rows.forEach(row => {
                 const name = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
@@ -276,11 +284,9 @@ document.getElementById('cancelAddColumn').addEventListener('click', () => {
            // Create a definition for the PDF content (modify as per your report structure)
         const pdfDefinition = {
         content: [
-            { text: 'Attendance Report', style: 'header' }, 
+            { text: 'Employee Report', style: 'header' }, 
             { text: 'Employee: John Doe', style: 'subheader'},
-            { text: 'ID: 1', style: 'subheader'},
-            { text: 'Present: 29days', style: 'subheader'},
-            { text: 'absent: 3days', style: 'subheader'},
+            { text: 'ID: 12345', style: 'subheader'},
          
         ],
         styles: {
@@ -288,13 +294,14 @@ document.getElementById('cancelAddColumn').addEventListener('click', () => {
             subheader: { fontSize: 14, bold: true, margin: [0, 10, 0, 5] },
         },
     };
-
+       
     // Generate the PDF
     const pdfDoc = pdfMake.createPdf(pdfDefinition);
 
     pdfDoc.open();
 
 });
+
     </script>
 </body>
 </html>
