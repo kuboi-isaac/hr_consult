@@ -1,383 +1,807 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Leave Management Report</title>
-    <style>
-      /* Add your CSS styles for the report here */
-      body {
-        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-      }
-      h1 {
-        text-align: center;
-      }
-      table {
-        border-collapse: collapse;
-        width: 100%; /* Make the table width 100% of its container */
-        margin-left: auto;
-        margin-right: auto; /* Center the table horizontally on the page */
-        padding-left: 10px; /* Add space to the left of the table content */
-      }
+:root {
+  --blue: #316abb;
+  --white: #ffff;
+  --black1: #222;
+  --black2: #999;
+  --tran-05: all 0.5s ease;
+}
 
-      table,
-      th,
-      td {
-        border: 1px solid #ddd;
-      }
-      th,
-      td {
-        padding: 10px;
-        text-align: left;
-      }
-      th {
-        background-color: #316abb;
-        color: #fff;
-      }
-      tr:nth-child(even) {
-        background-color: #e2e2e2;
-      }
-      .actions {
-        text-align: center;
-        margin-top: 20px;
-      }
-      .edit-button,
-      .view-button,
-      .export-button {
-        padding: 5px 10px;
-        background-color: #316abb;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        margin-right: 10px;
-        text-decoration: none;
-      }
-      .edit-button:hover,
-      .view-button:hover,
-      .export-button:hover {
-        background-color: #316abb;
-      }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+}
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 
-      /* Media query for responsive design */
-      @media (max-width: 768px) {
-        table {
-          font-size: 14px;
-        }
-        th,
-        td {
-          padding: 8px;
-        }
-        .actions {
-          text-align: left;
-          margin-top: 10px;
-        }
-        .edit-button,
-        .view-button,
-        .export-button {
-          margin-right: 5px;
-        }
-      }
+.container {
+  position: relative;
+  width: 100%;
+}
+.navigation {
+  position: fixed;
+  width: 60px;
+  height: 100%;
+  background: var(--blue);
+  transition: 0.5s;
+  overflow: hidden;
+  vertical-align: middle;
+}
 
-      .filter-container {
-        display: flex;
-        justify-content: flex-end;
-        margin-bottom: 10px; /* Add some spacing between the filter and the table */
-      }
+.navigation.active {
+  width: 240px;
+  /* padding-left: 5px; */
+}
 
-      /* Adjust label's style if needed */
-      label {
-        margin-right: 10px; /* Add some spacing between the label and the select */
-        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-      }
+.navigation ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
 
-      form {
-        margin-top: 20px;
-        position: fixed;
-        justify-content: flex-end;
-        margin: 0 10px;
-        margin-bottom: 10px;
-      }
+.navigation ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.navigation ul li {
+  position: relative;
+  width: 200%;
+  list-style: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
 
-      label,
-      select,
-      button {
-        margin: 0px 1px;
-      }
+.navigation ul li:hover,
+.navigation ul li.hovered {
+  background: var(--white);
+}
+.navigation ul li:nth-child(1) {
+  margin-bottom: 40px;
+  pointer-events: none;
+}
 
-      #leave-filter {
-        padding: 5px 5px;
-        font-size: 14px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background-color: #fff;
-        color: #333;
-        cursor: pointer;
-      }
+.navigation ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: var(--white);
+}
 
-      /* Style for the select options */
-      #leave-filter option {
-        background-color: #fff;
-        color: #333;
-      }
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+  color: var(--blue);
+}
 
-      /* Optional CSS for button styling */
-      button {
-        padding: 5px 10px;
-        background-color: #316abb;
-        border-radius: 5px;
-        color: #fff;
-        font-weight: bold;
-        margin-bottom: 20px;
-        margin-left: 1px;
-        border: none;
-        cursor: pointer;
-      }
+.icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  color: var(--black1);
+  height: 60px;
+  line-height: 70px;
+  text-align: center;
+}
 
-      /* Style for the dropdown menu */
-      .dropdown-content {
-        display: none;
-        color: #fff;
-        position: absolute;
-        background-color: #e9e9e9;
-        min-width: 100px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-      }
+.icon {
+  font-size: 2.00em;
+}
 
-      /* Style for dropdown options */
-      .dropdown-content a {
-        padding: 12px 16px;
-        text-decoration: none;
-        font-weight: bold;
-        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-        display: block;
-        cursor: pointer;
-      }
+.title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  color: var(--black1);
+  white-space: nowrap;
+}
 
-      /* Hover effect for dropdown options */
-      .dropdown-content a:hover {
-        background-color: #cfcfcf;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Leave Management Report</h1>
-    <!-- export format option label -->
-    <form id="exportForm">
-      <label for="formatSelect">Export format:</label>
-      <select id="formatSelect">
-        <option value="pdf">PDF</option>
-        <option value="csv">CSV</option>
-        <option value="xlsx">XLSX</option>
-      </select>
-      <button type="submit" id="exportButton">Export</button>
-    </form>
+/* curve outside  */
 
-    <!-- filter employee leave by leave options -->
-    <div class="filter-container">
-      <label for="leave-filter">Leave Type:</label>
-      <select id="leave-filter">
-        <option value="all">All</option>
-        <option value="Vacation">Vacation</option>
-        <option value="Sick Leave">Sick Leave</option>
-        <option value="Maternity Leave">Maternity Leave</option>
-      </select>
-    </div>
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -50px;
+  height: 50px;
+  width: 50px;
+  background: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px var(--white);
+  pointer-events: none;
+}
 
-    <button id="printButton">Print Options</button>
-    <div id="printOptions" class="dropdown-content">
-      <a href="#" id="printPDF">Print as PDF</a>
-      <a href="#" id="printDoc">Print as Doc</a>
-      <a href="#" id="printCSV">Print as CSV</a>
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -50px;
+  height: 50px;
+  width: 50px;
+  background: transparent;
+  border-radius: 50%;
+  box-shadow: 35px -35px 0 10px var(--white);
+  pointer-events: none;
+}
+/*main */
+.main {
+  position: absolute;
+  width: calc(100% - 60px);
+  margin-left: 60px;
+  min-height: 100vh;
+  background: var(--white);
+  transition: 0.5s;
+  padding: 10px;
+  font-style: italic;
+  font-size: smaller;
+}
 
-      <!-- Add more format options as needed -->
-    </div>
+/* .main.active {
+  width: calc(100% - 80px) /* Content will fill the sidebar space */
+/* left: 80px; */
+/* } */
+.topbar {
+  width: 100%;
+  height: 60px;
+  /* position: relative; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+.toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
 
-    <table>
-      <!-- Your table content here -->
-    </table>
-    <table>
-      <thead>
-        <tr>
-          <th>Employee Name</th>
-          <th>Employee ID</th>
-          <th>Leave Type</th>
-          <th>Start Date</th>
-          <th>End Date</th>
-          <th>Status</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>John Doe</td>
-          <td>EMP001</td>
-          <td>Vacation</td>
-          <td>2023-09-10</td>
-          <td>2023-09-15</td>
-          <td>Approved</td>
-          <td>
-            <a href="#" class="edit-button">Edit</a>
-            <a href="#" class="view-button">View</a>
-          </td>
-        </tr>
-        <tr>
-          <td>Jane Smith</td>
-          <td>EMP002</td>
-          <td>Sick Leave</td>
-          <td>2023-09-05</td>
-          <td>2023-09-08</td>
-          <td>Pending</td>
-          <td>
-            <a href="#" class="edit-button">Edit</a>
-            <a href="#" class="view-button">View</a>
-          </td>
-        </tr>
-        <tr>
-          <td>Michael Johnson</td>
-          <td>EMP003</td>
-          <td>Maternity Leave</td>
-          <td>2023-09-20</td>
-          <td>2023-09-25</td>
-          <td>Approved</td>
-          <td>
-            <a href="#" class="edit-button">Edit</a>
-            <a href="#" class="view-button">View</a>
-          </td>
-        </tr>
-        <!-- Add more rows for additional leave records -->
-      </tbody>
-    </table>
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5em;
+  cursor: pointer;
+}
+/* Add some basic styling to the dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
-    <!-- <td>
-      <a href="#" class="edit-button">Edit</a>
-      <a href="#" class="view-button">View</a>
-    </td> -->
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #1b0c0c;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
 
-    <script>
-      // Function to handle the "Edit" button click
-      document.querySelectorAll(".edit-button").forEach(function (button) {
-        button.addEventListener("click", function (event) {
-          event.preventDefault();
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 
-          // Replace 'edit_employee.html' with the actual URL of your edit page
-          const editPopup = window.open(
-            "edit_employee.html",
-            "Edit Employee",
-            "width=600,height=600"
-          );
+.dropdown-content a {
+  color: #1b0c0c;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
 
-          // Optionally, you can focus the pop-up window
-          editPopup.focus();
-        });
-      });
+.dropdown-content a:hover {
+  background-color: #f5f5f5;
+}
+.search {
+  position: relative;
+  width: 400px;
+  margin: 0 10px;
+}
 
-      // Function to handle the "View" button click
-      document.querySelectorAll(".view-button").forEach(function (button) {
-        button.addEventListener("click", function (event) {
-          event.preventDefault();
+.search label {
+  position: relative;
+  width: 100%;
+}
+.search label input {
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  padding: 5px 20px;
+  padding-left: 35px;
+  font-size: 18px;
+  outline: none;
+  border: 1px solid var(--black1);
+}
+.searchIcon {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: 1.2em;
+}
+.user {
+  position: relative;
+  min-width: 60px;
+  margin: 0px;
+  height: 80px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
 
-          // Replace 'view_employee.html' with the actual URL of your view page
-          const viewPopup = window.open(
-            "view_employee.html",
-            "View Employee",
-            "width=600,height=600"
-          );
+.user img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 100px;
+  height: auto;
+  object-fit: cover;
+}
+.user p.name {
+  font-weight: 14px;
+  margin-top: 10px;
+}
+.user-dropdown {
+  position: relative;
+  display: inline-block;
+}
 
-          // Optionally, you can focus the pop-up window
-          viewPopup.focus();
-        });
-      });
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: blue;
+  min-width: 160px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+.notification {
+  margin: 0 8%;
+  height: 60px;
+  min-width: 30px;
+  position: absolute;
+  display: flex;
+  right: 0;
+  top: 5;
+}
 
-      document
-        .getElementById("exportForm")
-        .addEventListener("submit", function (event) {
-          event.preventDefault();
+.notification-count {
+ position: absolute;
+ top: 13px;
+ right: -7px;
+ background-color: red;
+ color: white;
+ border-radius: 50%;
+ padding: 4px 8px;
+ font-size: 11px;
+}
 
-          var formatSelect = document.getElementById("formatSelect");
-          var selectedFormat =
-            formatSelect.options[formatSelect.selectedIndex].value;
+.user:local-link .dropdown-content {
+  display: block;
+}
 
-          var label = document.createElement("h2");
-          label.textContent =
-            "Exporting report in " +
-            selectedFormat.toUpperCase() +
-            " format...";
-          document.body.appendChild(label);
+.admin {
+  position: relative;
+  font-size: 2px;
+}
+.cardBox {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+}
+.card {
+  position: relative;
+  background: var(--white);
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.555);
+}
 
-          // Simulating export process (replace with actual export code)
-          setTimeout(function () {
-            label.textContent = "Report exported successfully!";
-          }, 2000); // 2 seconds delay for simulation purposes
-        });
-    </script>
+.numbers {
+  position: relative;
+  font-weight: 500;
+  font-size: 2.5em;
+  color: var(--blue);
+}
 
-    <script>
-      // Get the select element and table body
-      const leaveFilter = document.getElementById("leave-filter");
-      const tableBody = document.querySelector("tbody");
+.cardName {
+  color: var(--black1);
+  font-size: 1.1em;
+  margin-top: 5px;
+}
+.iconBx {
+  font-size: 1.75em;
+  color: var(--black1);
+}
+.card:hover {
+  background: var(--blue);
+}
+.card:hover .numbers,
+.cardBox.card:hover .cardName,
+.cardBox.card:hover .iconBx {
+  color: var(--white);
+}
 
-      // Add an event listener to the select element
-      leaveFilter.addEventListener("change", function () {
-        const selectedLeaveType = leaveFilter.value;
+.course_details {
+  position: relative;
+  width: auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+}
+.projects {
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  background: var(--white);
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.555);
+  border-radius: 20px;
+}
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.cardHeader h2 {
+  font-weight: 600;
+  color: var(--blue);
+}
 
-        // Loop through each table row and hide/show based on the selected option
-        const rows = tableBody.querySelectorAll("tr");
-        rows.forEach((row) => {
-          const leaveType = row.getAttribute("data-leave-type");
+.btn {
+  position: relative;
+  padding: 5px 10px;
+  background: var(--blue);
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+  width: 90px;
+  height: 35px;
+}
+.course_details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.course_details table thead td {
+  font-weight: 600;
+}
 
-          if (selectedLeaveType === "all" || selectedLeaveType === leaveType) {
-            row.style.display = "table-row";
-          } else {
-            row.style.display = "none";
-          }
-        });
-      });
-    </script>
+.projects table tr {
+  color: var(--black1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.01);
+}
+.projects table tr:last-child {
+  border-bottom: none;
+}
+.projects table tr:hover {
+  background: var(--black1);
+  color: var(--white);
+}
+.projects table tr td {
+  padding: 10px;
+}
+.projects table tr td:last-child {
+  text-align: end;
+}
+.projects table trtd:nth-child(2) {
+  text-align: end;
+}
+.projects table trtd:nth-child(3) {
+  text-align: center;
+}
+.status.delivered {
+  padding: 2px 4px;
+  background: #8de02c;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.status.completed {
+  padding: 2px 4px;
+  background: #f00;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.status.pending {
+  padding: 2px 4px;
+  background: #e0d42c;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.status.overdue {
+  padding: 2px 4px;
+  background: #161616;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
 
-    <script>
-      // JavaScript to handle button click and format selection
-      document
-        .getElementById("printButton")
-        .addEventListener("click", function (event) {
-          document.getElementById("printOptions").style.display = "block";
-          event.stopPropagation(); // Prevent the click event from propagating to the document body
-        });
+ .employees {
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  padding: 20px;
+  background: var(--white);
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.555);
+  border-radius: 20px;
+}
+/*
+.employees .imgBx {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.employees .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.employees table tr:hover {
+  background: var(--blue);
+  color: var(white);
+}
 
-      document
-        .getElementById("printPDF")
-        .addEventListener("click", function () {
-          // Replace this with your logic to print as PDF
-          alert("Printing as PDF");
-          // You can use libraries like jsPDF for PDF generation
-        });
+.employees table tr td {
+  padding: 12px 10px;
+}
+.employees table tr td h4 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2em;
+}
+.employees table tr td h4 span {
+  font-size: 14px;
+  color: var(--black2);
+}
+.employees table tr:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+.employees table tr:hover td h4 {
+  color: var(--white);
+} */
+/* responsive design */
+@media (max-width: 991px) {
+  .navigation {
+    left: -240px;
+  }
+  .navigation.active {
+    left: 0;
+    width: 240px;
+  }
+  .main {
+    width: 100%;
+    left: 0;
+  }
+  .main.active {
+    left: 240px;
+    width: 100%;
+  }
+  .cardBox {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-      document
-        .getElementById("printDoc")
-        .addEventListener("click", function () {
-          // Replace this with your logic to print as Doc
-          alert("Printing as Doc");
-          // You can use window.print() to print the Doc content
-        });
+@media (max-width: 768px) {
+  .course_details {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .projects {
+    overflow-x: auto;
+  }
+  .status.pending {
+    white-space: nowrap;
+  }
+}
+@media (max-width: 480px) {
+  .cardBox {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .cardHeader {
+    font-size: 20px;
+  }
+  .user {
+    min-width: 40px;
+  }
+  .navigation {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+  }
+  .navigation.active {
+    width: 100%;
+    left: 0;
+  }
+  .toggle {
+    z-index: 10001;
+  }
+  .main.active .toggle {
+    position: fixed;
+    right: 0;
+    left: initial;
+    color: var(--white);
+  }
+}
+/* Popup container - can be anything you want */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+}
 
-      document
-        .getElementById("printCSV")
-        .addEventListener("click", function () {
-          // Replace this with your logic to print as CSV
-          alert("Printing as CSV");
-          // You can use window.print() to print the CSV content
-        });
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 100px;
+  background-color: #ffff;
+  color: #0000;
+  white-space: nowrap;
+  text-align: left;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 0;
+  transform: translate(-50%, 0);
+}
 
-      // Add a click event listener to the document body to hide the dropdown when clicking outside
-      document.body.addEventListener("click", function () {
-        document.getElementById("printOptions").style.display = "none";
-      });
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #0000 transparent;
+}
 
-      // Prevent the click event on the dropdown from propagating to the document body
-      document
-        .getElementById("printOptions")
-        .addEventListener("click", function (event) {
-          event.stopPropagation();
-        });
-    </script>
-  </body>
-</html>
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  
+  animation: fadeIn 1s;
+  background-color:var(--black1);
+}
+
+.popup .popuptext ul {
+  padding: 0;
+  margin: 0;
+}
+
+.popup .popuptext ul li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.popup .popuptext ul li a {
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  line-height: 1;
+  color: wheat;
+}
+
+.popup .popuptext ul li:first-child {
+  margin-bottom: 0px;
+}
+
+.profile-popup {
+ position: absolute;
+ top: 49px;
+ right: -300px;
+ width: 300px;
+ height: 70vh;
+ background: var(--white);
+ box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.479);
+ z-index: 1000;
+ border-radius: 5px;
+}
+
+.profile-content {
+ padding: 20px;
+}
+
+.profile-popup.active {
+ right: 30px;
+}
+
+button{
+ border: none;
+ color: var(--blue);
+ font-size: 15px;
+ font-style: italic;
+}
+
+.highlight {
+ background-color: yellow;
+ font-weight: bold;
+}
+
+.no-results {
+ color: red;
+ font-weight: bold;
+}
+
+.popupp {
+ display: none;
+ position: absolute;
+ top: 16%;
+ left: 83%;
+ transform: translate(-50%, -50%);
+ width: 250px;
+ height: 60vh;
+ background: var(--white);
+ border: 1px solid #ccc;
+ padding: 20px;
+ z-index: 999;
+ overflow: auto;
+ box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.61);
+ border-radius: 2%;
+}
+
+.popupp.active {
+ display: block;
+}
+
+.charts-container {
+ box-shadow: 0 7px 25px rgba(0, 0, 0, 0.116);
+}
+
+.chart-container {
+ width: 60%;
+ height: 60vh;
+}
+
+.logo-wrap {
+
+ width: 260px;
+ height: 75px;
+ grid-template-columns: 0.6fr 1.4fr;
+
+}
+
+.logo-icon {
+ font-size: 3.0em;
+ text-align: left;
+
+}
+
+.logo-content {
+
+ display: flex;
+ align-items: left;
+ flex-direction: column;
+ justify-content: center;
+ margin-left: 65px; 
+ margin-top: -55px;
+}
+
+.logo-name {
+
+ font-size: 1.7em;
+ text-align: left;
+ 
+}
+
+.logo-slogan {
+ font-size: 8px;
+ padding-left: px;
+ letter-spacing: 0.3ch;
+ font-style: italic;
+
+}
+
+.menuu {
+ list-style: none;
+ padding: 0;
+}
+
+.menuu li {
+ display: inline-block;
+ margin-right: 100px;
+}
+
+.dropdown-contents {
+ display: none;
+ position: relative;
+ background-color: rgb(14, 13, 13);
+ color: var(--blue);
+ padding: 10px;
+ font-size: large;
+ font-style: italic;
+}
+
+.repo h1{
+text-align: center;
+}
+.repo{
+ margin: 0 30px;
+ background-color: var(--white);
+}
+.repo table{
+ width: 100%;
+ height: 75vh;
+ border-collapse: collapse;
+}
+.repo table,td{
+ border: 1px solid #ddd;
+ font-style: italic;
+}
+
+.repo table th{
+ background-color: var(--blue);
+ width: 10%;
+ height: 10vh;
+}
+.btns{
+ font-size: large;
+ font-style: italic;
+ font-weight: 200;
+}
+#searchInputt{
+height: 30px;
+width: 300px;
+margin: 0 50px;
+}
+#printButton{
+ margin: 0 40px;
+}
+#exportPDFButton{
+ margin: 0 20px;
+}
+#addColumnPopup{
+margin-top: -730px;
+margin-left: 1080px;
+}
+.delete-button{
+margin: 10px;
+}
+#employeeModal{
+ width: 60%;
+ height: 80vh;
+ margin: -51% 8%;
+ box-shadow: 0 7px 25px rgba(0, 0, 0, 0.658);
+ background-color: var(--white);
+ 
+}
+#filter{
+ margin: 10px 100px;
+}
+.emp{
+ font-size: larger;
+ padding: 20px;
+}
+option{
+ font-style: italic;
+ font-size: small;
+}
