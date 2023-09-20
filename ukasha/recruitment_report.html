@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recruitment Report</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <style>
+      body {
+            font-family: Arial, sans-serif;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: var(--blue);
+        }
+
+        /* CSS for the popup */
+        #employeeDetails {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 40px;
+            box-shadow: 15px 15px 20px 15px rgba(0, 0, 0, 0.664);
+            z-index: 1000;
+            width: 70%;
+            height: 70vh;
+            border-radius: 10px;
+            font-style: italic;
+            font-size: larger;
+        }
+
+        /* CSS for close button in the popup */
+        #closeButton {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            cursor: pointer;
+            color: #316abb;
+        }
+
+        .btn {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        
+        .viewBtn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+        
+        .deleteBtn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+        }
+
+        .search-box {
+            margin: 0 5px;
+        }
+
+        .search-box #print, #exportPdf, #addColumn, #searchInput {
+            padding: 5px;
+        }
+
+        .search-box #searchInput {
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        .search-box #search{
+            color: #000000;
+            padding: 5px;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Recruitment Report</h1>
+    <br>
+    <br>
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button id="search" onclick="search()">Search</button>
+        <button id="exportPdf" onclick="exportToPDF()">Export PDF</button>
+        <button id="print" onclick="printReport()">Print</button>
+        <button id="addColumn" onclick="addColumn()">Add Column</button>
+    </div>
+    <table id="recruitmentTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <!-- Newly Added Column (Loaded from Local Storage) -->
+                <th>date of application</th>
+                <!-- Actions Column -->
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John Doe</td>
+                <td>Software Engineer</td>
+                <td>2023-05-05</td>
+                <td>
+                    <button class="btn viewBtn" onclick="viewDetails('John Doe')">View</button>
+                    <button class="btn deleteBtn" onclick="deleteRecruit(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Jane Smith</td>
+                <td>Marketing Manager</td>
+                <td>2023-05-20</td>
+                <td>
+                    <button class="btn viewBtn" onclick="viewDetails('Jane Smith')">View</button>
+                    <button class="btn deleteBtn" onclick="deleteRecruit(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Bhad Bhadie</td>
+                <td>financial Manager</td>
+                <td>2023-06-10</td>
+                <td>
+                    <button class="btn viewBtn" onclick="viewDetails('Bhad Bhadie')">View</button>
+                    <button class="btn deleteBtn" onclick="deleteRecruit(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Chris Brown</td>
+                <td>Accounts Manager</td>
+                <td>2023-06-20</td>
+                <td>
+                    <button class="btn viewBtn" onclick="viewDetails('Chris Brown')">View</button>
+                    <button class="btn deleteBtn" onclick="deleteRecruit(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>August Alsina</td>
+                <td>Sales Manager</td>
+                <td>2023-07-25</td>
+                <td>
+                    <button class="btn viewBtn" onclick="viewDetails('August Alsina')">View</button>
+                    <button class="btn deleteBtn" onclick="deleteRecruit(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Sam Smith</td>
+                <td>Marketing Manager</td>
+                <td>2023-07-20</td>
+                <td>
+                    <button class="btn viewBtn" onclick="viewDetails('Sam Smith')">View</button>
+                    <button class="btn deleteBtn" onclick="deleteRecruit(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Smith Rhoo</td>
+                <td>Production Manager</td>
+                <td>2023-08-20</td>
+                <td>
+                    <button class="btn viewBtn" onclick="viewDetails('Smith Rhoo')">View</button>
+                    <button class="btn deleteBtn" onclick="deleteRecruit(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Megan Thee</td>
+                <td>Financial Manager</td>
+                <td>2023-09-25</td>
+                <td>
+                    <button class="btn viewBtn" onclick="viewDetails('Megan Thee')">View</button>
+                    <button class="btn deleteBtn" onclick="deleteRecruit(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Tory Lanez</td>
+                <td>Marketing Manager</td>
+                <td>2023-09-25</td>
+                <td>
+                    <button class="btn viewBtn" onclick="viewDetails('Tory Lanez')">View</button>
+                    <button class="btn deleteBtn" onclick="deleteRecruit(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Amber Smith</td>
+                <td>Sales Manager</td>
+                <td>2023-09-20</td>
+                <td>
+                    <button class="btn viewBtn" onclick="viewDetails('Amber Smith')">View</button>
+                    <button class="btn deleteBtn" onclick="deleteRecruit(this)">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Jane Rose</td>
+                <td>Project Manager</td>
+                <td>2023-10-20</td>
+                <td>
+                    <button class="btn viewBtn" onclick="viewDetails('Jane Rose')">View</button>
+                    <button class="btn deleteBtn" onclick="deleteRecruit(this)">Delete</button>
+                </td>
+            </tr>
+
+            
+        </tbody>
+    </table>
+
+    <!-- Employee Details Popup -->
+    <div id="employeeDetails">
+        <h2>Employee Details</h2>
+        <p id="employeeInfo"></p>
+        <button id="closeButton" onclick="closePopup()">Close</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script>
+        // Initialize DataTables
+        $(document).ready(function() {
+            $('#recruitmentTable').DataTable();
+        });
+
+        // JavaScript functions
+        function search() {
+            const searchInput = document.getElementById("searchInput").value;
+            $('#recruitmentTable').DataTable().search(searchInput).draw();
+        }
+
+        function exportToPDF() {
+            const doc = new jsPDF();
+            doc.autoTable({ html: '#recruitmentTable' });
+            doc.save('recruitment_report.pdf');
+        }
+
+        function printReport() {
+            window.print();
+        }
+
+        function addColumn() {
+            // Prompt user for new column name
+            const newColumnName = prompt("Enter the name of the new column:");
+            if (newColumnName) {
+                // Add the new column before the Actions column
+                const tableHeader = document.querySelector("#recruitmentTable thead tr");
+                const actionsColumn = tableHeader.querySelector("th:last-child");
+                const newTh = document.createElement("th");
+                newTh.textContent = newColumnName;
+                tableHeader.insertBefore(newTh, actionsColumn);
+
+                // Add the new column to each table row
+                const tableRows = document.querySelectorAll("#recruitmentTable tbody tr");
+                tableRows.forEach((row) => {
+                    const newTd = document.createElement("td");
+                    newTd.textContent = "New Data"; // You can add default data for the new column
+                    row.insertBefore(newTd, row.lastElementChild);
+                });
+
+                // Save the new column name to localStorage
+                const savedColumns = JSON.parse(localStorage.getItem("recruitmentColumns")) || [];
+                savedColumns.push(newColumnName);
+                localStorage.setItem("recruitmentColumns", JSON.stringify(savedColumns));
+            }
+        }
+
+        function viewDetails(name) {
+            // Display the employee details
+            document.getElementById("employeeInfo").textContent = `Name: ${name}`;
+            document.getElementById("employeeDetails").style.display = "block";
+        }
+
+        function closePopup() {
+            // Close the employee details popup
+            document.getElementById("employeeDetails").style.display = "none";
+        }
+
+        function deleteRecruit(button) {
+            if (confirm("Are you sure you want to delete this employee?")) {
+                // Delete the row containing the clicked button
+                const row = button.parentNode.parentNode;
+                row.parentNode.removeChild(row);
+            }
+        }
+
+        // Load saved columns on page load
+        const savedColumns = JSON.parse(localStorage.getItem("recruitmentColumns")) || [];
+        savedColumns.forEach((columnName) => {
+            // Add the saved columns to the table
+            const tableHeader = document.querySelector("#recruitmentTable thead tr");
+            const actionsColumn = tableHeader.querySelector("th:last-child");
+            const newTh = document.createElement("th");
+            newTh.textContent = columnName;
+            tableHeader.insertBefore(newTh, actionsColumn);
+
+            // Add the new column to each table row
+            const tableRows = document.querySelectorAll("#recruitmentTable tbody tr");
+            tableRows.forEach((row) => {
+                const newTd = document.createElement("td");
+                newTd.textContent = "New Data"; // You can add default data for the new column
+                row.insertBefore(newTd, row.lastElementChild);
+            });
+        });
+    </script>
+</body>
+</html>
