@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
       datasets: [
         {
           data: [150, 100, 70, 40],
-          backgroundColor: ["rgb(128,128,0)", "rgb(0,255,255)", "rgb(0,128,0)", "rgb(255,20,127)"],
+          backgroundColor: ["#316abb", "rgb(0,255,255)", "rgb(0,128,112)", "rgb(255,20,127)"],
           borderColor: ["rgba(75, 192, 192, 1)", "rgba(54, 162, 235, 1)"],
           borderWidth: 1,
         },

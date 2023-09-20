@@ -83,6 +83,7 @@
             height: 70vh;
             border-radius: 10px;
             font-style: italic;
+            font-size: larger;
             
         }
 
@@ -119,7 +120,7 @@
         <button id="cancelAddColumn">Cancel</button>
     </div>
 
-    <table id="employeetable">
+    <table id="employeeTable">
         <thead>
             <tr>
                 <th>Employee</th>
@@ -143,7 +144,7 @@
                 </td>
             </tr>
             <tr>
-                <td>Amanya U</td>
+                <td>Amanya Ukasha</td>
                 <td>12765</td>
                 <td>Engineering</td>
                 <td>System analyst</td>
@@ -153,7 +154,62 @@
                     <button class="btn deleteBtn">Delete</button>
                 </td>
             </tr>
-            <!-- More rows... -->
+            <tr>
+                <td>Mulungi mercy</td>
+                <td>00012</td>
+                <td>Accounts</td>
+                <td>manager</td>
+                <td>$100,000</td>
+                <td>
+                    <button class="btn viewBtn">View</button>
+                    <button class="btn deleteBtn">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Agaba Umar</td>
+                <td>00123</td>
+                <td>Sales</td>
+                <td>Accountant</td>
+                <td>$110,000</td>
+                <td>
+                    <button class="btn viewBtn">View</button>
+                    <button class="btn deleteBtn">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Nantukunda Hindu</td>
+                <td>02341</td>
+                <td>IT</td>
+                <td>manager</td>
+                <td>$100,000</td>
+                <td>
+                    <button class="btn viewBtn">View</button>
+                    <button class="btn deleteBtn">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Ashaba uzwaifah</td>
+                <td>02345</td>
+                <td>Finance</td>
+                <td>System analyst</td>
+                <td>$90,000</td>
+                <td>
+                    <button class="btn viewBtn">View</button>
+                    <button class="btn deleteBtn">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Kiyaga Fred</td>
+                <td>01143</td>
+                <td>Engineering</td>
+                <td>HR</td>
+                <td>$500,000</td>
+                <td>
+                    <button class="btn viewBtn">View</button>
+                    <button class="btn deleteBtn">Delete</button>
+                </td>
+            </tr>
+            
         </tbody>
 
         <div class="popup-overlay" id="popupOverlay"></div>
@@ -182,13 +238,13 @@
     }
 
     // Add the new column header
-    const tableHeader = document.querySelector('#employeetable thead tr');
+    const tableHeader = document.querySelector('#employeeTable thead tr');
     const newTh = document.createElement('th');
     newTh.textContent = newColumnName;
     tableHeader.appendChild(newTh);
 
     // Add the new column data to each row (you can initialize with default data)
-    const tableBody = document.querySelector('#employeetable tbody');
+    const tableBody = document.querySelector('#employeeTable tbody');
     const rows = tableBody.querySelectorAll('tr');
     rows.forEach(row => {
         const newTd = document.createElement('td');
@@ -267,7 +323,7 @@ document.getElementById('cancelAddColumn').addEventListener('click', () => {
         const searchInput = document.getElementById('search');
         searchInput.addEventListener('input', () => {
             const searchText = searchInput.value.toLowerCase();
-            const rows = document.querySelectorAll('#employeetable tbody tr');
+            const rows = document.querySelectorAll('#employeeTable tbody tr');
             
             rows.forEach(row => {
                 const name = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
