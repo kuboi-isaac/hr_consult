@@ -80,25 +80,11 @@
             color: white;
             border: none;
         }
-/* 
-        .search-box {
-            margin: 0 5px;
-        } */
 
         .search-box #print, #exportPdf, #addColumn {
             padding: 5px;
         }
 
-        /* .search-box #searchInput {
-            width: 300px;
-            border-radius: 10px;
-        } */
-
-        /* .search-box #search{
-            color: #000000;
-            padding: 5px;
-            background-color: #ffffff;
-        } */
     </style>
 </head>
 <body>
@@ -282,10 +268,10 @@
         });
 
         // JavaScript functions
-        function search() {
-            const searchInput = document.getElementById("searchInput").value;
-            $('#attendenceTable').DataTable().search(searchInput).draw();
-        }
+        // function search() {
+        //     const searchInput = document.getElementById("searchInput").value;
+        //     $('#attendenceTable').DataTable().search(searchInput).draw();
+        // }
 
         function exportToPDF() {
             const doc = new jsPDF();
