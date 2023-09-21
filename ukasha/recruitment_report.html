@@ -6,6 +6,9 @@
     <title>Recruitment Report</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
     <style>
       body {
             font-family: Arial, sans-serif;
@@ -77,25 +80,25 @@
             color: white;
             border: none;
         }
-
+/* 
         .search-box {
             margin: 0 5px;
-        }
+        } */
 
-        .search-box #print, #exportPdf, #addColumn, #searchInput {
+        .search-box #print, #exportPdf, #addColumn {
             padding: 5px;
         }
 
-        .search-box #searchInput {
+        /* .search-box #searchInput {
             width: 300px;
             border-radius: 10px;
-        }
+        } */
 
-        .search-box #search{
+        /* .search-box #search{
             color: #000000;
             padding: 5px;
             background-color: #ffffff;
-        }
+        } */
     </style>
 </head>
 <body>
@@ -103,8 +106,8 @@
     <br>
     <br>
     <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search...">
-        <button id="search" onclick="search()">Search</button>
+        <!-- <input type="text" id="searchInput" placeholder="Search...">
+        <button id="search" onclick="search()">Search</button> -->
         <button id="exportPdf" onclick="exportToPDF()">Export PDF</button>
         <button id="print" onclick="printReport()">Print</button>
         <button id="addColumn" onclick="addColumn()">Add Column</button>
