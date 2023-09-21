@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Report</title>
+    <title>Payroll Report</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -37,8 +37,13 @@
             background-color: var(--blue);
         }
 
+        .chart-container {
+            width: 80%;
+            margin: 20px auto;
+        }
+
         /* CSS for the popup */
-        #employeeDetails {
+        #payrollDetails {
             display: none;
             position: fixed;
             top: 50%;
@@ -94,7 +99,7 @@
     </style>
 </head>
 <body>
-    <h1>Employee Report</h1>
+    <h1>Payroll Report</h1>
     <br>
     <br>
     <div >
@@ -104,7 +109,7 @@
         <button id="print" onclick="printReport()">Print</button>
         <button id="addColumn" onclick="addColumn()">Add Column</button>
     </div>
-    <table id="employeeTable">
+    <table id="payrollTable">
         <thead>
             <tr>
                 <th>ID</th>
@@ -112,6 +117,7 @@
                 <th>Position</th>
                 <!-- Newly Added Column (Loaded from Local Storage) -->
                 <th>Department</th>
+                <th>Salary</th>
                 <!-- Actions Column -->
                 <th>Action</th>
             </tr>
@@ -122,6 +128,7 @@
                 <td>John Doe</td>
                 <td>Software Engineer</td>
                 <td>IT Solutions</td>
+                <td>$50,000</td>
                 <td>
                     <button class="btn viewBtn" onclick="viewDetails('John Doe')">View</button>
                     <button class="btn deleteBtn" onclick="deleteRecruit(this)">Delete</button>
@@ -132,6 +139,7 @@
                 <td>Jane Smith</td>
                 <td>Marketing Manager</td>
                 <td>IT Solutions</td>
+                <td>$30,000</td>
                 <td>
                     <button class="btn viewBtn" onclick="viewDetails('Jane Smith')">View</button>
                     <button class="btn deleteBtn" onclick="deleteRecruit(this)">Delete</button>
@@ -142,6 +150,7 @@
                 <td>Bhad Bhadie</td>
                 <td>financial Manager</td>
                 <td>Sales</td>
+                <td>$80,000</td>
                 <td>
                     <button class="btn viewBtn" onclick="viewDetails('Bhad Bhadie')">View</button>
                     <button class="btn deleteBtn" onclick="deleteRecruit(this)">Delete</button>
@@ -152,6 +161,7 @@
                 <td>Chris Brown</td>
                 <td>Accounts Manager</td>
                 <td>Accounts</td>
+                <td>$70,000</td>
                 <td>
                     <button class="btn viewBtn" onclick="viewDetails('Chris Brown')">View</button>
                     <button class="btn deleteBtn" onclick="deleteRecruit(this)">Delete</button>
@@ -162,6 +172,7 @@
                 <td>August Alsina</td>
                 <td>Sales Manager</td>
                 <td>Sales</td>
+                <td>$60,000</td>
                 <td>
                     <button class="btn viewBtn" onclick="viewDetails('August Alsina')">View</button>
                     <button class="btn deleteBtn" onclick="deleteRecruit(this)">Delete</button>
@@ -172,6 +183,7 @@
                 <td>Sam Smith</td>
                 <td>Marketing Manager</td>
                 <td>Sales</td>
+                <td>$60,000</td>
                 <td>
                     <button class="btn viewBtn" onclick="viewDetails('Sam Smith')">View</button>
                     <button class="btn deleteBtn" onclick="deleteRecruit(this)">Delete</button>
@@ -182,6 +194,7 @@
                 <td>Smith Rhoo</td>
                 <td>Production Manager</td>
                 <td>Sales</td>
+                <td>$100,000</td>
                 <td>
                     <button class="btn viewBtn" onclick="viewDetails('Smith Rhoo')">View</button>
                     <button class="btn deleteBtn" onclick="deleteRecruit(this)">Delete</button>
@@ -192,6 +205,7 @@
                 <td>Megan Thee</td>
                 <td>Financial Manager</td>
                 <td>IT Solutions</td>
+                <td>$50,000</td>
                 <td>
                     <button class="btn viewBtn" onclick="viewDetails('Megan Thee')">View</button>
                     <button class="btn deleteBtn" onclick="deleteRecruit(this)">Delete</button>
@@ -202,6 +216,7 @@
                 <td>Tory Lanez</td>
                 <td>Marketing Manager</td>
                 <td>Sales</td>
+                <td>$65,000</td>
                 <td>
                     <button class="btn viewBtn" onclick="viewDetails('Tory Lanez')">View</button>
                     <button class="btn deleteBtn" onclick="deleteRecruit(this)">Delete</button>
@@ -212,6 +227,7 @@
                 <td>Amber Smith</td>
                 <td>Sales Manager</td>
                 <td>IT Solutions</td>
+                <td>$100,000</td>
                 <td>
                     <button class="btn viewBtn" onclick="viewDetails('Amber Smith')">View</button>
                     <button class="btn deleteBtn" onclick="deleteRecruit(this)">Delete</button>
@@ -222,6 +238,7 @@
                 <td>Jane Rose</td>
                 <td>Project Manager</td>
                 <td>IT Solutions</td>
+                <td>$200,000</td>
                 <td>
                     <button class="btn viewBtn" onclick="viewDetails('Jane Rose')">View</button>
                     <button class="btn deleteBtn" onclick="deleteRecruit(this)">Delete</button>
@@ -232,32 +249,39 @@
         </tbody>
     </table>
 
-    <!-- Employee Details Popup -->
-    <div id="employeeDetails">
-        <h2>Employee Details</h2>
-        <p id="employeeInfo"></p>
+    <!-- payroll Details Popup -->
+    <div id="payrollDetails">
+        <h2>payroll Details</h2>
+        <p id="payrollInfo"></p>
         <button id="closeButton" onclick="closePopup()">Close</button>
     </div>
 
+    <h2>Salary Distribution Chart</h2>
+    <div class="chart-container">
+        <!-- Create an interactive chart using a JavaScript charting library like Chart.js -->
+        <canvas id="salaryChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
     <script>
         // Initialize DataTables
         $(document).ready(function() {
-            $('#employeeTable').DataTable();
+            $('#payrollTable').DataTable();
         });
 
         // JavaScript functions
         // function search() {
         //     const searchInput = document.getElementById("searchInput").value;
-        //     $('#employeeTable').DataTable().search(searchInput).draw();
+        //     $('#payrollTable').DataTable().search(searchInput).draw();
         // }
 
         function exportToPDF() {
             const doc = new jsPDF();
-            doc.autoTable({ html: '#employeeTable' });
-            doc.save('employee_report.pdf');
+            doc.autoTable({ html: '#payrollTable' });
+            doc.save('payroll_report.pdf');
         }
 
         function printReport() {
@@ -269,14 +293,14 @@
             const newColumnName = prompt("Enter the name of the new column:");
             if (newColumnName) {
                 // Add the new column before the Actions column
-                const tableHeader = document.querySelector("#employeeTable thead tr");
+                const tableHeader = document.querySelector("#payrollTable thead tr");
                 const actionsColumn = tableHeader.querySelector("th:last-child");
                 const newTh = document.createElement("th");
                 newTh.textContent = newColumnName;
                 tableHeader.insertBefore(newTh, actionsColumn);
 
                 // Add the new column to each table row
-                const tableRows = document.querySelectorAll("#employeeTable tbody tr");
+                const tableRows = document.querySelectorAll("#payrollTable tbody tr");
                 tableRows.forEach((row) => {
                     const newTd = document.createElement("td");
                     newTd.textContent = "New Data"; // You can add default data for the new column
@@ -284,25 +308,25 @@
                 });
 
                 // Save the new column name to localStorage
-                const savedColumns = JSON.parse(localStorage.getItem("employeeColumns")) || [];
+                const savedColumns = JSON.parse(localStorage.getItem("payrollColumns")) || [];
                 savedColumns.push(newColumnName);
-                localStorage.setItem("employeeColumns", JSON.stringify(savedColumns));
+                localStorage.setItem("payrollColumns", JSON.stringify(savedColumns));
             }
         }
 
         function viewDetails(name) {
-            // Display the employee details
-            document.getElementById("employeeInfo").textContent = `Name: ${name}`;
-            document.getElementById("employeeDetails").style.display = "block";
+            // Display the payroll details
+            document.getElementById("payrollInfo").textContent = `Name: ${name}`;
+            document.getElementById("payrollDetails").style.display = "block";
         }
 
         function closePopup() {
-            // Close the employee details popup
-            document.getElementById("employeeDetails").style.display = "none";
+            // Close the payroll details popup
+            document.getElementById("payrollDetails").style.display = "none";
         }
 
         function deleteRecruit(button) {
-            if (confirm("Are you sure you want to delete this employee?")) {
+            if (confirm("Are you sure you want to delete this payroll?")) {
                 // Delete the row containing the clicked button
                 const row = button.parentNode.parentNode;
                 row.parentNode.removeChild(row);
@@ -310,22 +334,55 @@
         }
 
         // Load saved columns on page load
-        const savedColumns = JSON.parse(localStorage.getItem("employeeColumns")) || [];
+        const savedColumns = JSON.parse(localStorage.getItem("payrollColumns")) || [];
         savedColumns.forEach((columnName) => {
             // Add the saved columns to the table
-            const tableHeader = document.querySelector("#employeeTable thead tr");
+            const tableHeader = document.querySelector("#payrollTable thead tr");
             const actionsColumn = tableHeader.querySelector("th:last-child");
             const newTh = document.createElement("th");
             newTh.textContent = columnName;
             tableHeader.insertBefore(newTh, actionsColumn);
 
             // Add the new column to each table row
-            const tableRows = document.querySelectorAll("#employeeTable tbody tr");
+            const tableRows = document.querySelectorAll("#payrollTable tbody tr");
             tableRows.forEach((row) => {
                 const newTd = document.createElement("td");
                 newTd.textContent = "New Data"; // You can add default data for the new column
                 row.insertBefore(newTd, row.lastElementChild);
             });
+        });
+
+         // JavaScript for creating an interactive chart
+         var ctx = document.getElementById('salaryChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['John Doe', 'Jane Smith', 'Alice Johnson', /* Add more payroll names */],
+                datasets: [{
+                    label: 'Salary (in USD)',
+                    data: [60000, 55000, 62000, /* Add more payroll salaries */],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        /* Add more colors as needed */
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        /* Add more colors as needed */
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
         });
     </script>
 </body>
