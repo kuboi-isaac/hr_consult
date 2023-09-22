@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Health and Performance Report</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .chart-container {
+            width: 100%;
+            max-width: 800px;
+            height: 45vh;
+            margin: 20px auto;
+        }
+
+        /* Add styles for chart titles */
+        .chart-title {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>System Health and Performance Report</h1>
+        <br>
+        <br>
+        <!-- CPU Utilization Chart -->
+        <div class="chart-title">CPU Utilization</div>
+        <div class="chart-container">
+            <canvas id="cpuChart"></canvas>
+        </div>
+
+        <!-- Memory Utilization Chart -->
+        <div class="chart-title">Memory Utilization</div>
+        <div class="chart-container">
+            <canvas id="memoryChart"></canvas>
+        </div>
+
+        <!-- Disk and Storage Chart -->
+        <div class="chart-title">Disk and Storage</div>
+        <div class="chart-container">
+            <canvas id="diskChart"></canvas>
+        </div>
+
+        <!-- Network Performance Chart -->
+        <div class="chart-title">Network Performance</div>
+        <div class="chart-container">
+            <canvas id="networkChart"></canvas>
+        </div>
+
+        <!-- Add buttons or controls for additional features here -->
+
+    </div>
+
+    <script>
+        const cpuData = [20, 30, 40, 35, 50, 60, 70, 45, 30, 40,80];
+        const memoryData = [40, 45, 50, 55, 60, 70, 75, 80, 65, 55];
+        const diskData = [30, 35, 40, 45, 50, 55, 60, 65, 70, 75];
+        const networkData = [100, 90, 95, 85, 80, 70, 85, 80, 90, 95];
+
+        // Create responsive charts
+        function createChart(chartId, chartType, data) {
+            const ctx = document.getElementById(chartId).getContext('2d');
+            return new Chart(ctx, {
+                type: chartType,
+                data: {
+                    labels: [...Array(data.length).keys()],
+                    datasets: [{
+                        label: 'Results',
+                        data: data,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 2,
+                        fill: false,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                }
+            });
+        }
+
+        // Create charts with titles
+        createChart('cpuChart', 'line', cpuData);
+        createChart('memoryChart', 'line', memoryData);
+        createChart('diskChart', 'line', diskData);
+        createChart('networkChart', 'line', networkData);
+    </script>
+</body>
+</html>
