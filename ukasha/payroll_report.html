@@ -9,6 +9,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.12/jspdf.plugin.autotable.min.js"></script>
     <style>
       body {
             font-family: Arial, sans-serif;
@@ -102,7 +106,7 @@
     <h1>Payroll Report</h1>
     <br>
     <br>
-    <div >
+    <div class="search-box">
         <!-- <input type="text" id="searchInput" placeholder="Search...">
         <button id="search" onclick="search()">Search</button> -->
         <button id="exportPdf" onclick="exportToPDF()">Export PDF</button>
@@ -112,11 +116,13 @@
     <table id="payrollTable">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Position</th>
+                <th>Sno.</th>
+                <th>Employee Code</th>
+                <th>TIN Number</th>
+                <th>NSSF No.</th>
+                <th>Title</th>
                 <!-- Newly Added Column (Loaded from Local Storage) -->
-                <th>Department</th>
+                <th>Payroll Name</th>
                 <th>Salary</th>
                 <!-- Actions Column -->
                 <th>Action</th>
@@ -124,10 +130,12 @@
         </thead>
         <tbody>
             <tr>
-                <td>00112</td>
-                <td>John Doe</td>
+                <td>1.</td>
+                <td>AA15/0567</td>
+                <td>1002822556</td>
+                <td>6201300409931</td>
                 <td>Software Engineer</td>
-                <td>IT Solutions</td>
+                <td>John Doe</td>
                 <td>$50,000</td>
                 <td>
                     <button class="btn viewBtn" onclick="viewDetails('John Doe')">View</button>
@@ -135,10 +143,12 @@
                 </td>
             </tr>
             <tr>
-                <td>00122</td>
-                <td>Jane Smith</td>
+                <td>2.</td>
+                <td>AA15/0590</td>
+                <td>1007892556</td>
+                <td>6207500409931</td>
                 <td>Marketing Manager</td>
-                <td>IT Solutions</td>
+                <td>Jane Smith</td>
                 <td>$30,000</td>
                 <td>
                     <button class="btn viewBtn" onclick="viewDetails('Jane Smith')">View</button>
@@ -146,10 +156,12 @@
                 </td>
             </tr>
             <tr>
-                <td>00134</td>
-                <td>Bhad Bhadie</td>
+                <td>3.</td>
+                <td>AA15/0017</td>
+                <td>1004322556</td>
+                <td>6901300400931</td>
                 <td>financial Manager</td>
-                <td>Sales</td>
+                <td>Bhad Bhadie</td>
                 <td>$80,000</td>
                 <td>
                     <button class="btn viewBtn" onclick="viewDetails('Bhad Bhadie')">View</button>
@@ -157,10 +169,12 @@
                 </td>
             </tr>
             <tr>
-                <td>01234</td>
-                <td>Chris Brown</td>
+                <td>4.</td>
+                <td>AA15/0067</td>
+                <td>1002800556</td>
+                <td>6001300409931</td>
                 <td>Accounts Manager</td>
-                <td>Accounts</td>
+                <td>Chris Brown</td>
                 <td>$70,000</td>
                 <td>
                     <button class="btn viewBtn" onclick="viewDetails('Chris Brown')">View</button>
@@ -168,10 +182,12 @@
                 </td>
             </tr>
             <tr>
-                <td>05678</td>
-                <td>August Alsina</td>
+                <td>5.</td>
+                <td>AA15/0562</td>
+                <td>1002822546</td>
+                <td>6101300409931</td>
                 <td>Sales Manager</td>
-                <td>Sales</td>
+                <td>August Alsina</td>
                 <td>$60,000</td>
                 <td>
                     <button class="btn viewBtn" onclick="viewDetails('August Alsina')">View</button>
@@ -179,10 +195,12 @@
                 </td>
             </tr>
             <tr>
-                <td>23456</td>
-                <td>Sam Smith</td>
+                <td>6.</td>
+                <td>AA15/0617</td>
+                <td>1002822446</td>
+                <td>6801300409931</td>
                 <td>Marketing Manager</td>
-                <td>Sales</td>
+                <td>Sam Smith</td>
                 <td>$60,000</td>
                 <td>
                     <button class="btn viewBtn" onclick="viewDetails('Sam Smith')">View</button>
@@ -190,10 +208,12 @@
                 </td>
             </tr>
             <tr>
-                <td>09876</td>
-                <td>Smith Rhoo</td>
+                <td>7.</td>
+                <td>AA15/0907</td>
+                <td>1002822575</td>
+                <td>6301300409931</td>
                 <td>Production Manager</td>
-                <td>Sales</td>
+                <td>Smith Rhoo</td>
                 <td>$100,000</td>
                 <td>
                     <button class="btn viewBtn" onclick="viewDetails('Smith Rhoo')">View</button>
@@ -201,10 +221,12 @@
                 </td>
             </tr>
             <tr>
-                <td>04321</td>
-                <td>Megan Thee</td>
+                <td>8.</td>
+                <td>AA15/9067</td>
+                <td>1000922556</td>
+                <td>6201200409931</td>
                 <td>Financial Manager</td>
-                <td>IT Solutions</td>
+                <td>Megan Thee</td>
                 <td>$50,000</td>
                 <td>
                     <button class="btn viewBtn" onclick="viewDetails('Megan Thee')">View</button>
@@ -212,10 +234,12 @@
                 </td>
             </tr>
             <tr>
-                <td>01678</td>
-                <td>Tory Lanez</td>
+                <td>9.</td>
+                <td>AA15/0367</td>
+                <td>1002813256</td>
+                <td>6201300453931</td>
                 <td>Marketing Manager</td>
-                <td>Sales</td>
+                <td>Tory Lanez</td>
                 <td>$65,000</td>
                 <td>
                     <button class="btn viewBtn" onclick="viewDetails('Tory Lanez')">View</button>
@@ -223,10 +247,12 @@
                 </td>
             </tr>
             <tr>
-                <td>01789</td>
-                <td>Amber Smith</td>
+                <td>10.</td>
+                <td>AA15/8967</td>
+                <td>1002899556</td>
+                <td>6208700409931</td>
                 <td>Sales Manager</td>
-                <td>IT Solutions</td>
+                <td>Amber Smith</td>
                 <td>$100,000</td>
                 <td>
                     <button class="btn viewBtn" onclick="viewDetails('Amber Smith')">View</button>
@@ -234,10 +260,12 @@
                 </td>
             </tr>
             <tr>
-                <td>05643</td>
-                <td>Jane Rose</td>
+                <td>11.</td>
+                <td>AA15/1567</td>
+                <td>1002837556</td>
+                <td>6201300408831</td>
                 <td>Project Manager</td>
-                <td>IT Solutions</td>
+                <td>Jane Rose</td>
                 <td>$200,000</td>
                 <td>
                     <button class="btn viewBtn" onclick="viewDetails('Jane Rose')">View</button>
@@ -255,17 +283,13 @@
         <p id="payrollInfo"></p>
         <button id="closeButton" onclick="closePopup()">Close</button>
     </div>
-
+<br>
     <h2>Salary Distribution Chart</h2>
     <div class="chart-container">
         <!-- Create an interactive chart using a JavaScript charting library like Chart.js -->
         <canvas id="salaryChart"></canvas>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
     <script>
         // Initialize DataTables
         $(document).ready(function() {
@@ -357,21 +381,36 @@
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['John Doe', 'Jane Smith', 'Alice Johnson', /* Add more payroll names */],
+                labels: ['John Doe', 'Jane Smith', 'Bhad Bhadie', 'Chris Brown', 'August Alsina', 'Sam Smith', 'Smith Rhoo', 'Megan Thee', 'Tory Lanez', 'Amber Smith', 'Jane Rose'],
                 datasets: [{
                     label: 'Salary (in USD)',
-                    data: [60000, 55000, 62000, /* Add more payroll salaries */],
+                    data: [50000, 30000, 80000, 70000, 60000, 60000, 100000, 50000, 65000, 100000, 200000,],
                     backgroundColor: [
                         'rgba(75, 192, 192, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        /* Add more colors as needed */
+                        'rgb(255, 150, 150, 0.2)',
+                        'rgb(150, 255, 150, 0.2)',
+                        'rgb(150, 150, 255, 0.2)',
+                        'rgb(220, 150, 255, 0.2)',
+                        'rgb(220, 150, 255, 0.2)',
+                        'rgb(150, 255, 255, 0.2)',
+                        'rgb(255, 200, 150, 0.2)',
+                        'rgb(255, 150, 200, 0.2)',
+                        'rgb(150, 255, 200, 0.2)',
+                        'rgb(200, 150, 255, 0.2)'
+                        
                     ],
                     borderColor: [
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        /* Add more colors as needed */
+                        'rgba(75, 192, 192, 2)',
+                        'rgb(255, 150, 150, 2)',
+                        'rgb(150, 255, 150, 2)',
+                        'rgb(150, 150, 255, 2)',
+                        'rgb(220, 150, 255, 2)',
+                        'rgb(220, 150, 255, 2)',
+                        'rgb(150, 255, 255, 2)',
+                        'rgb(255, 200, 150, 2)',
+                        'rgb(255, 150, 200, 2)',
+                        'rgb(150, 255, 200, 2)',
+                        'rgb(200, 150, 255, 2)'
                     ],
                     borderWidth: 1
                 }]
