@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard-HR</title>
+    <link rel="stylesheet" href="assets/css/style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .container {
+            
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 50px;
+           
+
+        }
+        .container1 {
+            background: #316abb;
+            color: #fff;
+            text-align: center;
+            margin-right: 100px;
+            margin-bottom: 20px;
+            padding: 5px;
+            border-radius: 10px;
+        }
+        .box1, .box2, .box3, .box4 {
+
+            background: #fff
+            
+        
+
+           
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+
+    </style>
+
+</head> 
+
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon src="/assets/imgs/Logo.svg"></ion-icon>
+                        </span>
+                        <span class="title">HR Consult</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.html">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="employee.html">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">Employees</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="Leave.html">
+                        <span class="icon">
+                            <ion-icon name="calendar-clear-outline"></ion-icon>
+                        </span>
+                        <span class="title">Leave</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="Attendence.html">
+                        <span class="icon">
+                            <ion-icon name="checkmark-circle-outline"></ion-icon>
+                        </span>
+                        <span class="title">Attendance</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="Payroll_select.html">
+                        <span class="icon">
+                            <ion-icon name="wallet-outline"></ion-icon>
+                        </span>
+                        <span class="title">Payroll</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="Documents.html">
+                        <span class="icon">
+                            <ion-icon name="folder-outline"></ion-icon>
+                        </span>
+                        <span class="title">Documents</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="bar-chart-outline"></ion-icon>
+                        </span>
+                        <span class="title">Reports</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+              
+                <div class="thumbnail-container">
+                    <img src="assets/imgs/Samuel.jpeg" alt="Thumbnail">
+                    <div class="dropdown">
+                      <button class="dropbtn">
+                        HR User<ion-icon name="chevron-down-outline"></ion-icon>
+                      </button>
+                      <div class="dropdown-content">
+                        <a href="#">Profile</a>
+                        <a href="#">Settings</a>
+                        <a href="#">Logout</a>
+                      </div>
+                    </div>
+                  </div>          
+            </div> 
+            <div class="container1"><h1>Reports</h1></div>
+    <div class="container">
+
+        <div class="box1">
+
+            <div style="width: 100%; margin: 0 auto;">
+                <h3>Leave Report</h3>
+                <canvas id="leaveSummaryChart"></canvas>
+            </div>
+        
+           
+            
+        </div>
+      
+
+        <div class="box4"> 
+            <div class="leave">
+                <h3> <label for="monthSelect">Attendance :</label>
+                    <select id="monthSelect">
+                      <option value="January">January</option>
+                      <option value="February">February</option>
+                      <option value="March">March</option>
+                      <option value="April">April</option>
+                      <option value="May">May</option>
+                      <option value="June">June</option>
+                      <option value="July">July</option>
+                      <option value="August">August</option>
+                      <option value="September">September</option>
+                      <option value="October">October</option>
+                      <option value="November">November</option>
+                      <option value="December">December</option>
+                    </select></h3>
+                <div class="EmpDept">
+                        <div class="piechart"></div>
+                          <div class="legend-item">
+                            <div class="color-box" style="background-color: rgb(131, 33, 49) "></div>
+                            <span>Absent</span>
+                          </div>
+                          <div class="legend-item">
+                            <div class="color-box" style="background-color: rgb(30, 204, 24)"></div>
+                            <span>Present</span>
+                          </div>
+                          <div class="legend-item">
+                            <div class="color-box" style="background-color: rgb(0, 255, 191)"></div>
+                            <span>Approved Leave</span>
+                          </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="section1">
+        <div class="new_box">
+            <h3>Morking Hours by Month</h3>
+            <div class="chart-container">
+                <canvas id="lineChart"></canvas>
+            </div>
+            
+        </div>
+        <div class="new_box">
+            <h3 style="text-align: left;"> <label for="monthSelect">Employees By:</label>
+                <select id="Options">
+                  <option value="Department">Department</option>
+                  <option value="February">Salary</option>
+                  <option value="Qualification">Qualification</option>
+                  <option value="position">position</option>
+                  
+                </select></h3>
+            
+              <div id="chart-container">
+                <div id="y-axis">
+                  <span>0</span>
+                  <span>50</span>
+                  <span>100</span>
+                  <span>150</span>
+                  <span>200</span>
+                </div>
+                <div class="bar-container">
+                  <div class="bar" style="height: 100px; background-color: yellowgreen;"></div>
+                  <div class="bar" style="height: 160px; background-color: aqua;"></div>
+                  <div class="bar" style="height: 120px; background-color: blueviolet;"></div>
+                  <div class="bar" style="height: 180px; background-color: blue;"></div>
+                  <div class="bar" style="height: 80px;"></div>
+                </div>
+                <div id="x-axis">
+                  <div class="label">HR</div>
+                  <div class="label">Finance</div>
+                  <div class="label">Marketing</div>
+                  <div class="label">IT</div>
+                  <div class="label">Operations</div>
+                </div>
+              </div>
+        </div>
+             <div class="new_box">
+                <h3>New Employee by Department</h3>
+                
+                  <div id="chart-container">
+                    <div id="y-axis">
+                      <span>0</span>
+                      <span>2</span>
+                      <span>4</span>
+                      <span>6</span>
+                      <span>8</span>
+                      <span>10</span>
+                      
+
+                    </div>
+                    <div class="bar-container">
+                      <div class="bar" style="height: 100px; background-color: rgb(6, 240, 131);"></div>
+                      <div class="bar" style="height: 160px; background-color: aqua;"></div>
+                      <div class="bar" style="height: 120px; background-color: rgb(48, 15, 78);"></div>
+                      <div class="bar" style="height: 180px; background-color: rgb(255, 0, 119);"></div>
+                      <div class="bar" style="height: 80px; background-color: rgb(201, 125, 25);"></div>
+                    </div>
+                    <div id="x-axis">
+                      <div class="label">HR</div>
+                      <div class="label">Finance</div>
+                      <div class="label">Marketing</div>
+                      <div class="label">IT</div>
+                      <div class="label">Operations</div>
+                    </div>
+                  </div>
+            
+             
+            </div>
+        </div>
+
+    </div>
+
+    <!-- =========== Scripts =========  -->
+    <script src="assets/js/leave.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

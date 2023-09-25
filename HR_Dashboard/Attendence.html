@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard-HR</title>
+    <link rel="stylesheet" href="assets/css/attendance.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>
+    <!-- =============== Left Navigation Menu ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon src="/assets/imgs/Logo.svg"></ion-icon>
+                        </span>
+                        <span class="title">HR Consult</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.html">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="employee.html">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">Employees</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="Leave.html">
+                        <span class="icon">
+                            <ion-icon name="calendar-clear-outline"></ion-icon>
+                        </span>
+                        <span class="title">Leave</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="checkmark-circle-outline"></ion-icon>
+                        </span>
+                        <span class="title">Attendance</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="wallet-outline"></ion-icon>
+                        </span>
+                        <span class="title">Payroll</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="Document.html">
+                        <span class="icon">
+                            <ion-icon name="folder-outline"></ion-icon>
+                        </span>
+                        <span class="title">Documents</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="bar-chart-outline"></ion-icon>
+                        </span>
+                        <span class="title">Reports</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+               
+                <div class="thumbnail-container">
+                    <img src="assets/imgs/Samuel.jpeg" alt="Thumbnail">
+                    <div class="dropdown">
+                      <button class="dropbtn">
+                        HR User<ion-icon name="chevron-down-outline"></ion-icon>
+                      </button>
+                      <div class="dropdown-content">
+                        <a href="#">Profile</a>
+                        <a href="#">Settings</a>
+                        <a href="#">Logout</a>
+                      </div>
+                    </div>
+                  </div>  
+            <!--================Attendance report area==================-->        
+            </div>
+            <div class="attendence">
+                <h1 style="text-align: center;">Attendance Report</h1>
+            </div>
+            <!--================Filtering field=======================-->
+            <div class="filter-container">
+                <label for="filter-by">Filtered by:</label>
+                <select id="filter-by">
+                    <option value="date">Date</option>
+                    <option value="absent">Absent</option>
+                    <option value="approved-leave">Approved Leave</option>
+                    <option value="month">Month</option>
+                </select>
+            </div>
+           
+            <!-- ======================= Cards ================== -->
+            <div class="cardBox">
+                <div class="card">
+                    <div>
+                        <div class="numbers">05</div>
+                        <div class="cardName">Working Days</div>
+                    </div>
+
+             
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">142</div>
+                        <div class="cardName">Present</div>
+                    </div>
+                
+                    
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">-13</div>
+                        <div class="cardName">Absent</div>
+                    </div>
+
+           
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">12</div>
+                        <div class="cardName">Appoved Leave</div>
+                    </div>
+           
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">556</div>
+                        <div class="cardName">Total Working hours</div>
+                    </div>
+           
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">7:55</div>
+                        <div class="cardName">Average working hours</div>
+                    </div>
+            
+                </div>
+            </div>
+            <div class="row1">
+           
+        
+                 
+            </div>
+            <div class="container">
+                <div class="atend">     <div class="Dashleave1">
+                    <div class="cardHeader">
+                        <h2>Absent Today</h2>
+                    </div>
+    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Name <i class="fas fa-sort"></i></th>
+        
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h4>01</h4>
+                                </td>
+                                
+                                <td>
+                                    <h4>Mugisha Ronald</h4>
+                                </td>
+                                
+                                <td>
+    
+                                    <input type="radio" name="disable" value="01"> Flag as Leave
+                                </td>
+                            </tr>
+                    
+                            <tr>
+                                <td>
+                                    <h4>02</h4>
+                                
+                                <td>
+                                    <h4>Wamani Derrick</h4>
+                                </td>
+                               
+                                <td>
+                                 
+                                    <input type="radio" name="disable" value="01"> Flag as Leave
+                                </td>
+                            </tr>
+                    
+                        </tbody>
+                    </table>
+
+                    
+                </div></div>
+                <div class="months"><div class="calendar-card">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th colspan="7" class="current-month">August 2023</th>
+                        </tr>
+                        <tr>
+                          <th>Sun</th>
+                          <th>Mon</th>
+                          <th>Tue</th>
+                          <th>Wed</th>
+                          <th>Thu</th>
+                          <th>Fri</th>
+                          <th>Sat</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>1</td>
+                          <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                          </tr>
+                          <tr>
+                            <td>10</td>
+                            <td>11</td>
+                            <td>12</td>
+                            <td>13</td>
+                            <td>14</td>
+                            <td>15</td>
+                            <td>16</td>
+                          </tr>
+                          <tr>
+                            <td>17</td>
+                            <td>18</td>
+                            <td>19</td>
+                            <td>20</td>
+                            <td>21</td>
+                            <td>22</td>
+                            <td>23</td>
+                          </tr>
+                          <tr>
+                            <td>24</td>
+                            <td>25</td>
+                            <td>26</td>
+                            <td>27</td>
+                            <td>28</td>
+                            <td>29</td>
+                            <td>30</td>
+                          </tr>
+                         <tr>
+                          <td>31</td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- =========== Scripts =========  -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
