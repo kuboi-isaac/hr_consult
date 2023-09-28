@@ -1,0 +1,36 @@
+.logo-wrap {
+
+    width: 260px;
+    height: 75px;
+    grid-template-columns: 0.6fr 1.4fr;
+
+}
+
+.logo-icon {
+    font-size: 3.5em;
+    text-align: center;
+
+}
+
+.logo-content {
+
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 3px;
+}
+
+.logo-name {
+
+    font-size: 1.7em;
+    text-align: left;
+
+}
+
+.logo-slogan {
+    font-size: 5px;
+    padding-left: 1px;
+    letter-spacing: 0.5ch;
+
+}
